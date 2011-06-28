@@ -1,0 +1,24 @@
+{% extends 'modernizr/base.html' %}
+
+{% block title %}Websites Using Modernizr{% endblock %}
+
+{% block current_sites %} current{% endblock %}
+
+{% block content_primary %}
+		<section class="standalone">
+			<h2>Websites using Modernizr</h2>
+			<p>This page is currently being remodeled. We’d like to bring it back some day but we don’t know when that will be. In the meantime, you could start <a href="https://github.com/Modernizr/Modernizr/wiki" rel="external">a new wiki page</a> listing the coolest sites, or explore <a href="http://trends.builtwith.com/javascript/Modernizr" rel="external">the Builtwith.com trends</a>.</p>
+			
+		</section>
+{% endblock %}
+
+
+
+
+{% block content_secondary %}
+            
+{% include 'modernizr/community.html' %}
+            
+{% include 'modernizr/latest-news.html' %}
+            
+{% endblock %}

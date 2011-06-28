@@ -1,0 +1,26 @@
+{% extends 'modernizr/base.html' %}
+
+{% block title %}Websites Using Modernizr{% endblock %}
+
+{% block current_sites %} current{% endblock %}
+
+{% block content_primary %}
+		<section class="standalone">
+			<h2>Thank you for donating to Modernizr!</h2>
+			<p>Whether it was the equivalent of a nice latte or a pony, we greatly appreciate your contribution to the project!</p>
+			<p>We’ll be using these donations for covering any costs we incur while running this project, as well as for things like competitions with exciting prizes.</p>
+			<p>— Team Modernizr</p>
+			
+		</section>
+{% endblock %}
+
+
+
+
+{% block content_secondary %}
+            
+{% include 'modernizr/community.html' %}
+            
+{% include 'modernizr/latest-news.html' %}
+            
+{% endblock %}

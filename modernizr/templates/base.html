@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" id="modernizrcom" class="no-js">
+<head>
+   <meta charset="utf-8">
+   <title>{% block title %}Modernizr{% endblock %}</title>
+
+   <meta name="description" content="Modernizr is an open-source JavaScript library that helps you build the next generation of HTML5 and CSS3-powered websites.">
+   <meta name="author" content="Faruk Ateş, Paul Irish, Alex Sexton">
+ 
+   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+   <meta name="viewport" content="width=device-width">
+   <link rel="Shortcut Icon" href="/favicon.ico" type="image/x-icon" />
+   <link rel="alternate" href="http://feeds.feedburner.com/Modernizr" type="application/rss+xml" title="RSS" />
+   
+   <!--[if lte IE 7]><link rel="stylesheet" href="/i/css/ie6.1.1.css" media="screen, projection"><![endif]-->
+   <!--[if (gt IE 7)|!(IE)]><!--><link rel="stylesheet" href="/i/css/modernizr-2.0.1.css" type="text/css" media="screen"><!--<![endif]-->
+   
+   <script src="/i/js/modernizr.com-custom-1.1.js?bscope"></script>
+</head>
+
+<body id="{% block body_id %}home{% endblock %}">
+   
+   <nav role="navigation">
+      <ul id="nav">
+         <li><a class="wt {% block current_download %}{% endblock %}" href="/download/">Download</a></li>
+         <li><a class="wt {% block current_docs %}{% endblock %}" href="/docs/">Documentation</a></li>
+         <li><a class="wt {% block current_resources %}{% endblock %}" href="/resources/">Resources</a></li>
+         <li><a class="wt {% block current_news %}{% endblock %}" href="/news/">News</a></li>
+      </ul>
+   </nav>
+
+   <div class="container clrfx">
+   
+      <header id="masthead" class="loading">
+         <hgroup>
+            <a href="/" class="banner" role="banner">
+               <h1 class="title"><img src="/i/img/logo-x12.png" alt="" class="logo">Modernizr</h1>
+               <h2 class="subtitle"><span>Front</span>-end Development Done Right</h2>
+            </a>
+         </hgroup>
+      </header>
+{% if seconds %}
+      <aside class="quote">
+         <q>Modernizr is an essential part of my toolkit of files.</q>
+         <cite>Andy Clarke</cite>, <a class="cite-source" href="http://www.stuffandnonsense.co.uk/" rel="external">Stuff &amp; Nonsense</a>
+      </aside>
+{% else %}
+      <aside class="quote">
+         <q>An indispensable tool.</q>
+         <cite>Bruce Bowman, </cite>, <a class="cite-source" href="https://browserlab.adobe.com/" rel="external">Adobe BrowserLab Product Manager</a>
+      </aside>
+{% endif %}
+   
+      <div id="content" class="clrfx">
+
+         <div id="primary" class="clrfx" role="main">
+{% block content_primary %}{% endblock %}
+         </div><!-- #primary -->
+      
+         <div id="secondary" class="clrfx" role="complementary">
+{% block content_secondary %}{% endblock %}
+         </div><!-- #secondary -->
+      
+      </div><!-- #content -->
+   
+   </div><!-- .container -->
+   
+
+   <footer id="page-footer">
+
+      <section id="used-by">
+         <div class="container">
+
+            <section id="html5">
+               <a href="http://www.w3.org/html/logo/">
+                  <img id="h5logo" src="/i/img/html5-logo.png" alt="We use HTML5 and related technologies">
+                  <img class="h5s" src="/i/img/html5-a.png" alt="">
+                  <img class="h5s" src="/i/img/html5-b.png" alt="">
+               </a>
+            </section>
+
+            <h4>Used by</h4>
+            <ol>
+               <li><a class="twitter" href="http://twitter.com/">Twitter</a></li>
+               <li><a class="google" href="http://google.com/">Google</a></li>
+               <li><a class="microsoft" href="http://microsoft.com/">Microsoft</a></li>
+               <li><a class="economist" href="http://economist.com/">The Economist</a></li>
+               <li><a class="about" href="http://about.com/">About.com</a></li>
+               <li><a class="knot" href="http://theknot.com/">The Knot</a></li>
+               <li><a class="good" href="http://good.is/">GOOD Magazine</a></li>
+               <li><a class="posterous" href="http://posterous.com/">Posterous</a></li>
+            </ol>
+
+         </div>
+      </section>
+      
+      <section id="team">
+
+         <div class="container">
+
+            <h4>Created by</h4>
+            <ul class="clrfx">
+               <li class="team"><a class="wt" href="http://farukat.es/"><img src="/i/img/Faruk-Ates.jpg" width="48" height="48" alt=""/>Faruk Ateş</a> <strong>Project Lead</strong> <a href="http://twitter.com/KuraFire" class="twitter">@KuraFire</a></li>
+               <li class="team"><a class="wt" href="http://paulirish.com/"><img src="/i/img/Paul-Irish.jpg" width="48" height="48" alt=""/>Paul Irish</a> <strong>Lead Developer</strong> <a href="http://twitter.com/paul_irish" class="twitter">@paul_irish</a></li>
+               <li class="team"><a class="wt" href="http://alexsexton.com/"><img src="/i/img/Alex-Sexton2.jpg" width="48" height="48" alt=""/>Alex Sexton</a> <strong>Developer</strong> <a href="http://twitter.com/SlexAxton" class="twitter">@SlexAxton</a></li>
+            </ul>
+            
+            <p id="microlib" class="wt">
+               Modernizr is the right micro-library to get you up and running with HTML5 &amp; CSS3 today.
+            </p>
+         </div><!-- .container -->
+
+      </section>
+
+      <section id="the-end">
+         <div class="container">
+            <p class="sponsors">Proudly sponsored by: <a href="http://typekit.com/" class="sponsor wt">Typekit</a></p>
+            <!-- TODO: <a href="#credits" id="credits">credits</a> -->
+            <p class="copyright" role="contentinfo">Copyright © 2009—2011. Modernizr is available under the <a href="/license/" class="wt">MIT &amp; BSD licenses</a>.</p>
+         </div>
+      </section>
+         
+      <!-- </div> -->
+
+   </footer>
+
+</body>
+</html>

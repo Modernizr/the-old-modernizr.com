@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" id="modernizr-com">
+<head profile="http://gmpg.org/xfn/11">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+	<title>Modernizr Manifest</title>
+	<link id="css" rel="stylesheet" href="/i/modernizr.css" type="text/css" media="screen" charset="utf-8" />
+</head>
+
+<body id="manifest" class="no-js">
+<script type="text/javascript" charset="utf-8" src="/i/custom.js"></script>
+<script type="text/javascript" charset="utf-8" src="/downloadjs/"></script>
+{% include 'modernizr/analytics.html' %}
+
+<section id="content">
+	<h1><a href="/">Modernizr</a></h1>
+	
+	<section id="main">
+
+		<section class="full">
+
+			<h2>The Modernizr Manifest</h2>
+			<p>Modernizr is a JavaScript library that uses feature detection to identify native support in the current User Agent (a.k.a. web browser), then adds classes to the document's <code>&lt;body&gt;</code> element and also creates a matching JavaScript object that reports what features are natively available for designing the page with.</p>
+			<p>Modernizr was made with three distinct goals in mind:</p>
+			<ul>
+				<li>To discourage and diminish the practice of sniffing User Agent strings so prevalent among web developers today;</li>
+				<li>To give web designers and developers the opportunity to reliably use new <abbr title="Cascading Style Sheets">CSS</abbr> 3 and <abbr title="HyperText Markup Language">HTML</abbr> 5 features without the fear of losing control in browsers that don't support these features yet;</li>
+				<li>To encourage broad adoption of these new features which, in turn, gives browser vendors more feedback to improve their support and establish these upcoming Web Standards.</li>
+			</ul>
+			<p>Through more widespread adoption of these cutting-edge features from CSS 3 and HTML 5, the community will discover many more bugs and performance issues than the browser vendors on their own would, which means a win-win situation: browsers become better and faster, and users get better and better experiences the more we designers &amp; developers start using these technologies.</p>
+
+			<h3>Web Standards</h3>
+			<p>The best way to push the Web forward as a platform is to adopt and encourage web standards-based development practices. Innovation on the Web is not stifled by these standards, in fact, great innovation can be made alongside web standards just fine. But the present situation on the Web is that many websites are designed for the lowest common denominator—either <abbr title="Internet Explorer 6">IE6</abbr> or <abbr title="Internet Explorer 7">IE7</abbr> for most companies—and as a result, progress happens only slowly, with only few websites taking advantage of new features available in some browsers today.</p>
+			<p>Creating workarounds for some browsers can be cumbersome and supporting multiple versions of a site is often undesirable; with Modernizr, it is no longer cumbersome to create a workaround (if desired), and maintaining multiple "looks" is <em>almost</em> a non-issue entirely. Modernizr set out to make it much easier than ever before to really use new features and still have full control over your website in browsers that don't yet support them.</p>
+			<p>Web Standards can only be considered successful if they are adhered to. As such, Modernizr explicitly limits its feature-detection tests to methods that are standards compliant. If a standards-compliant test produces a false positive in any of the main browsers, the test is scrapped until a different—but still standards-compliant—method is found. For example, <code>text-shadow</code> is not part of Modernizr's current release because all standards-compliant tests produce false positives in Firefox 2 and 3.0.</p>
+			
+			<h3>Performance</h3>
+			<p>Another major requirement was performance. Modernizr is designed to run in under 20ms on the page, depending on the speed of the host system, and a firm requirement was that only one <abbr title="HyperText Transfer Protocol">HTTP</abbr> request would be issued (<abbr>HTTP</abbr> requests have a significant impact on page performance).</p>
+			<p>While it is typically preferred that JavaScript includes are added to the end of a page so as to prevent the rendering from being held up by the loading of the script file, Modernizr is expressly included right after the opening tag of the <code>body</code> element. By its very nature, Modernizr is very likely to influence what style rules end up being applied to the page, which means that it should be executed and completed before the browser starts rendering anything. This causes a small performance impact but ends up safeguarding the user experience from unnecessary flickering in the page.</p>
+
+			<h3>Ongoing development</h3>
+			<p>Modernizr is only in its earliest stages and will enjoy ongoing development and improvement. To stay up to date with news on Modernizr, <a href="http://twitter.com/Modernizr" rel="external">follow the project on Twitter</a>.</p>
+
+		</section>
+
+	</section>
+
+	<section id="secondary">
+
+		<h3>Modernizr.com in all browsers:</h3>
+		<ul id="browsers">
+			<li id="safari4"><img src="/i/b_safari4.png" alt="" width="180" height="120" /><strong>Safari 4</strong></li>
+			<li id="ff35b4"><img src="/i/b_ff3.5.png" alt="" width="180" height="120" /><strong>Firefox 3.5</strong></li>
+			<li id="opera10b1"><img src="/i/b_opera10b1.png" alt="" width="180" height="120" /><strong>Opera 10 beta 1</strong></li>
+			<li id="ie8"><img src="/i/b_ie8.png" alt="" width="180" height="120" /><strong><abbr title="Internet Explorer 8">IE8</abbr></strong></li>
+		</ul>
+		
+		<h3><a href="http://twitter.com/Modernizr" rel="external">@Modernizr</a> on Twitter:</h3>
+
+		<section id="twitter">
+			<ul id="twitter_update_list"></ul>
+			<p id="follow"><a href="http://twitter.com/Modernizr" title="Follow Modernizr on Twitter">Follow @Modernizr</a></p>
+		</section>
+
+	</section>
+
+</section>
+
+<footer id="copyright">Copyright © 2009 <a href="http://farukat.es/" rel="external">Faruk Ateş</a>. Modernizr is available under the <a href="/license/">MIT license</a>.</footer>
+
+<script type="text/javascript" src="http://twitter.com/javascripts/blogger.js"></script>
+<script type="text/javascript" src="http://twitter.com/statuses/user_timeline/Modernizr.json?callback=twitterCallback2&amp;count=3"></script>
+</body>
+</html>

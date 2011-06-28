@@ -1,0 +1,30 @@
+/* All animaion and transitions-related stuff */
+
+@-webkit-keyframes rotatein {
+	  0% { -webkit-transform: rotate(0); }
+	100% { -webkit-transform: rotate(360deg); }
+}
+@-webkit-keyframes rotateout {
+	  0% { -webkit-transform: rotate(0); }
+	100% { -webkit-transform: rotate(-360deg); }
+}
+
+
+
+.banner:focus .logo,
+.banner:hover .logo {
+	-webkit-animation: rotatein 1s ease-in-out;
+}
+.no-cssanimations .banner .logo {
+	-webkit-transition: -webkit-transform 1s ease-in-out;
+	-moz-transition: -moz-transform 1s ease-in-out;
+	-o-transition: -o-transform 1s ease-in-out;
+	transition: transform 1s ease-in-out;
+}
+.no-cssanimations .banner:focus .logo,
+.no-cssanimations .banner:hover .logo {
+	-webkit-transform: rotate(360deg);
+	-moz-transform: rotate(360deg);
+	-o-transform: rotate(360deg);
+	transform: rotate(360deg);
+}

@@ -1,0 +1,108 @@
+{% extends 'modernizr/base.html' %}
+
+{% block title %}Modernizr Releases{% endblock %}
+
+{% block body_id %}releases{% endblock %}
+
+{% block content_primary %}
+      <section class="standalone">
+         <h2>⚠ Releases</h2>
+         
+         <p class="intro-p"><strong>Note:</strong> This page is no longer being updated. It remains here for posterity.</p>
+
+         <h3 id="release-1.5">Modernizr 1.5</h3>
+         <p>The fourth release of Modernizr adds detection support for:</p>
+         <ul>
+            <li><a href="http://www.w3.org/TR/SVG/">SVG</a>! Including <a href="http://www.w3.org/TR/SVG11/masking.html">SVG Clipping Paths</a> and <a href="http://www.w3.org/TR/REC-smil/">SMIL</a></li>
+            <li><a href="http://dev.w3.org/html5/webdatabase/">Web SQL Database</a></li>
+            <li><a href="http://dev.w3.org/html5/websockets/">Web Sockets</a></li>
+            <li><a href="http://dev.w3.org/html5/spec/history.html#event-hashchange">hashchange event</a></li>
+            <li><a href="http://www.w3.org/TR/html5/history.html">History and Session Management</a></li>
+            <li><a href="http://dev.w3.org/html5/spec/dnd.html#dnd">HTML5 Drag and Drop</a></li>
+            <li><a href="http://www.w3.org/TR/html5/comms.html#posting-messages">Cross-document Messaging</a></li>
+         </ul>
+         <p>Additional small updates:</p>
+         <ul>
+            <li>There are now <a href="http://github.com/Modernizr/Modernizr/tree/master/test/">unit tests on the Github repository</a></li>
+            <li>IE can now print HTML5 elements</li>
+            <li>More browsers supported: Opera 10.5, older Safari versions, Nokia and Blackberry mobile browsers, and Konqueror via the -khtml- prefix</li>
+         </ul>
+         <p>Lastly, Modernizr is dual-licensed MIT-BSD as of version 1.5.</p>
+      
+         <hr />
+      
+      
+      
+         <h3 id="release-1.1">Modernizr 1.1</h3>
+         <p>The third release of Modernizr adds detecting support for:</p>
+         <ul>
+            <li>localStorage</li>
+            <li>sessionStorage</li>
+            <li>Web Workers</li>
+            <li>applicationCache</li>
+            <li>All new HTML5 input properties</li>
+            <li>HTML5 Audio and Video formats (supported codecs)</li>
+         </ul>
+         <p>Another new feature in 1.1 is that Modernizr now has an <code>addTest()</code> method which allows you to hook in your own feature detection tests. See <a href-"/docs/">the documentation</a> for more info.</p>
+         <p>Other changes between 1.0 and 1.1:</p>
+         <ul>
+            <li><strong>Version number:</strong> Modernizr now contains its own version number via the property <code>Modernizr._version</code>.</li>
+            <li><strong>CSS Gradients:</strong> we've added support for Mozilla Firefox's new CSS Gradients syntax. Please refer to Mozilla's documentation on <a href="https://developer.mozilla.org/en/CSS/-moz-linear-gradient" rel="external"><code>linear-gradient</code></a> and <a href="https://developer.mozilla.org/en/CSS/-moz-radial-gradient" rel="external"><code>radial-gradient</code></a> for syntax and usage notes.</li>
+            <li><strong>File size:</strong> The new filesizes are 7.49 <abbr title="Kilobytes">kb</abbr> for the compressed version, and 25 <abbr title="Kilobytes">kb</abbr> for the uncompressed one. Despite this increase and the ~20% new features being tested, performance has been kept equal to 1.0, so you can still rely on Modernizr to be lean and fast.</li>
+         </ul>
+         
+         <hr />
+      
+         <h3 id="release-1.0">Modernizr 1.0</h3>
+         <p>In the first major milestone release, Modernizr adds the following feature detections to the 0.9 release:</p>
+         <ul>
+            <li>@font-face</li>
+            <li>HTML5 Audio</li>
+            <li>HTML5 Video</li>
+            <li>Canvas Text</li>
+            <li>Geolocation API</li>
+            <li>13 new HTML5 Input types</li>
+            <li>CSS 3D Transforms</li>
+         </ul>
+         <p>Other changes between 0.9 and 1.0:</p>
+         <ul>
+            <li><strong>File size:</strong> the 1.0 release is more compact in code, but due to many added features still weighs in slightly bigger: 16 <abbr title="Kilobytes">kb</abbr> uncompressed, 7 <abbr title="Kilobytes">kb</abbr> compressed and minified.</li>
+            <li><strong>Backwards compatibility:</strong> Modernizr 1.0 (and going forward) adds the CSS classes to the <code>html</code> element as opposed to the <code>body</code> element. This change could break some CSS files. To fix, simply use <code>.featurename</code> as class selector in your CSS, as opposed to the old (now outdated and incompatible) <code>body.featurename</code>.</li>
+         </ul>
+         
+         <hr />
+
+         <h3 id="release-0.9">Modernizr 0.9</h3>
+         <p>This is the intiial public release of Modernizr. It features detection for:</p>
+         <ul>
+            <li>Canvas<sup>†</sup></li>
+            <li>rgba()</li>
+            <li>hsla()</li>
+            <li>border-image:</li>
+            <li>border-radius:</li>
+            <li>box-shadow:</li>
+            <li>Multiple backgrounds</li>
+            <li>opacity:</li>
+            <li>CSS Animations</li>
+            <li>CSS Columns<sup>†</sup></li>
+            <li>CSS Gradients</li>
+            <li>CSS Reflections</li>
+            <li>CSS Transforms</li>
+            <li>CSS Transitions</li>
+         </ul>
+      
+         <p><sup>†</sup> Canvas and CSS Columns support is very rudimentary, in that they both only check for one specific part as the test. This means that while that particular subset of the overall feature works, other components of it may not work in the browser. Future releases of Modernizr will include more extensive testing for these features to make the outcome of the tests for Canvas and CSS Columns more reliable.</p>
+
+      </section>
+{% endblock %}
+
+
+
+
+{% block content_secondary %}
+            
+{% include 'modernizr/community.html' %}
+            
+{% include 'modernizr/latest-news.html' %}
+            
+{% endblock %}

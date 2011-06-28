@@ -1,0 +1,716 @@
+{% extends 'modernizr/base.html' %}
+
+{% block title %}Modernizr Documentation{% endblock %}
+
+{% block current_docs %} current{% endblock %}
+
+{% block body_id %}docs{% endblock %}
+
+{% block content_primary %}
+
+         <h2>Documentation</h2>
+
+         <section id="toc">
+            <h3>Table of Contents:</h3>
+            <ol>
+
+               <li><a href="#s1">General</a>
+                  <ol>
+                     <li><a href="#whatis">What is Modernizr?</a></li>
+                     <li><a href="#installing">Installing Modernizr</li>
+                     <li><a href="#polyfills">Polyfills and Modernizr</a></li>
+                     <li><a href="#load">Modernizr.load() tutorial</a></li>
+                     <li><a href="#howitworks">How Modernizr works</a></li>
+                     <li><a href="#html5inie">HTML 5 elements in IE</a></li>
+                     <li><a href="#support">Supported browsers</a></li>
+                  </ol>
+               </li>
+               <li><a href="#s2">Features detected by Modernizr</a>
+                  <ol>
+                     <li><a href="#features-css">CSS3 features</a></li>
+                     <li><a href="#features-html5">HTML5 features</a></li>
+                     <li><a href="#features-misc">Miscellaneous</a></li>
+                  </ol>
+               </li>
+               <li><a href="#s3">Extensibility</a>
+                  <ol>
+                     <li><a href="#addtest">addTest() Plugin API</a></li>
+                     <li><a href="#prefixed">Modernizr.prefixed()</a></li>
+                     <li><a href="#teststyles">testStyles()</a></li>
+                     <li><a href="#testprop">testProp()</a></li>
+                     <li><a href="#testallprops">testAllProps()</a></li>
+                     <li><a href="#hasevent">hasEvent()</a></li>
+                     <li><a href="#mq">mq() media query testing</a></li>
+                     <li><a href="#prefixes">_prefixes &amp; _domPrefixes</a></li>
+                  </ol>
+               </li>
+            </ol>
+         </section>
+
+
+
+
+         <article id="documentation">
+
+            <div class="doc-intro" id="s1">
+               <h3 id="whatis">What is Modernizr?</h3>
+
+               <p>Modernizr is a small JavaScript library that <em>detects</em> the availability of native implementations for next-generation web technologies, i.e. features that stem from the HTML5 and CSS3 specifications. Many of these features are already implemented in at least one major browser (most of them in two or more), and what Modernizr does is, very simply, tell you whether the current browser has this feature natively implemented or not.</p>
+
+               <p>Unlike with the traditional—but highly unreliable—method of doing “<abbr title="User Agent">UA</abbr> sniffing,” which is detecting a browser by its (user-configurable) <code>navigator.userAgent</code> property, Modernizr does actual feature detection to reliably discern what the various browsers can and cannot do. After all, the same rendering engine may not necessarily support the same things, and some users change their userAgent string to get around poorly developed websites that don’t let them through otherwise.</p>
+
+               <p>Modernizr aims to bring an end to the UA sniffing practice. Using feature detection is a <em>more reliable</em> mechanic to establish what you can and cannot do in the current browser, and Modernizr makes it convenient for you in a variety of ways:</p>
+            </div>
+            
+            <ol>
+               <li>It tests for over 40 next-generation features, all in a matter of milliseconds</li>
+               <li>It creates a JavaScript object (named <code>Modernizr</code>) that contains the results of these tests as boolean properties</li>
+               <li>It adds classes to the <code>html</code> element that explain precisely what features are and are <strong>not</strong> natively supported</li>
+               <li>It provides a script loader so you can pull in <a href="https://github.com/Modernizr/Modernizr/wiki/HTML5-Cross-browser-Polyfills">polyfills</a> to backfill functionality in old browsers</li>
+            </ol>
+
+            <p>With this knowledge that Modernizr gives you, you can take advantage of these new features in the browsers that can render or utilize them, and still have easy <em>and reliable</em> means of controlling the situation for the browsers that cannot.</p>
+
+
+
+            <h3 id="installing">Installing Modernizr</h3>
+
+            <p>Head over to the <a href="/download/">Download</a> page, and select which features you intend to use in your project. This way we can provide the slimmest bits of code that you’ll need. Hit Generate and you’ve got your own custom build of Modernizr. If you don’t know yet what features you’ll be using, get the <a href="/downloads/modernizr-latest.js">Development version</a> which contains them all, but is uncompressed.</p>
+
+            <p>Drop the script tags in the <code>&lt;head></code> of your HTML. For best performance, you should have them follow after your stylesheet references. The reason we recommend placing Modernizr in the head is two-fold: the HTML5 Shiv (that enables HTML5 elements in IE) must execute before the <code>&lt;body></code>, and if you’re using any of the CSS classes that Modernizr adds, you’ll want to prevent a <abbr title="flash of unstyled content">FOUC</abbr>.</p>
+
+
+
+            <h3 id="polyfills">Polyfills and Modernizr</h3>
+
+            <p>The name “Modernizr” might throw you for a second, we’ll admit. The library does allow you to use the new HTML5 sectioning elements in IE, but aside from that, it doesn’t <em>modernize</em> any other features. The name Modernizr actually stems from the goal of modernizing our development practices (and ourselves). However! Modernizr still pairs extremely well with scripts that do provide support when native browser support is lacking. In general, these scripts are called polyfills.</p>
+
+            <blockquote>polyfill <em>(n)</em>: a JavaScript shim that replicates the standard API for older browsers</blockquote>
+
+            <p>So a websocket polyfill would create a <code>window.WebSocket</code> global with the same properties and methods on it as a native implementation. That means you can develop for the future, with the real API, and only load your compatibility polyfills on browsers that do not support that API or feature.</p>
+
+            <p>And good news for you, <strong><a href="https://github.com/Modernizr/Modernizr/wiki/HTML5-Cross-browser-Polyfills">there is a polyfill for nearly every HTML5 feature that Modernizr detects</a></strong>. Yup. So in most cases, you can use a HTML5 or CSS3 feature and be able to replicate it in non-supporting browsers. Yes, not only can you use HTML5 today, but you can use it in the past, too!</p>
+
+            <p>But that leads to a big, fat warning: <strong>just because you can use a polyfill doesn’t mean you should</strong>. You want to deliver the best user experience possible, which means it should be quick! Loading five compatibility scripts for IE7 so it looks and works the exact same as Chrome and Opera isn't a wise choice. There are no hard and fast rules, but keep in mind how adding more scripts to the page can impact the user experience. And remember, none of your users view your site in more than one browser; It’s okay if it looks and acts differently.</p>
+
+            <p>Now for more on how to effectively use and serve polyfills for all your different users, read on…</p>
+
+
+
+
+
+            <h3 id="load">Modernizr.load() tutorial</h3>
+
+            <p><code>Modernizr.load</code> is a resource loader (CSS and JavaScript) that was made to specifically to work side-by-side with Modernizr. It’s optional in your build, but if you are loading polyfills, There’s a good chance it can save you some bandwidth and boost performance a bit.</p>
+
+            <p><code>Modernizr.load</code> syntax is generally very easy to understand, so we’ll start with a basic example:</p>
+<pre>
+Modernizr.load({
+  test: Modernizr.geolocation,
+  yep : 'geo.js',
+  nope: 'geo-polyfill.js'
+});
+</pre>
+
+            <p>In this example, we decided that we should load a different script depending on whether geolocation is supported in the host browser or not. By doing this, you save users from having to download code that their browser does not need. This increases page performance, and offers a clear place to build a healthy amount of abstraction to your <a href="https://github.com/Modernizr/Modernizr/wiki/HTML5-Cross-browser-Polyfills">polyfills</a> (both 'geo.js' and 'geo-polyfill.js' would seem the same to the rest of the app, even if they're implemented differently).</p>
+
+            <p>There’s a good chance that you’re not terribly unhappy with your script downloading speeds now, but you’ll be happy to know that <code>Modernizr.load</code> does not slow anything down, and can sometimes offer a small boost in performance by loading scripts asynchronously and in parallel. There’s a lot of variables to weigh in this area, so we suggest that you try a few things to make sure you’re getting maximum performance for your specific situation.</p>
+
+            <p><code>Modernizr.load</code> is small and simple, but it can do quite a bit of heavy-lifting for you. Here is a slightly more complicated example of using <code>Modernizr.load</code> when your scripts rely on more than one Modernizr feature-test. A good technique is to wrap up multiple polyfill scripts into a single 'oldbrowser' type script, that way you don’t end up loading too many scripts at once. Here's how that might work:</p>
+
+<pre>
+<span class="comment">// Give Modernizr.load a string, an object, or an array of strings and objects</span>
+Modernizr.load([
+  <span class="comment">// Presentational polyfills</span>
+  {
+    <span class="comment">// Logical list of things we would normally need</span>
+    test : Modernizr.fontface &amp;&amp; Modernizr.canvas &amp;&amp; Modernizr.cssgradients,
+    <span class="comment">// Modernizr.load loads css and javascript by default</span>
+    nope : ['presentational-polyfill.js', 'presentational.css']
+  },
+  <span class="comment">// Functional polyfills</span>
+  {
+    <span class="comment">// This just has to be truthy</span>
+    test : Modernizr.websockets &amp;&amp; window.JSON,
+    <span class="comment">// socket-io.js and json2.js</span>
+    nope : 'functional-polyfills.js',
+    <span class="comment">// You can also give arrays of resources to load.</span>
+    both : [ 'app.js', 'extra.js' ],
+    complete : function () {
+      <span class="comment">// Run this after everything in this group has downloaded
+      // and executed, as well everything in all previous groups</span>
+      myApp.init();
+    }
+  },
+  <span class="comment">// Run your analytics after you've already kicked off all the rest
+  // of your app.</span>
+  'post-analytics.js'
+]);
+</pre>
+
+            <p>There’s a lot that you can do with <code>Modernizr.load</code>. It was released standalone as <a href="http://yepnopejs.com/">yepnope.js</a> but it was made specifically with Modernizr and feature-testing in mind. You can check out the full docs for <code>Modernizr.load</code> at <a href="http://yepnopejs.com/">yepnopejs.com</a>.</p>
+
+            <p>One cool feature of <code>Modernizr.load</code> is it’s complete decoupling of load and execution of scripts. That might not mean much to you, but users of the HTML5 Boilerplate might be familiar with the Google CDN copy of jQuery fallback. It looks something like this:</p>
+
+<pre>
+    &lt;script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.js">&lt;/script>
+    &lt;script>window.jQuery || document.write('&lt;script src="js/libs/jquery-1.6.1.min.js">\x3C/script>')&lt;/script>
+</pre>
+            <p>It works by trying to load in the script, and then immediately after, testing to see if the jQuery object is available. If It’s not, then they load a local copy of jQuery as a fallback. This is generally not that easy in script-loaders, but <code>Modernizr.load</code> has got you covered. You can just use the same logic, and <code>Modernizr.load</code> will handle the execution order for you:</p>
+
+<pre>
+Modernizr.load([
+  {
+    load: '//ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.js',
+    complete: function () {
+      if ( !window.jQuery ) {
+            Modernizr.load('js/libs/jquery-1.6.1.min.js');
+      }
+    }
+  },
+  {
+    <span class="comment">// This will wait for the fallback to load and
+    // execute if it needs to.</span>
+    load: 'needs-jQuery.js'
+  }
+]);
+</pre>
+
+            <p>A quick note, though: only use this technique as a method for fallbacks, because it can hurt performance by forcing scripts to load in serial instead of in parallel.</p>
+
+            <p><code>Modernizr.load</code> is extensible as well. You can load your own prefixes and filters for your scripts. For more advanced information on that, you can check out the docs on the <a href="http://yepnopejs.com">yepnopejs.com homepage</a>. You can even go as far as to replace entire steps of the loading process and replace them with custom logic. So start using it and saving those precious, precious bytes.</p>
+
+
+
+
+
+
+
+            <h3 id="howitworks">How Modernizr works</h3>
+
+            <p>For a lot of the tests, Modernizr does its “magic” by creating an element, setting a specific style instruction on that element and then immediately retrieving it. Browsers that understand the instruction will return something sensible; browsers that don’t understand it will return nothing or “undefined”.</p>
+
+            <p>Many tests in the documentation come with a small code sample to illustrate how you could use that specific test in your web development workflow. Actual use cases come in many more varieties, though. The possible uses of Modernizr are limited only by your imagination.</p>
+
+            <p>If you’re really interested in the details of how Modernizr works, look at the <a href="http://modernizr.github.com/Modernizr/annotatedsource.html">annotated source code</a>, and <a href="https://github.com/Modernizr/Modernizr/issues">dig into the project on github</a>.</p>
+
+
+            <h3 id="html5inie">HTML 5 elements in <abbr title="Internet Explorer">IE</abbr></h3>
+            <p>Modernizr runs through a little loop in JavaScript to enable the various elements from HTML5 (as well as <code>abbr</code>) for styling in Internet Explorer. Note that this does not mean it suddenly makes IE support the Audio or Video element, it just means that you can use <code>section</code> instead of <code>div</code> and style them in CSS. you’ll also probably want to set many of these elements to <code>display:block</code>; see <a href="https://github.com/paulirish/html5-boilerplate/blob/362d0b7/css/style.css#L35-37">the HTML5 Boilerplate CSS</a> for an example. As of Modernizr 1.5, this script is identical to what is used in the popular html5shim/html5shiv library. Both also enable printability of HTML5 elements in IE6-8, though you might want to try out the performance hit if you have over 100kb of css.</p>
+
+
+
+            <h3 id="support">Supported browsers</h3>
+            <p>We support IE6+, Firefox 3.5+, Opera 9.6+, Safari 2+, Chrome. On mobile, we support iOS's mobile Safari, Android's WebKit browser, Opera Mobile, Firefox Mobile and whilst we’re still doing more testing we believe we support Blackberry 6+.</p>
+
+
+
+
+
+            <h3 id="s2">Features detected by Modernizr</h3>
+
+            <h4 id="features-css">CSS features</h4>
+            <table summary="This table lists all of the CSS features that Modernizr tests for, and describes the JavaScript object’s property name, which is also the classname being added to the HTML element.">
+               <thead>
+                  <th scope="column">Feature</th>
+                  <th scope="column"><code>Modernizr</code> JS object property / CSS classname</th>
+               </thead>
+               <tbody>
+                  <tr>
+                     <th id="#fontface">@font-face</th><td>fontface</td>
+                  </tr>
+                  <tr>
+                     <th id="#backgroundsize">background-size</th><td>backgroundsize</td>
+                  </tr>
+                  <tr>
+                     <th id="#borderimage">border-image</th><td>borderimage</td>
+                  </tr>
+                  <tr>
+                     <th id="#borderradius">border-radius</th><td>borderradius</td>
+                  </tr>
+                  <tr>
+                     <th id="#boxshadow">box-shadow</th><td>boxshadow</td>
+                  </tr>
+                  <tr>
+                     <th id="#flexbox">Flexible Box Model</th><td>flexbox</td>
+                  </tr>
+                  <tr><td id="#flexboxnotes" colspan="2">
+                     <p>The <a href="http://www.html5rocks.com/tutorials/flexbox/quick/">flexible box model (aka flexbox)</a> offers a different way for positioning elements, that addresses some of the shortcomings of float-based layouts.</p>
+                  </td></tr>
+                  <tr><td id="#boxshadownotes" colspan="2">
+<pre><span class="comment">/* Simulated box shadow using borders: */</span>
+.box {
+   border-bottom: 1px solid #666;
+   border-right: 1px solid #777;
+}
+.boxshadow div.box {
+   border: none;
+   -webkit-box-shadow: #666 1px 1px 1px;
+      -moz-box-shadow: #666 1px 1px 1px;
+               box-shadow: #666 1px 1px 1px;
+}
+</pre>
+                  </td></tr>
+                  <tr>
+                     <th id="#hsla">hsla()</th><td>hsla</td>
+                  </tr>
+                  <tr><td id="#hslanotes" colspan="2">
+                     <p>In most cases you don’t need to use the rgba and hsla classes, as browsers can do the fallback naturally:</p>
+<pre>
+.my_container {  <span class="comment">/* no .rgba use neccessary! */</span>
+   background-color: #ccc;
+   background-color: rgba(255,255,255, .5);
+}
+</pre>
+                     </td>
+                  </tr>
+                  <tr>
+                     <th id="#multiplebgs">Multiple backgrounds</th><td>multiplebgs</td>
+                  </tr>
+                  <tr>
+                     <th id="#opacity">opacity</th><td>opacity</td>
+                  </tr>
+                  <tr>
+                     <th id="#rgba">rgba()</th><td>rgba</td>
+                  </tr>
+                  <tr>
+                     <th id="#textshadow">text-shadow</th><td>textshadow</td>
+                  </tr>
+                  <tr><td id="#textshadownotes" colspan="2">
+<p>Firefox 3.0 false-positives this test, but there is no known fix to that. All IEs, including IE9, do not support text-shadow and thus fail to <a href="http://mothereffingtextshadow.com/">deliver delight</a>.</p>
+
+<pre>
+.glowy { <span class="comment">/* ghosted letters */</span>
+    color: transparent;
+    text-shadow: 0 0 10px black;
+}
+.no-textshadow {
+    color: black;
+}</pre>
+                     </td>
+                  </tr>
+                  <tr>
+                     <th id="#cssanimations">CSS Animations</th><td>cssanimations</td>
+                  </tr>
+                  <tr>
+                     <th id="#csscolumns">CSS Columns</th><td>csscolumns</td>
+                  </tr>
+                  <tr>
+                     <th id="#cssgradients">CSS Gradients</th><td>cssgradients</td>
+                  </tr>
+                  <tr><td id="#cssgradientsnotes" colspan="2">
+
+       <p>As there is a WebKit bug which causes needless downloads of background-image assets, there is a best
+       way of combo'ing a background-image with CSS gradients, so everyone gets the right experience with no extra HTTP overhead:</p>
+<pre lang="css">
+.no-js .glossy,
+.no-cssgradients .glossy {
+    background: url("images/glossybutton.png");
+}
+
+.cssgradients .glossy {
+    background-image: linear-gradient(top, #555, #333);
+}
+</pre>
+
+                        </td></tr>
+                  <tr>
+                     <th id="#cssreflections">CSS Reflections</th><td>cssreflections</td>
+                  </tr>
+                  <tr>
+                     <th id="#csstransforms">CSS 2D Transforms</th><td>csstransforms</td>
+                  </tr>
+                  <tr>
+                     <th id="#csstransforms3d">CSS 3D Transforms</th><td>csstransforms3d</td>
+                  </tr>
+                  <tr>
+                     <th id="#csstransitions">CSS Transitions</th><td>csstransitions</td>
+                  </tr>
+                  <tr><td id="#csstransitionsnotes" colspan="2">
+                     <p>Transitions can typically be used without using Modernizr's specific CSS class or JavaScript property, but for those occasions you want parts of your site to look and/or behave differently they are available. A good example use case is to build Modernizr into an animation engine, which uses native CSS Transitions in the browsers that have it, and relies on JavaScript for the animation in browsers that don’t.</p>
+                     <p><a href="http://isotope.metafizzy.co/">Isotope</a> uses a Modernizr feature detect to use transitions along with transforms to achieve full hardware acceleration when possible, falling back to jQuery-based animation otherwise.</p>
+                  </td></tr>
+               
+               </tbody>
+            </table>
+
+
+            <h4 id="features-html5">HTML5 features</h4>
+            <table summary="This table lists all of the HTML5 features that Modernizr tests for, and describes the JavaScript object’s property name, which is also the classname being added to the HTML element.">
+               <thead>
+                  <th scope="column">Feature</th>
+                  <th scope="column"><code>Modernizr</code> JS object property / CSS classname</th>
+               </thead>
+               <tbody>
+                  <tr>
+                     <th id="#applicationcache">applicationCache</th><td>applicationcache</td>
+                  </tr>
+                  <tr>
+                     <th id="#canvas">Canvas</th><td>canvas</td>
+                  </tr>
+                  <tr>
+                     <td colspan="2"><p>If <code>Modernizr.canvas</code> tests false, you may want to load <a href="https://github.com/Modernizr/Modernizr/wiki/HTML5-Cross-browser-Polyfills">FlashCanvas or excanvas</a>.</p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <th id="#canvastext">Canvas Text</th><td>canvastext</td>
+                  </tr>
+                  <tr>
+                     <th id="#draganddrop">Drag and Drop</th><td>draganddrop</td>
+                  </tr>
+                  <tr>
+                     <th id="#hashchange">hashchange Event</th><td>hashchange</td>
+                  </tr>
+                  <tr>
+                     <th id="#historymanagement">History Management</th><td>history</td>
+                  </tr>
+                  <tr>
+                     <th id="#audio">HTML5 Audio</th><td>audio</td>
+                  </tr>
+                  <tr>
+                     <td id="#audioformats" colspan="2">
+                     <p>If audio support is detected, Modernizr assesses which formats the current browser will play. Currently, Modernizr tests <code>ogg</code>, <code>mp3</code>, <code>wav</code> and <code>m4a</code>.</p>
+                  <p><strong>Important:</strong> The values of these properties are not true booleans. Instead, Modernizr <a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/video.html#mime-types">matches the HTML5 spec</a> in returning a string representing the browser's level of confidence that it can handle that codec. These return values are an empty string (negative response), "maybe" and "probably". The empty string is falsy, in other words: <code>Modernizr.audio.ogg == ''</code> and <code>'' == false</code></p>
+
+<pre>
+var audio = new Audio();
+audio.src = Modernizr.audio.ogg ? 'background.ogg' :
+            Modernizr.audio.mp3 ? 'background.mp3' :
+                                  'background.m4a';
+audio.play();
+</pre>
+                     </td>
+                  </tr>
+                  <tr>
+                     <th id="#video">HTML5 Video</th><td>video</td>
+                  </tr>
+                  <tr><td id="#audionotes" colspan="2">
+                     <p>See <a href="http://camendesign.com/code/video_for_everybody" rel="external">Video for Everybody</a> by Kroc Camen for a JavaScript-less way to use HTML5 <code>video</code> with graceful fallbacks for all browsers. With Modernizr's <code>video</code> detection, you can use CSS and JavaScript styling to further enhance the look and/or interactivity when the browser does support <code>video</code>.</p>
+
+                     <p>If video support is detected, Modernizr assesses which formats the current browser will play. Currently, Modernizr tests <code>ogg</code>, <code>webm</code> and <code>h264</code>.</p>
+
+                     <p id="#videoformats">Also, read the important note about audio formats above, as the same return values apply to video.</p>
+
+                   </td>
+                  </tr>
+                  <tr>
+                     <th id="#indexeddb">IndexedDB</th><td>indexeddb</td>
+                  </tr>
+                  <tr>
+                     <th id="#input" colspan="2">Input Attributes</th>
+                  </tr>
+                  <tr><td id="#inputnotes" colspan="2">
+
+                     <p>HTML5 introduces <a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-input-element.html#input-type-attr-summary">many new attributes for input elements</a>. Modernizr tests for these: <code>autocomplete, autofocus, list, placeholder, max, min, multiple, pattern, required, step</code>. </p>
+                     <p>These new attributes can do things such as: enable native autocomplete, mimic elem.focus() at page load, do form field hinting, and do client-side validation.</p>
+                     <p>View the <a href="http://miketaylr.com/code/input-type-attr.html">HTML5 input attribute support</a> page from Mike Taylor to see them in action.</p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <th id="#inputtypes" colspan="2">Input Types</th>
+                  </tr>
+                  <tr><td id="#inputtypessnotes" colspan="2">
+
+                     <p>HTML5 introduces <a href="http://dev.w3.org/html5/spec/Overview.html#states-of-the-type-attribute">thirteen new values</a> for the <code>&lt;input&gt;</code>'s type attribute. They are as follows: <code>search, tel, url, email, datetime, date, month, week, time, datetime-local, number, range, color</code>.</p>
+                     <p>These types can enable native datepickers, colorpickers, URL validation, and so on. If a browser doesn’t support a given type, it will be rendered as a text field. Modernizr cannot detect that date inputs create a datepicker, the color input create a colorpicker, and so on&mdash;it will detect that the input values are sanitized based on the spec. In the case of WebKit, we have received confirmation that sanitization will not be added without the UI widgets being in place.</p>
+
+                  </td></tr>
+
+                  <tr>
+                     <th id="#localstorage">localStorage</th><td>localstorage</td>
+                  </tr>
+                  <tr>
+                     <th id="#crosswindowmessaging">Cross-window Messaging</th><td>postmessage</td>
+                  </tr>
+                  <tr>
+                     <th id="#sessionstorage">sessionStorage</th><td>sessionstorage</td>
+                  </tr>
+                  <tr>
+                     <th id="#websockets">Web Sockets</th><td>websockets</td>
+                  </tr>
+                  <tr>
+                     <th id="#websqldatabase">Web SQL Database</th><td>websqldatabase</td>
+                  </tr>
+                  <tr>
+                     <th id="#webworkers">Web Workers</th><td>webworkers</td>
+                  </tr>
+               
+               </tbody>
+            </table>
+
+
+            <h4 id="features-misc">Miscellaneous</h4>
+            <table summary="This table lists all of the HTML5 features that Modernizr tests for, and describes the JavaScript object’s property name, which is also the classname being added to the HTML element.">
+               <thead>
+                  <th scope="column">Feature</th>
+                  <th scope="column"><code>Modernizr</code> JS object property / CSS classname</th>
+               </thead>
+               <tbody>
+                  <tr>
+                     <th id="#geolocation">Geolocation API</th><td>geolocation</td>
+                  </tr>
+                  <tr>
+                     <th id="#inlinesvg">Inline SVG</th><td>inlinesvg</td>
+                  </tr>
+                  <tr>
+                     <th id="#smil">SMIL</th><td>smil</td>
+                  </tr>
+                  <tr>
+                     <th id="#svg">SVG</th><td>svg</td>
+                  </tr>
+                  <tr>
+                     <th id="#svgclippaths">SVG Clip paths</th><td>svgclippaths</td>
+                  </tr>
+                  <tr>
+                     <th id="#touch">Touch Events</th><td>touch</td>
+                  </tr>
+                  <tr><td id="#touchnotes" colspan="2">
+                     <p>The Modernizr.touch test only indicates if the browser supports touch events, which does not necessarily reflect a touchscreen device. For example, Palm Pre / WebOS (touch) phones do not support touch events and thus fail this test. Additionally, Chrome (desktop) used to lie about its support on this, but <a href="http://crbug.com/36415">that has since been rectified</a>. Modernizr also tests for Multitouch Support via a media query, which is how Firefox 4 exposes that for Windows 7 tablets. For more info, see the <a href="http://modernizr.github.com/Modernizr/touch.html">Modernizr touch tests</a>.</p>
+
+                <pre>if (Modernizr.touch){
+   <span class="comment">// bind to touchstart, touchmove, etc and watch `event.streamId`</span>
+} else {
+   <span class="comment">// bind to normal click, mousemove, etc</span>
+}
+                </pre>
+                  </td></tr>
+                  <tr>
+                     <th id="#webgl">WebGL</th><td>webgl</td>
+                  </tr>
+                  <tr>
+                     <td colspan="2">
+<pre>
+if (Modernizr.webgl){
+   loadAllWebGLScripts(); <span class="comment">// webgl assets can easily be > 300k</span>
+} else {
+   var msg = 'With a different browser you’ll get to see the WebGL experience here: \
+            <a href="http://get.webgl.org/">get.webgl.org</a>.';
+   document.getElementById( '#notice' ).innerHTML = msg;
+}
+</pre>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+
+
+
+            <h3 id="s25">Modernizr Methods</h3>
+
+            <p>There is a pair of methods available, giving you some added functionality you’ll probably enjoy if you do a lot of CSS3 and responsive design.</p>
+
+            <section class="test" id="prefixed">
+               <h3>Modernizr.prefixed()</h3>
+               <dl>
+                  <dt>JavaScript method:</dt>
+                  <dd><code>Modernizr.<strong>prefixed(str)</strong></code></dd>
+               </dl>
+
+               <p>Modernizr.prefixed() returns the prefixed or nonprefixed property name variant of your input</p>
+
+               <pre>Modernizr.prefixed('boxSizing') <span class="comment">// 'MozBoxSizing'</span></pre>
+
+
+               <p>Properties must be passed as DOM-style camelCase, rather than `box-sizing` hyphenated style.</p>
+               <p>Return values will also be the camelCase variant, if you need to translate that to hyphenated style use:</p>
+
+               <pre>str.replace(/([A-Z])/g, function(str,m1){ return '-' + m1.toLowerCase(); }).replace(/^ms-/,'-ms-');</pre>
+
+               <p>If you’re trying to ascertain which transition end event to bind to, you might do something like...</p>
+<pre>
+var transEndEventNames = {
+    'WebkitTransition' : 'webkitTransitionEnd',
+    'MozTransition'    : 'transitionend',
+    'OTransition'      : 'oTransitionEnd',
+    'msTransition'     : 'msTransitionEnd', // maybe?
+    'transition'       : 'transitionEnd'
+},
+transEndEventName = transEndEventNames[ Modernizr.prefixed('transition') ];
+
+<span class="comment">// ... bind to the transEndEventName event... </span>
+</pre>
+
+            </section>
+
+
+
+            <section class="test" id="mq">
+               <h3>mq() media query testing</h3>
+               <dl>
+                  <dt>JavaScript method:</dt>
+                  <dd><code>Modernizr.<strong>mq(str)</strong></code></dd>
+               </dl>
+               <p>Modernizr.mq tests a given media query, live against the current state of the window</p>
+               <p>A few important notes:</p>
+
+               <ul>
+                  <li>If a browser does not support media queries at all (eg. oldIE) the mq() will always return false</li>
+                  <li>A max-width or orientation query will be evaluated against the current state, which may change later.</li>
+                  <li>You should specify the media type, though commonly the <code>all</code> type is good enough:
+                      <pre>Modernizr.mq('only all and (max-width: 400px)')</pre></li>
+                  <li>You must specify values. Eg. If you are testing support for the min-width media query use:
+                     <pre>Modernizr.mq('(min-width: 0px)')</pre></li>
+               </ul>
+
+               <p>Sample usage:</p>
+               <pre>Modernizr.mq('only screen and (max-width: 768px)') <span class="comment"> // true</span></pre>
+
+            </section>
+
+
+
+
+            <h3 id="s3">Extensibility</h3>
+
+            <p>The tests in Modernizr core may not cover all your cases, but there is a full set of APIs available for you to plug your own feature tests into Modernizr. Additionally, many of them have been collected already in the <a href="https://github.com/Modernizr/Modernizr/tree/master/feature-detects"><code>/feature-detects/</code></a> folder and in <a href="https://github.com/Modernizr/Modernizr/wiki">the wiki</a>.</p>
+
+            <section class="test" id="addtest">
+               <h3>addTest() Plugin API</h3>
+               <dl>
+                  <dt>JavaScript method:</dt>
+                  <dd><code>Modernizr.<strong>addTest(str, fn)</strong></code></dd>
+                  <dd><code>Modernizr.<strong>addTest(str, bool)</strong></code></dd>
+                  <dd><code>Modernizr.<strong>addTest({str: fn, str2: fn2})</strong></code></dd>
+                  <dd><code>Modernizr.<strong>addTest({str: bool, str2: fn})</strong></code></dd>
+               </dl>
+               <p>You may want to test additional features that Modernizr currently does not support. For that, you can use the addTest function. For example, some users have requested tests for IE's float double margin bug, and support for <code>position:fixed</code>. Using addTest, you can add these yourself and get the exact same API as the fully supported tests.</p>
+               <p>New signatures for this method of accepting a boolean or an object were added for Modernizr 2</p>
+
+               <h4>Sample Usage:</h4>
+               <pre><span class="comment">// Test for position:fixed support</span>
+Modernizr.addTest('positionfixed', function () {
+    var test  = document.createElement('div'),
+      control = test.cloneNode(false),
+         fake = false,
+         root = document.body || (function () {
+            fake = true;
+            return document.documentElement.appendChild(document.createElement('body'));
+      }());
+
+   var oldCssText = root.style.cssText;
+   root.style.cssText = 'padding:0;margin:0';
+   test.style.cssText = 'position:fixed;top:42px';
+   root.appendChild(test);
+   root.appendChild(control);
+   
+   var ret = test.offsetTop !== control.offsetTop;
+   
+   root.removeChild(test);
+   root.removeChild(control);
+   root.style.cssText = oldCssText;
+   
+   if (fake) {
+      document.documentElement.removeChild(root);
+   }
+   
+   return ret;
+});
+</pre>
+
+               <p>Assuming the above test passes, there will now be a <code>.positionfixed</code> class on the HTML element and <code>Modernizr.positionfixed</code> will be true. IE6, of course, will now have a <code>.no-positionfixed</code> class.</p>
+            </section>
+
+
+            <section class="test" id="teststyles">
+               <h3>testStyles()</h3>
+               <dl>
+                  <dt>JavaScript method:</dt>
+                  <dd><code>Modernizr.<strong>testStyles(str,fn)</strong></code></dd>
+               </dl>
+
+               <p>Modernizr.testStyles() allows you to add custom styles to the document and test an element afterwards. An element with the id of "modernizr" is injected into the page.</p>
+
+<pre>
+  Modernizr.testStyles('#modernizr { width: 9px; color: papayawhip;', function(elem, rule){
+      Modernizr.addTest('width', elem.offsetWidth == 9);
+  });
+</pre>
+            </section>
+
+            <section class="test" id="testprop">
+               <h3>testProp()</h3>
+               <dl>
+                  <dt>JavaScript method:</dt>
+                  <dd><code>Modernizr.<strong>testProp(str)</strong></code></dd>
+               </dl>
+
+               <p><code>Modernizr.testProp()</code> investigates whether a given style property is recognized. Note that the property names must be provided in the camelCase variant.</p>
+
+               <pre>Modernizr.testProp('pointerEvents') <span class="comment"> // true</span> </pre>
+
+            </section>
+
+
+            <section class="test" id="testallprops">
+               <h3>testAllProps()</h3>
+                  <dl>
+                     <dt>JavaScript method:</dt>
+                     <dd><code>Modernizr.<strong>testAllProps(str)</strong></code></dd>
+                     <dt>
+                  </dl>
+<p><code>Modernizr.testAllProps()</code> investigates whether a given style property, or any of its vendor-prefixed variants, is recognized. Note that the property names must be provided in the camelCase variant.</p>
+
+
+<pre>Modernizr.testAllProps('boxSizing') <span class="comment"> // true</span> </pre>
+
+               </section>
+
+
+
+               <section class="test" id="hasevent">
+                  <h3>hasEvent()</h3>
+                  <dl>
+                     <dt>JavaScript method:</dt>
+                     <dd><code>Modernizr.<strong>hasEvent(str [,elem])</strong></code></dd>
+                     <dt>
+                  </dl>
+
+                  <p><code>Modernizr.hasEvent()</code> detects support for a given event, with an optional element to test on</p>
+
+                  <pre>Modernizr.hasEvent('gesturestart', elem) <span class="comment"> // true</span></pre>
+               </section>
+
+
+               <section class="test" id="prefixes">
+                  <h3>_prefixes &amp; _domPrefixes</h3>
+                  <dl>
+                     <dt>JavaScript properties:</dt>
+                     <dd><code>Modernizr.<strong>_prefixes</strong></code> <code>Modernizr.<strong>_domPrefixes</strong></code></dd>
+                     <dt>
+                  </dl>
+
+                  <p>The vendor prefixes you’ll have to test against. Look in the modernizr source or below to see how to effectively <code>join()</code> these arrays in order to test your style properties.</p>
+
+<pre>
+Modernizr._prefixes.join('prop' + ':value; ');
+<span class="comment">/* prop:value; -webkit-prop:value; -moz-prop:value;
+   -o-prop:value; -ms-prop:value; -khtml-prop:value; */</span>
+
+'prop:' +  Modernizr._prefixes.join('value; prop:') + 'blah';
+<span class="comment">/* prop:value; prop:-webkit-value; prop:-moz-value;
+   prop:-o-value; prop:-ms-value; prop:-khtml-value; prop:blah; */</span>
+
+'prop:value; ' + Modernizr._domPrefixes.join('Prop' + ':value; ') + ':value';
+<span class="comment">/* prop:value; WebkitProp:value; MozProp:value;
+   OProp:value; msProp:value; Khtml:value */</span></pre>
+            </section>
+
+         </section>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+{% block content_secondary %}
+
+{% include 'modernizr/community.html' %}
+
+{% endblock %}

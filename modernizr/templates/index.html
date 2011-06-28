@@ -1,0 +1,68 @@
+{% extends 'modernizr/base.html' %}
+
+{% block content_primary %}
+            <section id="what-is" class="">
+               <article>
+                  <p class="intro"><strong>Modernizr</strong> is an open-source JavaScript library that helps you build the next generation of HTML5 and CSS3-powered websites.</p>
+
+                  <h2>Why use Modernizr?</h2>
+                  <p>Taking advantage of the new capabilities of HTML5 and CSS3 can mean sacrificing control over the experience in older browsers. Modernizr 2 is your starting point for making the best websites and applications that work exactly right no matter what browser or device your visitors use.</p>
+
+                  <p>Thanks to the new Media Query tests and built-in <a href="http://yepnopejs.com/" rel="external">YepNope.js</a> micro-library as <code>Modernizr.load()</code>, you can now combine feature detection with media queries and conditional resource loading. That gives you the power and flexibility to optimize for every circumstance.</p>
+
+                  <p>Check out the <a href="/docs/#features-css">full list of features</a> that Modernizr detects, or learn more about <a href="/docs/#load">conditional resource loading with Modernizr</a>.</p>
+               </article>
+            </section><!-- #what-is -->
+
+            <section id="download" class="wt col-mid homepage">
+               <h2><a href="/download/" class="wt dl-link">Download Modernizr 2</a></h2>
+               <div class="swap-region">
+                  <aside>
+                     <p>Use the commented, uncompressed Development version to develop with and learn from.</p>
+                     <p>Then, dive into the Production build tool and pick just the tests you need!</p>
+                  </aside>
+                  <ul class="buttons">
+                     <li><a class="wt docs-link" href="/docs/">View documentation</a></li>
+                     <li><a class="wt btn dev" 
+                                            href="/downloads/modernizr-2.0.6.js" 
+ onclick="javascript: pageTracker._trackPageview('/downloads/modernizr-2.0.6.js');
+              GoSquared.DefaultTracker.TrackView('/downloads/modernizr-2.0.6.js', 
+                                                            'Download: 2.0.6 Development');">
+                  Development <span>Uncompressed, 42 Kb</span></a></li>
+                     <li><a class="wt btn prod" href="/download/">Production <span>Configure your build</span></a></li>
+                  </ul>
+               </div>
+            </section><!-- #download -->
+
+            <article class="col-mid">
+               <h2>Get started with Modernizr</h2>
+               <p>While Modernizr gives you finer control over the experience through JavaScript-driven feature detection, it is important to continue to use best practices throughout your development process. Use progressive enhancement wherever you can, and don’t sacrifice accessibility for convenience or performance.</p>
+            
+               <ul class="links-spaced">
+                  <li><a rel="external" href="/docs/#installing">Documentation: Getting started</a></li>
+                  <li><a rel="external" href="http://www.alistapart.com/articles/taking-advantage-of-html5-and-css3-with-modernizr/">Taking Advantage of HTML5 and CSS3 with Modernizr</a>, <cite>Faruk Ateş</cite></li>
+                  <li><a rel="external" href="http://webdesignernotebook.com/css/how-to-use-modernizr/">How to use Modernizr</a>, <cite>Inayaili de León</cite></li>
+                  <li>[wiki] <a rel="external" href="https://github.com/Modernizr/Modernizr/wiki/Undetectables">The Undetectables: features that cannot be detected</a></li>
+                  <li>[wiki] <a rel="external" href="https://github.com/Modernizr/Modernizr/wiki/HTML5-Cross-Browser-Polyfills">Cross-browser Polyfills</a></li>
+               </ul>
+            
+               <p>More tutorials, guides and tools will be added soon to our <a href="/resources/">Resources section</a>.</p>
+            </article>  
+{% endblock %}
+
+
+
+
+
+
+{% block content_secondary %}
+            
+{% include 'modernizr/community.html' %}
+            
+{% include 'modernizr/latest-news.html' %}
+
+
+	
+
+            
+{% endblock %}

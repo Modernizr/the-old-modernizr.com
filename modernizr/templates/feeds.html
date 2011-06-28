@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+	<channel>
+		<title>Modernizr: Latest News</title>
+		<link>http://www.modernizr.com/</link>
+		<description>Latest news about the Modernizr JavaScript library.</description>
+		<language>en-us</language>{% for post in news %}
+		{% if forloop.first %}<lastBuildDate>{{ post.date|date:"r" }}</lastBuildDate>{% endif %}
+		<item>
+			<title>{{ post.title }}</title>
+			<link>http://www.modernizr.com/news/{{ post.slug }}</link>
+			<description>{{ post.content }}</description>
+			<pubDate>{{ post.date|date:"r" }}</pubDate>
+			<guid>http://www.modernizr.com/news/{{ post.slug }}</guid>
+		</item>
+		{% endfor %}
+	</channel>
+</rss>
