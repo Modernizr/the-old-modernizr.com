@@ -1,4 +1,5 @@
-
+common/*
+registration/*
 
 # i know theres sensitive stuff in settings.py..
 *.py
