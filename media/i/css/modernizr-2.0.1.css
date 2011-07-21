@@ -968,6 +968,7 @@ article li {
   width: 26px;
 }
 
+iframe[name^="browserscope"] { position:absolute; left: -999em; visibility:hidden; }
 
 
 
