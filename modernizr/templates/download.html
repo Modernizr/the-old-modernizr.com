@@ -78,20 +78,28 @@
                      <legend class="wt">Extra</legend>
                      <ul>
                         <li id="iepp"><label><input type="checkbox" checked value="iepp" /> HTML5 Shim/<abbr title="Internet Explorer Print Protector">IEPP</abbr></label></li>
-                        <li id="load"><label><input type="checkbox" checked value="load" /> Modernizr.load ( <a href="http://yepnopejs.com/" target="_new">yepnope.js</a> )</label></li>
+                        <li id="load"><label><input type="checkbox" checked value="load" /> Modernizr.load <br>( <a href="http://yepnopejs.com/" target="_new">yepnope.js</a> )</label></li>
                         <li id="respond"><label><input type="checkbox" value="respond" /> <abbr title="Media Query support for older browsers. Uses an external library.">MQ Polyfill</abbr> ( <a href="https://github.com/scottjehl/Respond">respond.js</a> )</label></li>
                         <li id="mq"><label><input type="checkbox" value="mq" /> Media Queries</label></li>
                         <li id="cssclasses"><label><input type="checkbox" checked value="cssclasses" /> Add CSS Classes</label></li>
-                        <li id="addtest"><label><input type="checkbox" value="addtest" /> Modernizr.addTest</label></li>
-                        <li id="prefixed"><label><input type="checkbox" value="prefixed" /> Modernizr.prefixed()</label></li>
-                        <li id="teststyles"><label><input type="checkbox" value="teststyles" /> Modernizr.testStyles()</label></li>
-                        <li id="testprop"><label><input type="checkbox" value="testprop" /> Modernizr.testProp()</label></li>
-                        <li id="testallprops"><label><input type="checkbox" value="testallprops" /> Modernizr.testAllProps()</label></li>
-                        <li id="hasevent"><label><input type="checkbox" value="hasevent" /> Modernizr.hasEvent()</label></li>
-                        <li id="prefixes"><label><input type="checkbox" value="prefixes" /> Modernizr._prefixes</label></li>
-                        <li id="domprefixes"><label><input type="checkbox" value="domprefixes" /> Modernizr._domPrefixes</label></li>
+                       
                      </ul>
                   </fieldset>
+                   <fieldset class="features" id="group-extensibility">
+                       <details>
+                         <summary><legend class="wt">Extensibility</legend> </summary>
+                         <ul>
+                            <li id="addtest"><label><input type="checkbox" value="addtest" /> Modernizr.addTest</label></li>
+                            <li id="prefixed"><label><input type="checkbox" value="prefixed" /> Modernizr.prefixed()</label></li>
+                            <li id="teststyles"><label><input type="checkbox" value="teststyles" /> Modernizr.testStyles()</label></li>
+                            <li id="testprop"><label><input type="checkbox" value="testprop" /> Modernizr.testProp()</label></li>
+                            <li id="testallprops"><label><input type="checkbox" value="testallprops" /> Modernizr.testAllProps()</label></li>
+                            <li id="hasevent"><label><input type="checkbox" value="hasevent" /> Modernizr.hasEvent()</label></li>
+                            <li id="prefixes"><label><input type="checkbox" value="prefixes" /> Modernizr._prefixes</label></li>
+                            <li id="domprefixes"><label><input type="checkbox" value="domprefixes" /> Modernizr._domPrefixes</label></li>
+                         </ul>
+                      
+                    </fieldset>
          
                   <div class="buttons-area">
                      <a href="#-generate" class="wt btn dev" id="generate">Generate! <span>(requires JavaScript)</span></a>
@@ -112,7 +120,7 @@
           Modernizr.load({
             test: window.jQuery,
             nope: '//ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js',
-            both: '/i/js/builderapp.min.js?206c'
+            both: '/i/js/builderapp.min.js?extensblty'
           });
         </script>
 {% endblock %}
