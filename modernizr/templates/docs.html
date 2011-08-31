@@ -621,7 +621,7 @@ Modernizr.addTest('positionfixed', function () {
                <p>Modernizr.testStyles() allows you to add custom styles to the document and test an element afterwards. An element with the id of "modernizr" is injected into the page.</p>
 
 <pre>
-  Modernizr.testStyles('#modernizr { width: 9px; color: papayawhip;', function(elem, rule){
+  Modernizr.testStyles('#modernizr { width: 9px; color: papayawhip; }', function(elem, rule){
       Modernizr.addTest('width', elem.offsetWidth == 9);
   });
 </pre>

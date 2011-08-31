@@ -86,7 +86,7 @@ jQuery(function($){
         if ( mLoad ) {
           tests.push('load');   
         } 
-        modularBuild = "\/* Modernizr " + _currentBuildVersion + " (Custom Build) | MIT & BSD\n * Contains: " + tests.join(' | ') + "\n */\n" + modularBuild;
+        modularBuild = "\/* Modernizr " + _currentBuildVersion + " (Custom Build) | MIT & BSD\n * Build: http://www.modernizr.com/download/#-" + tests.join('-') + "\n */\n" + modularBuild;
       }
       return modularBuild;
     }
