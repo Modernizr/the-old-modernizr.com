@@ -30,10 +30,11 @@ echo ';' >> tmp.js
 cat uglifyjs/bin/uglifyjs.js >> tmp.js
 echo ';' >> tmp.js
 
-cat swfobject.js >> tmp.js
-echo ';' >> tmp.js
-cat downloadify.min.js >> tmp.js
-echo ';' >> tmp.js
+# Don't need them anymore
+#cat swfobject.js >> tmp.js
+#echo ';' >> tmp.js
+#cat downloadify.min.js >> tmp.js
+#echo ';' >> tmp.js
 cat builderapp.js >> tmp.js
 echo ';' >> tmp.js
 

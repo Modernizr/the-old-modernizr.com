@@ -575,6 +575,23 @@ nav {
   transition:   transform .1s ease-out;
 }
 
+/* Download button */
+.btn2 {
+	display: none;
+	width: 184px;
+	height: 47px;
+	background: url(../img/download2.png) 0 0 no-repeat;
+	text-indent: -999em;
+	border: 0 none;
+    margin: 0 0 0 10px;
+}
+.btn2:hover, .btn2:focus {
+	background-position: 0 -47px;
+}
+.btn2:active {
+	background-position: 0 -94px;
+}
+
 
 
 /* Download page / builder */

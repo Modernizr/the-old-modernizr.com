@@ -67,6 +67,16 @@ jQuery(function($){
         mLoad =  $('#load input:checked').length,
         selections = true; // ALWAYS ON !!!!! $('#selectioncomment input:checked').length;
     
+    // Preload iframe for client side download polyfill
+    if(!Modernizr.download) {
+      var iframe = document.createElement("iframe");
+        
+      iframe.src = "http://saveasbro.com/";
+      iframe.setAttribute("style","position: absolute; visibility: hidden; left: -999em;");
+      iframe.id = "saveasbro";
+      document.body.appendChild(iframe);
+    }
+    
     $('.features input:checked').each(function(){
       // Special case for Modernizr.load and selection comment
       if ( this.value !== 'load' && this.value !== 'selectioncomment' ) {
@@ -110,21 +120,44 @@ jQuery(function($){
       uglifiedModularBuild = fixUglifyBugs( addExtras( uglifiedModularBuild ) );
       handleInjection(uglifiedModularBuild);
 
-      // Create Download Button
-      Downloadify.create('modulizrize',{
-        filename: function(){
-          return 'modernizr.custom.'+((+new Date) + "").substr(8)+'.js';
-        },
-        data: function(){ 
-          return uglifiedModularBuild;
-        },
-        swf: '/i/img/downloadify.swf',
-        downloadImage: '/i/img/download2.png',
-        width: 184,
-        height: 47,
-        transparent: true,
-        append: false
-      });
+      // Client side file saving without flash!
+      window.URL = window.webkitURL || window.URL;
+      window.BlobBuilder = window.BlobBuilder || window.WebKitBlobBuilder ||
+                           window.MozBlobBuilder;
+
+      var a = document.querySelector('.btn2'),
+          typer = document.querySelector('#generatedSource'),
+          fileName = "modernizr.custom."+((+new Date) + "").substr(8),
+          iframe = document.querySelector('#saveasbro');
+        
+      a.style.display = "none";
+        
+      if(Modernizr.download && Modernizr.bloburls && Modernizr.blobbuilder) {
+        var bb = new BlobBuilder();
+        bb.append(typer.value);
+        
+        a.download = fileName+".js";
+        a.href = window.URL.createObjectURL(bb.getBlob("application/octet-stream"));
+        a.style.display = "inline-block";
+        
+        a.onclick = function(e) {
+          // Need a small delay for the revokeObjectURL to work properly.
+          setTimeout(function() {
+            window.URL.revokeObjectURL(a.href);
+          }, 1500);
+        };
+      } else {
+        iframe.contentWindow.postMessage(JSON.stringify({name:fileName, data: typer.value, formdata: Modernizr.formdata}),"http://saveasbro.com");
+        
+        window.onmessage = function(e) {
+          e = e || window.event;
+            
+          var origin = e.origin || e.domain || e.uri;
+          if(origin !== "http://saveasbro.com") return;
+          a.href = "http://saveasbro.com/download/" + e.data;
+          a.style.display = "inline-block";
+        };
+      }
 
       $('#buildArea').fadeIn();
     }
