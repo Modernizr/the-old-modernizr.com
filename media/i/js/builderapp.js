@@ -162,6 +162,34 @@ jQuery(function($){
       $('#buildArea').fadeIn();
     }
 
+    function satisfyCustomDetects(cur, appended) {
+        var finishCount = 0,
+            finishResp = appended;
+        function customFinish(resp){
+          finishResp += resp;
+          if ( --finishCount ) {
+            return;
+          }
+          else {
+            buildFile(cur,finishResp);
+          }
+        }
+        // New section for logic for pulling in feature-detects from the feature-detects folder
+        var comChecked = $('#community-feature-detects input:checked');
+        finishCount = comChecked.length;
+        comChecked.each(function(){
+          $.ajax({
+            dataType: 'text',
+            cache   : false,
+            type    : 'GET',
+            url     : '/i/js/feature-detects/'+(this.value).replace(/_/g,'-')+'.js',
+            success : function ( d ) {
+              customFinish( d );
+            }
+          });
+        });
+    }
+
     // Grab the modernizr source and run it through modulizr
     $.ajax({
       dataType: 'text',
@@ -177,7 +205,7 @@ jQuery(function($){
           externals[ extName ] = extStr;
 
           if ( both ) {
-            buildFile( modularBuild, externals.respond + externals.load );
+            satisfyCustomDetects( modularBuild, externals.respond + externals.load );
           }
           both = true;
         }
