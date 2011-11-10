@@ -6,20 +6,20 @@
 
    <meta name="description" content="Modernizr is an open-source JavaScript library that helps you build the next generation of HTML5 and CSS3-powered websites.">
    <meta name="author" content="Faruk Ateş, Paul Irish, Alex Sexton">
- 
+
    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
    <meta name="viewport" content="width=device-width">
    <link rel="Shortcut Icon" href="/favicon.ico" type="image/x-icon" />
    <link rel="alternate" href="http://feeds.feedburner.com/Modernizr" type="application/rss+xml" title="RSS" />
-   
+
    <!--[if lte IE 7]><link rel="stylesheet" href="/i/css/ie6.1.1.css" media="screen, projection"><![endif]-->
-   <!--[if (gt IE 7)|!(IE)]><!--><link rel="stylesheet" href="/i/css/modernizr-2.0.2.css" type="text/css" media="screen"><!--<![endif]-->
-   
+   <!--[if (gt IE 7)|!(IE)]><!--><link rel="stylesheet" href="/i/css/modernizr-2.0.2.css?community" type="text/css" media="screen"><!--<![endif]-->
+
    <script src="/i/js/modernizr.com-custom-1.4.js"></script>
 </head>
 
 <body id="{% block body_id %}home{% endblock %}">
-   
+
    <nav role="navigation">
       <ul id="nav">
          <li><a class="wt {% block current_download %}{% endblock %}" href="/download/">Download</a></li>
@@ -30,7 +30,7 @@
    </nav>
 
    <div class="container clrfx">
-   
+
       <header id="masthead" class="loading">
          <hgroup>
             <a href="/" class="banner" role="banner">
@@ -50,21 +50,21 @@
          <cite>Bruce Bowman, </cite>, <a class="cite-source" href="https://browserlab.adobe.com/" rel="external">Adobe BrowserLab Product Manager</a>
       </aside>
 {% endif %}
-   
+
       <div id="content" class="clrfx">
 
          <div id="primary" class="clrfx" role="main">
 {% block content_primary %}{% endblock %}
          </div><!-- #primary -->
-      
+
          <div id="secondary" class="clrfx" role="complementary">
 {% block content_secondary %}{% endblock %}
          </div><!-- #secondary -->
-      
+
       </div><!-- #content -->
-   
+
    </div><!-- .container -->
-   
+
 
    <footer id="page-footer">
 
@@ -93,7 +93,7 @@
 
          </div>
       </section>
-      
+
       <section id="team">
 
          <div class="container">
@@ -104,7 +104,7 @@
                <li class="team"><a class="wt" href="http://paulirish.com/"><img src="/i/img/Paul-Irish.jpg" width="48" height="48" alt=""/>Paul Irish</a> <strong>Lead Developer</strong> <a href="http://twitter.com/paul_irish" class="twitter">@paul_irish</a></li>
                <li class="team"><a class="wt" href="http://alexsexton.com/"><img src="/i/img/Alex-Sexton2.jpg" width="48" height="48" alt=""/>Alex Sexton</a> <strong>Developer</strong> <a href="http://twitter.com/SlexAxton" class="twitter">@SlexAxton</a></li>
             </ul>
-            
+
             <p id="microlib" class="wt">
                Modernizr is the right micro-library to get you up and running with HTML5 &amp; CSS3 today.
             </p>
@@ -119,7 +119,7 @@
             <p class="copyright" role="contentinfo">Copyright © 2009—2011. Modernizr is available under the <a href="/license/" class="wt">MIT &amp; BSD licenses</a>.</p>
          </div>
       </section>
-         
+
       <!-- </div> -->
 
    </footer>

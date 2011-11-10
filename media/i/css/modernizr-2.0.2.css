@@ -137,19 +137,19 @@ body, select, input, textarea {
 }
 body {
   background: #fafafa;
-  
+
   /* Old syntax: boring…! */
   background: -webkit-gradient(linear, 0 0, 0 400, from(#7ab0e6), to(#fafafa));
   background: -moz-linear-gradient(top, #7ab0e6 0%, #fafafa 400px);
 
   /* New syntax: fancy gradients! */
-  background: -webkit-linear-gradient(-90deg, rgba(255, 255, 255, 0), #fafafa 485px), 
+  background: -webkit-linear-gradient(-90deg, rgba(255, 255, 255, 0), #fafafa 485px),
               #fafafa -webkit-repeating-linear-gradient(-45deg, #d5a5bc 0, #f5cfe2 2px, #f5cfe2 10px, #facbe0 10px, #f3ccdf 12px, #f5cfe2 20px, #f0bad3 20px, #f5cfe2 22px, #f5cfe2 30px, #facbe0 30px, #f5cfe2 32px, #facbe0 40px);
-  background: -moz-linear-gradient(-90deg, rgba(255, 255, 255, 0), #fafafa 485px), 
+  background: -moz-linear-gradient(-90deg, rgba(255, 255, 255, 0), #fafafa 485px),
               #fafafa -moz-repeating-linear-gradient(-45deg, #d5a5bc 0, #f5cfe2 2px, #f5cfe2 10px, #facbe0 10px, #f3ccdf 12px, #f5cfe2 20px, #f0bad3 20px, #f5cfe2 22px, #f5cfe2 30px, #facbe0 30px, #f5cfe2 32px, #facbe0 40px);
-  background: -o-linear-gradient(-90deg, rgba(255, 255, 255, 0), #fafafa 485px), 
+  background: -o-linear-gradient(-90deg, rgba(255, 255, 255, 0), #fafafa 485px),
               #fafafa -o-repeating-linear-gradient(-45deg, #d5a5bc 0, #f5cfe2 2px, #f5cfe2 10px, #facbe0 10px, #f3ccdf 12px, #f5cfe2 20px, #f0bad3 20px, #f5cfe2 22px, #f5cfe2 30px, #facbe0 30px, #f5cfe2 32px, #facbe0 40px);
-  background: linear-gradient(-90deg, rgba(255, 255, 255, 0), #fafafa 485px), 
+  background: linear-gradient(-90deg, rgba(255, 255, 255, 0), #fafafa 485px),
               #fafafa repeating-linear-gradient(-45deg, #d5a5bc 0, #f5cfe2 2px, #f5cfe2 10px, #facbe0 10px, #f3ccdf 12px, #f5cfe2 20px, #f0bad3 20px, #f5cfe2 22px, #f5cfe2 30px, #facbe0 30px, #f5cfe2 32px, #facbe0 40px);
 }
 .no-js body,
@@ -165,7 +165,7 @@ body, a, .subtitle, h2, .intro strong, .title, .wt, .wt:visited, .quote q, .btn 
   transition: color .25s ease-out, text-shadow .25s ease-out;
 }
 
-/* Redundancy much? Unfortunately, yes. Such is the price until a better, more reliable 
+/* Redundancy much? Unfortunately, yes. Such is the price until a better, more reliable
    cross-platform-and-loading solution presents itself. */
 .js body, .js a, .js .current, .js .title, .js .subtitle, .js .wt, .js .quote q, .js .quote .cite-source, .js #the-end,
 .js #toc, .js #toc a, .js h2, .js .intro strong, .js .btn, .js .btn span, .js #used-by, .js #page-footer, pre .comment,
@@ -194,7 +194,7 @@ h2, .intro strong, .title,
 #nav a.current,
 #nav a:focus,
 #nav a:hover,
-.wf-active a:focus, .wf-active a:hover, .wf-active .title, 
+.wf-active a:focus, .wf-active a:hover, .wf-active .title,
 .wf-active h2, .wf-active .intro strong, .wf-active #nav a.current,
 .tk-loaded a:focus, .tk-loaded a:hover, .tk-loaded .title,
 .tk-loaded h2, .tk-loaded .intro strong, .tk-loaded #nav a.current { color: #d91e76; }
@@ -322,12 +322,12 @@ nav {
     background: #141414 no-repeat;
     background-image: -webkit-gradient(radial, 210 -25, 20, -75 119, 120, from(rgba(250, 250, 250, .1)), to(rgba(20, 20, 20, 0)));
     border: 1px solid #141414;
-    
+
     -webkit-border-radius: 0 0 8px 8px;
     -moz-border-radius: 0 0 8px 8px;
     -o-border-radius: 0 0 8px 8px;
     border-radius: 0 0 8px 8px;
-    
+
     display: block;
     height: 60px;
     line-height: 20px;
@@ -335,7 +335,7 @@ nav {
     max-width: 300px;
     text-decoration: none;
     width: auto;
-    
+
     -webkit-transition: height .5s ease-in-out;
     -moz-transition: height .5s ease-in-out;
     -o-transition: height .5s ease-in-out;
@@ -408,7 +408,7 @@ nav {
   -moz-box-shadow: rgba(250,250,250, .42) 0 1px 1px inset;
   -o-box-shadow: rgba(250,250,250, .42) 0 1px 1px inset;
   box-shadow: rgba(250,250,250, .42) 0 1px 1px inset;
-  
+
   clear: left;
   padding: 10px;
 }
@@ -449,14 +449,14 @@ nav {
   text-decoration: none;
   text-transform: uppercase;
   width: 135px;
-  
-  
+
+
   /* style */
   background-color: #d91e76;
-  
-  background-image: -webkit-gradient(radial, 50% 0, 200, 50% 0, 10, from(hsla(0,0%,0%,0)), to(hsla(0,0%,100%,.2)));   
-  background-image: -webkit-radial-gradient(50% 20%, ellipse farthest-corner, rgba(255,255,255,0.2), transparent); 
-  background-image:    -moz-radial-gradient(50% 20%, ellipse farthest-corner, rgba(255,255,255,0.2), transparent); 
+
+  background-image: -webkit-gradient(radial, 50% 0, 200, 50% 0, 10, from(hsla(0,0%,0%,0)), to(hsla(0,0%,100%,.2)));
+  background-image: -webkit-radial-gradient(50% 20%, ellipse farthest-corner, rgba(255,255,255,0.2), transparent);
+  background-image:    -moz-radial-gradient(50% 20%, ellipse farthest-corner, rgba(255,255,255,0.2), transparent);
   background-image:     -ms-radial-gradient(50% 20%, ellipse farthest-corner, rgba(255,255,255,0.2), transparent);
   background-image:      -o-radial-gradient(50% 20%, ellipse farthest-corner, rgba(255,255,255,0.2), transparent);
   background-image:         radial-gradient(50% 20%, ellipse farthest-corner, rgba(255,255,255,0.2), transparent);
@@ -472,14 +472,14 @@ nav {
             inset rgba(0,0,0,.4) 0 -5px 10px, inset rgba(255,255,255,.35) 0 0 0 1px, rgba(0,0,0,.5) 0 3px 3px;
       box-shadow: inset rgba(255,255,255,.25) 0 3px 2px 1px, inset rgba(255,255,255,.18) 0 26px 1px -5px,
             inset rgba(0,0,0,.4) 0 -5px 10px, inset rgba(255,255,255,.35) 0 0 0 1px, rgba(0,0,0,.5) 0 3px 3px;
-  
-    
+
+
   /* typo */
   color: #fff;
   font-size: 14px;
   font-weight: bold;
   letter-spacing: 1px;
-  
+
   /* animation */
   -webkit-transition: background-color .1s ease-out;
      -moz-transition: background-color .1s ease-out;
@@ -527,7 +527,7 @@ nav {
 }
 .btn.dev {
     background-color: #666;
-    
+
   -webkit-box-shadow: inset rgba(255,255,255,.12) 0 3px 2px 1px, inset rgba(255,255,255,.08) 0 26px 1px -5px,
                       inset rgba(0,0,0,.4) 0 -5px 10px, inset rgba(255,255,255,.15) 0 0 0 1px, rgba(0,0,0,.5) 0 3px 3px;
      -moz-box-shadow: inset rgba(255,255,255,.12) 0 3px 2px 1px, inset rgba(255,255,255,.08) 0 26px 1px -5px,
@@ -567,7 +567,7 @@ nav {
   -ms-transform: scale(0.97);
   -o-transform: scale(0.97);
   transform: scale(0.97);
-  
+
   -webkit-transition: -webkit-transform .1s ease-out;
   -moz-transition: -moz-transform .1s ease-out;
   -ms-transition: -ms-transform .1s ease-out;
@@ -629,21 +629,34 @@ nav {
   padding: 0 0 6px 24px;
 }
 
-#group-extensibility { margin-top: 0; }
-#group-extensibility details { 
+#group-extensibility, #community-feature-detects { margin-top: 0; }
+#group-extensibility details, #community-feature-detects details {
   min-height: 30px;
   margin-top: 12px;
   margin-left: 7px;
 }
-#group-extensibility summary {
+#group-extensibility summary, #community-feature-detects summary {
   min-height: 23px;
-} 
-#group-extensibility legend { 
+}
+#group-extensibility legend, #community-feature-detects legend {
   top: 0;
   text-indent: 21px;
 }
-#group-extensibility ul { 
+#group-extensibility ul, #community-feature-detects ul {
   margin: 0 -12px;
+}
+
+#community-feature-detects ul {
+
+  -webkit-column-count: 3;  -webkit-column-gap: 15px;
+     -moz-column-count: 3;     -moz-column-gap: 15px;
+          column-count: 3;          column-gap: 15px;
+
+}
+
+#community-feature-detects {
+  clear: left;
+  width: 96%;
 }
 
 .builder .buttons-area {
@@ -665,10 +678,10 @@ nav {
   width: 96%;
   width: -moz-calc(100% - 16px);
   width: calc(100% - 16px);
-  
+
   /* Get that grubby resize handle off of me! Go! Shoo! */
   resize: none;
-  
+
   -webkit-transition: all .15s ease-out;
   -moz-transition: all .15s ease-out;
   -o-transition: all .15s ease-out;
@@ -934,7 +947,7 @@ article li {
 }
 /* Marketing line / design filler isn't really necessary for basic mobile: */
 #microlib {
-  display: none; 
+  display: none;
 }
 #the-end p {
   margin: 0;
@@ -1033,7 +1046,7 @@ details, summary { display: block; }
 /* Tablet-esque styles
 -------------------------------------------------------------------------------*/
 @media all and (min-width: 768px) {
-  
+
   .container {
     margin: 0 auto;
     position: relative;
@@ -1045,7 +1058,7 @@ details, summary { display: block; }
   h2 {
     font-size: 2em;
   }
-  
+
   /* Nav bar */
   nav {
     /* Tell me again why using gradients is better than an image? */
@@ -1055,7 +1068,7 @@ details, summary { display: block; }
     background: -o-linear-gradient(top, #1f1f1f 0%, #424242 2.5%, #1f1f1f 5%, #313131 95%, #141414 97.5%, #313131 100%);
     background: -ms-linear-gradient(top, #1f1f1f 0%, #424242 2.5%, #1f1f1f 5%, #313131 95%, #141414 97.5%, #313131 100%);
     background: linear-gradient(top, #1f1f1f 0%, #424242 2.5%, #1f1f1f 5%, #313131 95%, #141414 97.5%, #313131 100%);
-    
+
     /* Wishful thinking: */
     background: gradient(top, #1f1f1f:0, #424242:2.5, #1f1f1f:5, #313131:95, #141414:97.5, #313131));
 
@@ -1111,7 +1124,7 @@ details, summary { display: block; }
     height: 80px;
     margin: -2px 0 0;
     width: 238px;
-    
+
     -webkit-box-shadow: #141414 0 0 7px, #fafafa 0 0px 2px inset;
     -moz-box-shadow: #141414 0 0 7px, #fafafa 0 0px 2px inset;
     -o-box-shadow: #141414 0 0 7px, #fafafa 0 0px 2px inset;
@@ -1122,7 +1135,7 @@ details, summary { display: block; }
     margin: 0;
     padding-bottom: 2em;
     width: 740px;
-  } 
+  }
   #content {
     padding-top: 3em;
   }
@@ -1159,7 +1172,7 @@ details, summary { display: block; }
   #docs #community {
     float: left;
   }
-  
+
   #toc ol { counter-reset: item; }
   #toc ol li { list-style: none; }
   #toc ol ol { margin-left: 2.35em; }
@@ -1174,20 +1187,20 @@ details, summary { display: block; }
     margin-left: -2.2em;
     width: 2em;
   }
-  
-  
+
+
   /* Community */
   #community {
     float: right;
   }
-  
+
   /* What is */
   #what-is {
     float: left;
     width: 300px;
   }
-  
-  
+
+
   /* Download */
   #download.homepage {
     clear: none;
@@ -1208,7 +1221,7 @@ details, summary { display: block; }
     float: right;
     width: 45%;
   }
-  
+
   /* Generic intro */
   .intro-p {
     width: 82%;
@@ -1216,7 +1229,7 @@ details, summary { display: block; }
   #download .intro-p {
     padding: 0 20px;
   }
-  
+
   /* Build tool */
   .features {
     background: rgba(0,0,0, .20);
@@ -1229,7 +1242,7 @@ details, summary { display: block; }
     -moz-box-shadow: rgba(20,20,20, .24) 1px 2px 3px inset;
     -o-box-shadow: rgba(20,20,20, .24) 1px 2px 3px inset;
     box-shadow: rgba(20,20,20, .24) 1px 2px 3px inset;
-  
+
     float: left;
     margin: 3em 0 10px 20px;
     position: relative;
@@ -1251,7 +1264,7 @@ details, summary { display: block; }
     top: -40px;
     vertical-align: top;
     width: 100%;
-    z-index: 1; 
+    z-index: 1;
     -webkit-user-select: none;
     -moz-user-select: none;
     -o-user-select: none;
@@ -1317,8 +1330,8 @@ details, summary { display: block; }
     font-size: 85%;
     height: 10em;
   }
-  
-  
+
+
   /* Places */
   #places {
     height: 190px;
@@ -1380,7 +1393,7 @@ details, summary { display: block; }
   .touch #places li .github  , #places li:hover .github  { background-color: #506c7b; }
   .touch #places li .github  , #places li:hover .github  { background-color: #4183c4; }
   .touch #places li .rss     , #places li:hover .rss     { background-color: #ff6d00; }
-  
+
   /* This is the sexiness behind the hovers: */
   .wf-active #places li:after,
   .tk-loaded #places li:after {
@@ -1395,9 +1408,9 @@ details, summary { display: block; }
     z-index: 2;
   }
   /* “Wait… that's it? That can't be it!”
-   * Well no, but now check out the #places .icon {} rule above again. 
+   * Well no, but now check out the #places .icon {} rule above again.
    */
-  
+
   /* Donate button */
   #places form {
     display: inline;
@@ -1405,16 +1418,16 @@ details, summary { display: block; }
     padding: 0;
     z-index: 1;
   }
-  
-  
+
+
   /* Resources */
   .resource-area dl {
     float: left;
     margin: 0 20px 1em 0;
     width: 45%;
   }
-  
-  
+
+
   #secondary {
     float: left;
     padding-bottom: 2em;
@@ -1430,7 +1443,7 @@ details, summary { display: block; }
   #page-footer {
     clear: both;
   }
-  
+
   #used-by h4 {
     float: left;
     height: 100%;
@@ -1450,8 +1463,8 @@ details, summary { display: block; }
     margin: 0 10px 0 0;
     width: 160px;
   }
-  
-  
+
+
   #microlib {
     display: block;
     float: right;
@@ -1459,15 +1472,15 @@ details, summary { display: block; }
     margin: -2.4em 0 0 -2em;
     padding-right: 2em;
     text-align: left;
-    width: 192px; 
+    width: 192px;
   }
-  
+
   #the-end .sponsors {
     padding-right: 2em;
     width: 192px;
   }
 
-    
+
 } /* @media all and (min-width: 480px) */
 
 
@@ -1477,11 +1490,11 @@ details, summary { display: block; }
 /* Desktop-class viewport styles
 -------------------------------------------------------------------------------*/
   @media all and (min-width: 1200px) {  /* Holymoly 1200 pixels! */
-  
+
     .container {
       width: 1180px;
     }
-  
+
     #nav {
       margin-left: -230px;
       text-align: left;
@@ -1498,7 +1511,7 @@ details, summary { display: block; }
       left: 345px;
       top: 50px;
     }
-    
+
     .title {
       font-size: 36px;
       padding-left: 30px;
@@ -1519,7 +1532,7 @@ details, summary { display: block; }
       height: 36px;
       width: 75px;
     }
-  
+
     #primary {
       width: 880px;
     }
@@ -1544,8 +1557,8 @@ details, summary { display: block; }
     .features {
       margin: 3em 10px 10px 20px;
     }
-    
-    
+
+
     /* Documentation */
     #docs .banner {
       height: 40em;
@@ -1567,7 +1580,7 @@ details, summary { display: block; }
     #docs #toc {
       top: 3.5em;
     }
-  
+
     #used-by h4 {
       line-height: 30px;
     }
@@ -1584,7 +1597,7 @@ details, summary { display: block; }
       margin: -1.8em 0 0 -2em;
       width: 340px;
     }
-  
+
     #the-end .sponsors {
       width: 340px;
     }
