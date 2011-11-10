@@ -44,7 +44,31 @@
       'fontface'        : ['testbundle', 'teststyles'],
       'testbundle'      : ['teststyles'],
       'respond'         : ['mq', 'teststyles'],
-      'websockets'      : ['domprefixes']
+      'websockets'      : ['domprefixes'],
+      // community
+      'cookies'                        : ['addtest'],
+      'css_backgroundrepeat'           : ['addtest'],
+      'css_backgroundsizecover'        : ['addtest'],
+      'css_boxsizing'                  : ['addtest'],
+      'css_cubicbezierrange'           : ['addtest'],
+      'css_displaytable'               : ['addtest'],
+      'css_overflow_scrolling'         : ['addtest'],
+      'css_pointerevents'              : ['addtest'],
+      'css_userselect'                 : ['addtest'],
+      'custom_protocol_handler'        : ['addtest'],
+      'dom_createElement_attrs'        : ['addtest'],
+      'elem_details'                   : ['addtest'],
+      'elem_progress_meter'            : ['addtest'],
+      'emoji'                          : ['addtest', 'canvas'],
+      'event_deviceorientation_motion' : ['addtest'],
+      'file_api'                       : ['addtest'],
+      'forms_placeholder'              : ['addtest'],
+      'hyphens'                        : ['addtest'],
+      'img_webp'                       : ['addtest'],
+      'url_data_uri'                   : ['addtest'],
+      'webgl_extensions'               : ['addtest'],
+      'window_framed'                  : ['addtest'],
+      'workers_sharedworkers'          : ['addtest']
     },
     /**
      * Function ize
