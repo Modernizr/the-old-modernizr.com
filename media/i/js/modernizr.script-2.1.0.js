@@ -1,10 +1,10 @@
 $(function(){
-  
-  // if JS is on, 
+
+  // if JS is on,
   $("#donateLink").click(function(){
      $("#donateForm").submit();
   });
-  
+
   // For later:
   // if (Modernizr.svg) {
   //    $("#h5logo").attr({width:'106', height: '107', src:'/i/svg/html5-logo.svg', stroke: '1px'});
@@ -16,7 +16,7 @@ $(function(){
 // ---------------------------------- Scripts: ------------------------
 
 /*global jQuery */
-/*! 
+/*!
 * FitVids 1.0
 *
 * Copyright 2011, Chris Coyier - http://css-tricks.com + Dave Rupert - http://daverupert.com
@@ -32,10 +32,10 @@ $(function(){
     var settings = {
       customSelector: null
     }
-    
+
     var div = document.createElement('div'),
         ref = document.getElementsByTagName('base')[0] || document.getElementsByTagName('script')[0];
-        
+
   	div.className = 'fit-vids-style';
     div.innerHTML = '&shy;<style>         \
       .fluid-width-video-wrapper {        \
@@ -54,40 +54,40 @@ $(function(){
          height: 100%;                    \
       }                                   \
     </style>';
-                      
+
     ref.parentNode.insertBefore(div,ref);
-    
-    if ( options ) { 
+
+    if ( options ) {
       $.extend( settings, options );
     }
-    
+
     return this.each(function(){
       var selectors = [
-        "iframe[src^='http://player.vimeo.com']", 
-        "iframe[src^='http://www.youtube.com']", 
-        "iframe[src^='http://www.kickstarter.com']", 
-        "object", 
+        "iframe[src^='http://player.vimeo.com']",
+        "iframe[src^='http://www.youtube.com']",
+        "iframe[src^='http://www.kickstarter.com']",
+        "object",
         "embed"
       ];
-      
+
       if (settings.customSelector) {
         selectors.push(settings.customSelector);
       }
-      
+
       var $allVideos = $(this).find(selectors.join(','));
 
       $allVideos.each(function(){
-        var $this = $(this), 
+        var $this = $(this),
             height = this.tagName == 'OBJECT' ? $this.attr('height') : $this.height(),
             aspectRatio = height / $this.width();
         $this.wrap('<div class="fluid-width-video-wrapper" />').parent('.fluid-width-video-wrapper').css('padding-top', (aspectRatio * 100)+"%");
         $this.removeAttr('height').removeAttr('width');
       });
     });
-  
+
   }
 })( jQuery );
 
 $(document).ready(function(){
-   $(".fitvid").fitVids();
+   $.fn.fitVids && $(".fitvid").fitVids();
 });

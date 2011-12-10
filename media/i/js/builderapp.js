@@ -177,17 +177,22 @@ jQuery(function($){
         // New section for logic for pulling in feature-detects from the feature-detects folder
         var comChecked = $('#community-feature-detects input:checked');
         finishCount = comChecked.length;
-        comChecked.each(function(){
-          $.ajax({
-            dataType: 'text',
-            cache   : false,
-            type    : 'GET',
-            url     : '/i/js/feature-detects/'+(this.value).replace(/_/g,'-')+'.js',
-            success : function ( d ) {
-              customFinish( d );
-            }
+        if ( !finishCount ) {
+          buildFile(cur, appended);
+        }
+        else {
+          comChecked.each(function(){
+            $.ajax({
+              dataType: 'text',
+              cache   : false,
+              type    : 'GET',
+              url     : '/i/js/feature-detects/'+(this.value).replace(/_/g,'-')+'.js',
+              success : function ( d ) {
+                customFinish( d );
+              }
+            });
           });
-        });
+        }
     }
 
     // Grab the modernizr source and run it through modulizr
