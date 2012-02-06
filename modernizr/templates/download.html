@@ -15,7 +15,7 @@
                <form action="#" class="builder">
                   <fieldset class="features" id="group-css3">
                      <legend class="wt"><abbr title="Cascading Style Sheets">CSS</abbr>3</legend>
-            
+
                      <ul>
                         <li id="fontface"><label><input type="checkbox" value="fontface" /> @font-face</label></li>
                         <li id="backgroundsize"><label><input type="checkbox" value="backgroundsize" /> background-size</label></li>
@@ -82,7 +82,7 @@
                         <li id="respond"><label><input type="checkbox" value="respond" /> <abbr title="Media Query support for older browsers. Uses an external library.">MQ Polyfill</abbr> ( <a href="https://github.com/scottjehl/Respond">respond.js</a> )</label></li>
                         <li id="mq"><label><input type="checkbox" value="mq" /> Media Queries</label></li>
                         <li id="cssclasses"><label><input type="checkbox" checked value="cssclasses" /> Add CSS Classes</label></li>
-                       
+
                      </ul>
                   </fieldset>
                    <fieldset class="features" id="group-extensibility">
@@ -99,7 +99,7 @@
                             <li id="domprefixes"><label><input type="checkbox" value="domprefixes" /> Modernizr._domPrefixes</label></li>
                          </ul>
                         </details>
-                      
+
                     </fieldset>
                <fieldset class="features" id="community-feature-detects">
                   <details>
@@ -127,37 +127,37 @@
 <li id="url_data_uri"><label><input type="checkbox" value="url_data_uri" /> data-uri</label></li>
 <li id="webgl_extensions"><label><input type="checkbox" value="webgl_extensions" /> webgl extensions</label></li>
 <li id="window_framed"><label><input type="checkbox" value="window_framed" /> framed</label></li>
-<li id="workers_sharedworkers"><label><input type="checkbox" value="workers_sharedworkers" /> sharedworkers</label></li>   
+<li id="workers_sharedworkers"><label><input type="checkbox" value="workers_sharedworkers" /> sharedworkers</label></li>
 
 
 
                      </ul>
                   </details>
-                      
+
                </fieldset>
 
 
 
-         
+
                   <div class="buttons-area">
                      <a href="#-generate" class="wt btn dev" id="generate">Generate! <span>(requires JavaScript)</span></a>
                      <a class="btn2">Download custom build</a>
                   </div>
                </form>
- 
+
                <div id="source">
                   <textarea readonly="readonly" class="source-area default" id="generatedSource">// Minified source</textarea>
-                  
+
                </div>
-               
+
                </div><!-- .swap-region -->
 
             </section>
-        
-        <script> 
+
+        <script>
           Modernizr.load({
             test: window.jQuery,
-            nope: '//ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js',
+            nope: '//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js',
             both: '/i/js/builderapp.min.js?fd1'
           });
         </script>
@@ -166,9 +166,9 @@
 
 
 {% block content_secondary %}
-            
+
 {% include 'modernizr/community.html' %}
-            
+
 {% include 'modernizr/latest-news.html' %}
-            
+
 {% endblock %}
