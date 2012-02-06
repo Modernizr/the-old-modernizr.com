@@ -217,27 +217,27 @@ Modernizr.load([
                </thead>
                <tbody>
                   <tr>
-                     <th id="#fontface">@font-face</th><td>fontface</td>
+                     <th id="fontface">@font-face</th><td>fontface</td>
                   </tr>
                   <tr>
-                     <th id="#backgroundsize">background-size</th><td>backgroundsize</td>
+                     <th id="backgroundsize">background-size</th><td>backgroundsize</td>
                   </tr>
                   <tr>
-                     <th id="#borderimage">border-image</th><td>borderimage</td>
+                     <th id="borderimage">border-image</th><td>borderimage</td>
                   </tr>
                   <tr>
-                     <th id="#borderradius">border-radius</th><td>borderradius</td>
+                     <th id="borderradius">border-radius</th><td>borderradius</td>
                   </tr>
                   <tr>
-                     <th id="#boxshadow">box-shadow</th><td>boxshadow</td>
+                     <th id="boxshadow">box-shadow</th><td>boxshadow</td>
                   </tr>
                   <tr>
-                     <th id="#flexbox">Flexible Box Model</th><td>flexbox</td>
+                     <th id="flexbox">Flexible Box Model</th><td>flexbox</td>
                   </tr>
-                  <tr><td id="#flexboxnotes" colspan="2">
+                  <tr><td id="flexboxnotes" colspan="2">
                      <p>The <a href="http://www.html5rocks.com/tutorials/flexbox/quick/">flexible box model (aka flexbox)</a> offers a different way for positioning elements, that addresses some of the shortcomings of float-based layouts.</p>
                   </td></tr>
-                  <tr><td id="#boxshadownotes" colspan="2">
+                  <tr><td id="boxshadownotes" colspan="2">
 <pre><span class="comment">/* Simulated box shadow using borders: */</span>
 .box {
    border-bottom: 1px solid #666;
@@ -252,9 +252,9 @@ Modernizr.load([
 </pre>
                   </td></tr>
                   <tr>
-                     <th id="#hsla">hsla()</th><td>hsla</td>
+                     <th id="hsla">hsla()</th><td>hsla</td>
                   </tr>
-                  <tr><td id="#hslanotes" colspan="2">
+                  <tr><td id="hslanotes" colspan="2">
                      <p>In most cases you don’t need to use the rgba and hsla classes, as browsers can do the fallback naturally:</p>
 <pre>
 .my_container {  <span class="comment">/* no .rgba use neccessary! */</span>
@@ -265,18 +265,18 @@ Modernizr.load([
                      </td>
                   </tr>
                   <tr>
-                     <th id="#multiplebgs">Multiple backgrounds</th><td>multiplebgs</td>
+                     <th id="multiplebgs">Multiple backgrounds</th><td>multiplebgs</td>
                   </tr>
                   <tr>
-                     <th id="#opacity">opacity</th><td>opacity</td>
+                     <th id="opacity">opacity</th><td>opacity</td>
                   </tr>
                   <tr>
-                     <th id="#rgba">rgba()</th><td>rgba</td>
+                     <th id="rgba">rgba()</th><td>rgba</td>
                   </tr>
                   <tr>
-                     <th id="#textshadow">text-shadow</th><td>textshadow</td>
+                     <th id="textshadow">text-shadow</th><td>textshadow</td>
                   </tr>
-                  <tr><td id="#textshadownotes" colspan="2">
+                  <tr><td id="textshadownotes" colspan="2">
 <p>Firefox 3.0 false-positives this test, but there is no known fix to that. All IEs, including IE9, do not support text-shadow and thus fail to <a href="http://mothereffingtextshadow.com/">deliver delight</a>.</p>
 
 <pre>
@@ -290,21 +290,24 @@ Modernizr.load([
                      </td>
                   </tr>
                   <tr>
-                     <th id="#cssanimations">CSS Animations</th><td>cssanimations</td>
+                     <th id="cssanimations">CSS Animations</th><td>cssanimations</td>
+                  </tr>
+                  <tr><td id="cssanimationsnotes" colspan="2">
+                    Android 2.1-3 will pass this test, but <a href="http://daneden.me/2011/12/putting-up-with-androids-bullshit/">can only animate a single property</a>. Android 4+ behaves as expected.
+                  </td></tr>
+                  <tr>
+                     <th id="csscolumns">CSS Columns</th><td>csscolumns</td>
                   </tr>
                   <tr>
-                     <th id="#csscolumns">CSS Columns</th><td>csscolumns</td>
-                  </tr>
-                  <tr>
-                     <th id="#generatedcontent">Generated Content 
+                     <th id="generatedcontent">Generated Content 
                       <small>(<code>:before</code>/<code>:after</code>)</small>
                      </th>
-                     <td>generatedcontenet</td>
+                     <td>generatedcontent</td>
                   </tr>
                   <tr>
-                     <th id="#cssgradients">CSS Gradients</th><td>cssgradients</td>
+                     <th id="cssgradients">CSS Gradients</th><td>cssgradients</td>
                   </tr>
-                  <tr><td id="#cssgradientsnotes" colspan="2">
+                  <tr><td id="cssgradientsnotes" colspan="2">
 
        <p>As there is a WebKit bug which causes needless downloads of background-image assets, there is a best
        way of combo'ing a background-image with CSS gradients, so everyone gets the right experience with no extra HTTP overhead:</p>
@@ -321,18 +324,18 @@ Modernizr.load([
 
                         </td></tr>
                   <tr>
-                     <th id="#cssreflections">CSS Reflections</th><td>cssreflections</td>
+                     <th id="cssreflections">CSS Reflections</th><td>cssreflections</td>
                   </tr>
                   <tr>
-                     <th id="#csstransforms">CSS 2D Transforms</th><td>csstransforms</td>
+                     <th id="csstransforms">CSS 2D Transforms</th><td>csstransforms</td>
                   </tr>
                   <tr>
-                     <th id="#csstransforms3d">CSS 3D Transforms</th><td>csstransforms3d</td>
+                     <th id="csstransforms3d">CSS 3D Transforms</th><td>csstransforms3d</td>
                   </tr>
                   <tr>
-                     <th id="#csstransitions">CSS Transitions</th><td>csstransitions</td>
+                     <th id="csstransitions">CSS Transitions</th><td>csstransitions</td>
                   </tr>
-                  <tr><td id="#csstransitionsnotes" colspan="2">
+                  <tr><td id="csstransitionsnotes" colspan="2">
                      <p>Transitions can typically be used without using Modernizr's specific CSS class or JavaScript property, but for those occasions you want parts of your site to look and/or behave differently they are available. A good example use case is to build Modernizr into an animation engine, which uses native CSS Transitions in the browsers that have it, and relies on JavaScript for the animation in browsers that don’t.</p>
                      <p><a href="http://isotope.metafizzy.co/">Isotope</a> uses a Modernizr feature detect to use transitions along with transforms to achieve full hardware acceleration when possible, falling back to jQuery-based animation otherwise.</p>
                   </td></tr>
@@ -349,32 +352,32 @@ Modernizr.load([
                </thead>
                <tbody>
                   <tr>
-                     <th id="#applicationcache">applicationCache</th><td>applicationcache</td>
+                     <th id="applicationcache">applicationCache</th><td>applicationcache</td>
                   </tr>
                   <tr>
-                     <th id="#canvas">Canvas</th><td>canvas</td>
+                     <th id="canvas">Canvas</th><td>canvas</td>
                   </tr>
                   <tr>
                      <td colspan="2"><p>If <code>Modernizr.canvas</code> tests false, you may want to load <a href="https://github.com/Modernizr/Modernizr/wiki/HTML5-Cross-browser-Polyfills">FlashCanvas or excanvas</a>.</p>
                      </td>
                   </tr>
                   <tr>
-                     <th id="#canvastext">Canvas Text</th><td>canvastext</td>
+                     <th id="canvastext">Canvas Text</th><td>canvastext</td>
                   </tr>
                   <tr>
-                     <th id="#draganddrop">Drag and Drop</th><td>draganddrop</td>
+                     <th id="draganddrop">Drag and Drop</th><td>draganddrop</td>
                   </tr>
                   <tr>
-                     <th id="#hashchange">hashchange Event</th><td>hashchange</td>
+                     <th id="hashchange">hashchange Event</th><td>hashchange</td>
                   </tr>
                   <tr>
-                     <th id="#historymanagement">History Management</th><td>history</td>
+                     <th id="historymanagement">History Management</th><td>history</td>
                   </tr>
                   <tr>
-                     <th id="#audio">HTML5 Audio</th><td>audio</td>
+                     <th id="audio">HTML5 Audio</th><td>audio</td>
                   </tr>
                   <tr>
-                     <td id="#audioformats" colspan="2">
+                     <td id="audioformats" colspan="2">
                      <p>If audio support is detected, Modernizr assesses which formats the current browser will play. Currently, Modernizr tests <code>ogg</code>, <code>mp3</code>, <code>wav</code> and <code>m4a</code>.</p>
                   <p><strong>Important:</strong> The values of these properties are not true booleans. Instead, Modernizr <a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/video.html#mime-types">matches the HTML5 spec</a> in returning a string representing the browser's level of confidence that it can handle that codec. These return values are an empty string (negative response), "maybe" and "probably". The empty string is falsy, in other words: <code>Modernizr.audio.ogg == ''</code> and <code>'' == false</code></p>
 
@@ -388,24 +391,24 @@ audio.play();
                      </td>
                   </tr>
                   <tr>
-                     <th id="#video">HTML5 Video</th><td>video</td>
+                     <th id="video">HTML5 Video</th><td>video</td>
                   </tr>
-                  <tr><td id="#audionotes" colspan="2">
+                  <tr><td id="audionotes" colspan="2">
                      <p>See <a href="http://camendesign.com/code/video_for_everybody" rel="external">Video for Everybody</a> by Kroc Camen for a JavaScript-less way to use HTML5 <code>video</code> with graceful fallbacks for all browsers. With Modernizr's <code>video</code> detection, you can use CSS and JavaScript styling to further enhance the look and/or interactivity when the browser does support <code>video</code>.</p>
 
                      <p>If video support is detected, Modernizr assesses which formats the current browser will play. Currently, Modernizr tests <code>ogg</code>, <code>webm</code> and <code>h264</code>.</p>
 
-                     <p id="#videoformats">Also, read the important note about audio formats above, as the same return values apply to video.</p>
+                     <p id="videoformats">Also, read the important note about audio formats above, as the same return values apply to video.</p>
 
                    </td>
                   </tr>
                   <tr>
-                     <th id="#indexeddb">IndexedDB</th><td>indexeddb</td>
+                     <th id="indexeddb">IndexedDB</th><td>indexeddb</td>
                   </tr>
                   <tr>
-                     <th id="#input" colspan="2">Input Attributes</th>
+                     <th id="input" colspan="2">Input Attributes</th>
                   </tr>
-                  <tr><td id="#inputnotes" colspan="2">
+                  <tr><td id="inputnotes" colspan="2">
 
                      <p>HTML5 introduces <a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-input-element.html#input-type-attr-summary">many new attributes for input elements</a>. Modernizr tests for these: <code>autocomplete, autofocus, list, placeholder, max, min, multiple, pattern, required, step</code>. </p>
                      <p>These new attributes can do things such as: enable native autocomplete, mimic elem.focus() at page load, do form field hinting, and do client-side validation.</p>
@@ -413,9 +416,9 @@ audio.play();
                      </td>
                   </tr>
                   <tr>
-                     <th id="#inputtypes" colspan="2">Input Types</th>
+                     <th id="inputtypes" colspan="2">Input Types</th>
                   </tr>
-                  <tr><td id="#inputtypessnotes" colspan="2">
+                  <tr><td id="inputtypessnotes" colspan="2">
 
                      <p>HTML5 introduces <a href="http://dev.w3.org/html5/spec/Overview.html#states-of-the-type-attribute">thirteen new values</a> for the <code>&lt;input&gt;</code>'s type attribute. They are as follows: <code>search, tel, url, email, datetime, date, month, week, time, datetime-local, number, range, color</code>.</p>
                      <p>These types can enable native datepickers, colorpickers, URL validation, and so on. If a browser doesn’t support a given type, it will be rendered as a text field. Modernizr cannot detect that date inputs create a datepicker, the color input create a colorpicker, and so on&mdash;it will detect that the input values are sanitized based on the spec. In the case of WebKit, we have received confirmation that sanitization will not be added without the UI widgets being in place.</p>
@@ -423,22 +426,22 @@ audio.play();
                   </td></tr>
 
                   <tr>
-                     <th id="#localstorage">localStorage</th><td>localstorage</td>
+                     <th id="localstorage">localStorage</th><td>localstorage</td>
                   </tr>
                   <tr>
-                     <th id="#crosswindowmessaging">Cross-window Messaging</th><td>postmessage</td>
+                     <th id="crosswindowmessaging">Cross-window Messaging</th><td>postmessage</td>
                   </tr>
                   <tr>
-                     <th id="#sessionstorage">sessionStorage</th><td>sessionstorage</td>
+                     <th id="sessionstorage">sessionStorage</th><td>sessionstorage</td>
                   </tr>
                   <tr>
-                     <th id="#websockets">Web Sockets</th><td>websockets</td>
+                     <th id="websockets">Web Sockets</th><td>websockets</td>
                   </tr>
                   <tr>
-                     <th id="#websqldatabase">Web SQL Database</th><td>websqldatabase</td>
+                     <th id="websqldatabase">Web SQL Database</th><td>websqldatabase</td>
                   </tr>
                   <tr>
-                     <th id="#webworkers">Web Workers</th><td>webworkers</td>
+                     <th id="webworkers">Web Workers</th><td>webworkers</td>
                   </tr>
                
                </tbody>
@@ -453,28 +456,28 @@ audio.play();
                </thead>
                <tbody>
                   <tr>
-                     <th id="#geolocation">Geolocation API</th><td>geolocation</td>
+                     <th id="geolocation">Geolocation API</th><td>geolocation</td>
                   </tr>
                   <tr>
-                     <th id="#inlinesvg">Inline SVG</th><td>inlinesvg</td>
+                     <th id="inlinesvg">Inline SVG</th><td>inlinesvg</td>
                   </tr>
                   <tr>
-                     <th id="#smil">SMIL</th><td>smil</td>
+                     <th id="smil">SMIL</th><td>smil</td>
                   </tr>
                   <tr>
-                     <th id="#svg">SVG</th><td>svg</td>
+                     <th id="svg">SVG</th><td>svg</td>
                   </tr>
                   <tr>
-                     <th id="#svgclippaths">SVG Clip paths</th><td>svgclippaths</td>
+                     <th id="svgclippaths">SVG Clip paths</th><td>svgclippaths</td>
                   </tr>
-                  <tr><td id="#svgclippathsnotes" colspan="2">
+                  <tr><td id="svgclippathsnotes" colspan="2">
                     <p>This test is only for clip paths in SVG, not neccessarily applying SVG clippaths to HTML content. View this <a href="//srufaculty.sru.edu/david.dailey/svg/newstuff/clipPath4.svg">demo of SVG clippaths</a> to see the feature in action. If you're curious about clippaths on HTML, <a href="github.com/Modernizr/Modernizr/issues/213#issuecomment-1149491">read the comments here</a>.
 
                   </td></tr>
                   <tr>
-                     <th id="#touch">Touch Events</th><td>touch</td>
+                     <th id="touch">Touch Events</th><td>touch</td>
                   </tr>
-                  <tr><td id="#touchnotes" colspan="2">
+                  <tr><td id="touchnotes" colspan="2">
                      <p>The Modernizr.touch test only indicates if the browser supports touch events, which does not necessarily reflect a touchscreen device. For example, Palm Pre / WebOS (touch) phones do not support touch events and thus fail this test. Additionally, Chrome (desktop) used to lie about its support on this, but <a href="http://crbug.com/36415">that has since been rectified</a>. Modernizr also tests for Multitouch Support via a media query, which is how Firefox 4 exposes that for Windows 7 tablets. For more info, see the <a href="http://modernizr.github.com/Modernizr/touch.html">Modernizr touch tests</a>.</p>
 
                 <pre>if (Modernizr.touch){
@@ -485,7 +488,7 @@ audio.play();
                 </pre>
                   </td></tr>
                   <tr>
-                     <th id="#webgl">WebGL</th><td>webgl</td>
+                     <th id="webgl">WebGL</th><td>webgl</td>
                   </tr>
                   <tr>
                      <td colspan="2">
@@ -534,8 +537,8 @@ var transEndEventNames = {
     'WebkitTransition' : 'webkitTransitionEnd',
     'MozTransition'    : 'transitionend',
     'OTransition'      : 'oTransitionEnd',
-    'msTransition'     : 'msTransitionEnd', // maybe?
-    'transition'       : 'transitionEnd'
+    'msTransition'     : 'MSTransitionEnd',
+    'transition'       : 'transitionend'
 },
 transEndEventName = transEndEventNames[ Modernizr.prefixed('transition') ];
 

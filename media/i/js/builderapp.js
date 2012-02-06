@@ -1,5 +1,5 @@
 jQuery(function($){
-  var _currentBuildVersion = '2.0.6';
+  var _currentBuildVersion = '2.5.0';
 
   // var run = false;
   // $(':checkbox').attr('checked', true);
@@ -11,7 +11,7 @@ jQuery(function($){
     checkbox.each(function(){
       var $this = $(this), deps, i;
       $this.attr('checked', !$this.is(':checked'));
-      
+
       // check ones that this relies on
       if ( $this.is(':checked') ) {
         deps = Modulizr._dependencies[ $this.closest('li').attr('id') ];
@@ -58,6 +58,28 @@ jQuery(function($){
     $("#generatedSource").removeClass('sourceView').val( '' );
   });
 
+  // Special hide/show stuff for custom css classes
+  $('#cssclasses input:checkbox').change(function(){
+    if ( $(this).is(':checked') ) {
+      $('#cssprefixcontainer').show();
+    }
+    else {
+      $('#cssprefixcontainer').hide();
+    }
+  });
+
+  // Don't let people add two shivs
+  $('#printshiv input:checkbox').change(function(){
+    if ( $(this).is(':checked') ) {
+      $('#shiv input:checkbox').removeAttr('checked');
+    }
+  });
+  $('#shiv input:checkbox').change(function(){
+    if ( $(this).is(':checked') ) {
+      $('#printshiv input:checkbox').removeAttr('checked');
+    }
+  });
+
   // Generate the custom download
   $('#generate')
     .find('span').remove().end()
@@ -66,17 +88,17 @@ jQuery(function($){
     var tests = [],
         mLoad =  $('#load input:checked').length,
         selections = true; // ALWAYS ON !!!!! $('#selectioncomment input:checked').length;
-    
+
     // Preload iframe for client side download polyfill
     if(!Modernizr.download) {
       var iframe = document.createElement("iframe");
-        
+
       iframe.src = "http://saveasbro.com/";
       iframe.setAttribute("style","position: absolute; visibility: hidden; left: -999em;");
       iframe.id = "saveasbro";
       document.body.appendChild(iframe);
     }
-    
+
     $('.features input:checked').each(function(){
       // Special case for Modernizr.load and selection comment
       if ( this.value !== 'load' && this.value !== 'selectioncomment' ) {
@@ -92,22 +114,55 @@ jQuery(function($){
     function addExtras (modularBuild) {
 
       modularBuild = ';'+modularBuild+';';
+      var prefixClass;
+
+      if ( $('#cssclasses input').is(':checked') && $.trim( $('#cssprefix').val() ) ) {
+        prefixClass = $('#cssprefix').val().replace(/\s+/g, "");
+        // Normal Case
+        var matches = modularBuild.match(/["']\ js\ ["']\s*\+\s*([a-zA-Z]+).join\(["'] ["']\)/);
+        if ( matches && matches.length > 1 ) {
+          // replace the class injector
+          modularBuild = modularBuild.replace(
+            /["']\ js\ ["']\s*\+\s*([a-zA-Z]+).join\(["'] ["']\)/,
+            '" '+prefixClass+'js '+prefixClass+'"+'+matches[1]+'.join(" '+prefixClass+'")'
+          );
+        }
+        // AddTest Case
+        var matchesAT = modularBuild.match(/className\s*\+=\s*["']\s['"]/);
+        if ( matchesAT && matchesAT.length ) {
+          // replace the class injector
+          modularBuild = modularBuild.replace(
+            /className\s*\+=\s*["']\s['"]/,
+            'className+=" '+prefixClass+'"'
+          );
+        }
+      }
+
       if ( selections ) {
         if ( mLoad ) {
-          tests.push('load');   
+          tests.push('load');
         } 
-        modularBuild = "\/* Modernizr " + _currentBuildVersion + " (Custom Build) | MIT & BSD\n * Build: http://www.modernizr.com/download/#-" + tests.join('-') + "\n */\n" + modularBuild;
+        modularBuild = "\/* Modernizr " + _currentBuildVersion + " (Custom Build) | MIT & BSD\n * Build: http://www.modernizr.com/download/#-"+ 
+          tests.join('-') +
+          ( prefixClass ? '-cssclassprefix:' + prefixClass.replace(/\-/g, '!') : '' ) +
+          "\n */\n" + modularBuild;
       }
+
       return modularBuild;
     }
 
     function handleInjection(modularBuild) {
-      window.location = '#-' + tests.join('-'); // I killed it cuz it's always on now. + ( selections ? '-selectioncomment' : '' );
+      var extra = '';
+      if ( $('#cssclasses input').is(':checked') && $.trim( $('#cssprefix').val() ) ) {
+        extra = '-cssclassprefix:'+$('#cssprefix').val().replace(/\s+/g, "").replace(/\-/g,'!');
+      }
+      window.location = '#-' + tests.join('-') + extra;
       $("#generatedSource").addClass('sourceView').val( modularBuild );
     }
 
     function buildFile( modularBuild, appended ) {
       var uglifiedModularBuild = uglify( modularBuild + ( appended || '' ), ['--extra', '--unsafe'] );
+      //var uglifiedModularBuild =  modularBuild + ( appended || '' );
 
       // Track the different builds
       if ( window._gaq ) {
@@ -116,7 +171,7 @@ jQuery(function($){
       if ( window.GoSquared && window.GoSquared.DefaultTracker && window.GoSquared.DefaultTracker.TrackView ) {
         GoSquared.DefaultTracker.TrackView('/build/'+_currentBuildVersion+'/', 'Download: '+_currentBuildVersion);
       }
-      
+
       uglifiedModularBuild = fixUglifyBugs( addExtras( uglifiedModularBuild ) );
       handleInjection(uglifiedModularBuild);
 
@@ -129,17 +184,17 @@ jQuery(function($){
           typer = document.querySelector('#generatedSource'),
           fileName = "modernizr.custom."+((+new Date) + "").substr(8),
           iframe = document.querySelector('#saveasbro');
-        
+
       a.style.display = "none";
-        
+
       if(Modernizr.download && Modernizr.bloburls && Modernizr.blobbuilder) {
         var bb = new BlobBuilder();
         bb.append(typer.value);
-        
+
         a.download = fileName+".js";
         a.href = window.URL.createObjectURL(bb.getBlob("application/octet-stream"));
         a.style.display = "inline-block";
-        
+
         a.onclick = function(e) {
           // Need a small delay for the revokeObjectURL to work properly.
           setTimeout(function() {
@@ -148,10 +203,10 @@ jQuery(function($){
         };
       } else {
         iframe.contentWindow.postMessage(JSON.stringify({name:fileName, data: typer.value, formdata: Modernizr.formdata}),"http://saveasbro.com");
-        
+
         window.onmessage = function(e) {
           e = e || window.event;
-            
+
           var origin = e.origin || e.domain || e.uri;
           if(origin !== "http://saveasbro.com") return;
           a.href = "http://saveasbro.com/download/" + e.data;
@@ -186,7 +241,7 @@ jQuery(function($){
               dataType: 'text',
               cache   : false,
               type    : 'GET',
-              url     : '/i/js/feature-detects/'+(this.value).replace(/_/g,'-')+'.js',
+              url     : '/i/js/modernizr-git/feature-detects/'+(this.value).replace(/_/g,'-')+'.js',
               success : function ( d ) {
                 customFinish( d );
               }
@@ -210,7 +265,7 @@ jQuery(function($){
           externals[ extName ] = extStr;
 
           if ( both ) {
-            satisfyCustomDetects( modularBuild, externals.respond + externals.load );
+            satisfyCustomDetects( modularBuild, externals.printshiv + externals.load );
           }
           both = true;
         }
@@ -220,7 +275,7 @@ jQuery(function($){
             dataType: 'text',
             cache   : false,
             type    : 'GET',
-            url     : '/i/js/modernizr.load.1.0.2.js',
+            url     : '/i/js/modernizr.load.1.5.0.js',
             success : function ( loader ) {
               //buildFile( modularBuild, loader );
               bothDone( 'load', loader );
@@ -232,20 +287,20 @@ jQuery(function($){
           //buildFile( modularBuild );
         }
 
-        if ( $('#respond input:checked').length ) {
+        if ( $('#printshiv input:checked').length ) {
           $.ajax({
             dataType: 'text',
             cache   : false,
             type    : 'GET',
-            url     : '/i/js/respond.js',
-            success : function ( respond ) {
-              bothDone( 'respond', respond );
+            url     : '/i/js/html5shiv-printshiv-3.2.js',
+            success : function ( printshiv ) {
+              bothDone( 'printshiv', printshiv );
               //buildFile( modularBuild, respond );
             }
           });
         }
         else {
-          bothDone( 'respond', '' );
+          bothDone( 'printshiv', '' );
         }
       }
     });
@@ -261,7 +316,19 @@ jQuery(function($){
       // Unselect everything
       $('input[type="checkbox"]').removeAttr('checked');
       for(var i in selections) {
-        $('input[value="'+selections[i]+'"]').attr('checked', 'checked');
+        if ( selections[i].match( /cssclassprefix/ ) ) {
+          var cssclassprefix = selections[i].substr(15).replace(/\!/g,'-');
+          $('#cssprefix').val(cssclassprefix);
+        }
+        else {
+          $('input[value="'+selections[i]+'"]').attr('checked', 'checked');
+        }
+      }
+      if ( $('#cssclasses input:checkbox').is(':checked') ) {
+        $('#cssprefixcontainer').show();
+      }
+      else {
+        $('#cssprefixcontainer').hide();
       }
       $('#generate').click();
     }
@@ -281,7 +348,7 @@ $(function() {
   if (!isDetailsSupported) {
 
     document.documentElement.className += ' no-details';
-    
+
     // Loop through all `details` elements
     $('details').each(function() {
 

@@ -598,7 +598,7 @@ nav {
 .features {
   margin: 2em 0 0 10px;
 }
-.features legend {
+.features legend, .features summary {
   font-size: 24px;
   width: 50%;
 }
@@ -637,13 +637,11 @@ nav {
 }
 #group-extensibility summary, #community-feature-detects summary {
   min-height: 23px;
-}
-#group-extensibility legend, #community-feature-detects legend {
   top: 0;
-  text-indent: 21px;
+  text-indent: 9px;
 }
 #group-extensibility ul, #community-feature-detects ul {
-  margin: 0 -12px;
+  margin: 0px -12px 0;
 }
 
 #community-feature-detects ul {
@@ -1253,7 +1251,7 @@ details, summary { display: block; }
   #group-html5 {
     min-height: 28em;
   }
-  .features legend {
+  .features legend, .features summary {
     height: 40px;
     font-size: 32px;
     left: 0;

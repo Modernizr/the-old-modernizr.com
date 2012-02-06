@@ -45,30 +45,82 @@
       'testbundle'      : ['teststyles'],
       'respond'         : ['mq', 'teststyles'],
       'websockets'      : ['domprefixes'],
-      // community
-      'cookies'                        : ['addtest'],
-      'css_backgroundrepeat'           : ['addtest'],
-      'css_backgroundsizecover'        : ['addtest'],
-      'css_boxsizing'                  : ['addtest'],
-      'css_cubicbezierrange'           : ['addtest'],
-      'css_displaytable'               : ['addtest'],
-      'css_overflow_scrolling'         : ['addtest'],
-      'css_pointerevents'              : ['addtest'],
-      'css_userselect'                 : ['addtest'],
-      'custom_protocol_handler'        : ['addtest'],
-      'dom_createElement_attrs'        : ['addtest'],
-      'elem_details'                   : ['addtest'],
-      'elem_progress_meter'            : ['addtest'],
-      'emoji'                          : ['addtest', 'canvas'],
+
+      // community - Feb 6 2012
+      'a_download' : ['addtest'],
+      'audio_audiodata_api' : ['addtest'],
+      'audio_webaudio_api' : ['addtest'],
+      'battery_api' : ['addtest', 'domprefixes', 'testprop', 'testallprops', 'prefixed'],
+      'battery_level' : ['addtest', 'domprefixes', 'testprop', 'testallprops', 'prefixed'],
+      'canvas_todataurl_type' : ['addtest', 'canvas'],
+      'contenteditable' : ['addtest'],
+      'contextmenu' : ['addtest'],
+      'cookies' : ['addtest'],
+      'cors' : ['addtest'],
+      'css_backgroundcliptext' : ['addtest', 'prefixes'],
+      'css_backgroundrepeat' : ['addtest', 'teststyles'],
+      'css_backgroundsizecover' : ['addtest', 'teststyles'],
+      'css_boxsizing' : ['addtest', 'testallprops'],
+      'css_cubicbezierrange' : ['addtest', 'prefixes'],
+      'css_displayrunin' : ['addtest', 'teststyles'],
+      'css_displaytable' : ['addtest'],
+      'css_hyphens' : ['addtest', 'prefixes', 'testallprops'],
+      'css_mask' : ['addtest', 'testallprops'],
+      'css_mediaqueries' : ['addtest', 'teststyles', 'mq'],
+      'css_overflow_scrolling' : ['addtest', 'testallprops'],
+      'css_pointerevents' : ['addtest'],
+      'css_remunit' : ['addtest'],
+      'css_resize' : ['addtest', 'testallprops'],
+      'css_scrollbars' : ['addtest', 'prefixes', 'teststyles'],
+      'css_userselect' : ['addtest', 'testallprops'],
+      'custom_protocol_handler' : ['addtest'],
+      'dataview_api' : ['addtest'],
+      'dom_classlist' : ['addtest'],
+      'dom_createElement_attrs' : ['addtest'],
+      'dom_dataset' : ['addtest'],
+      'dom_microdata' : ['addtest'],
+      'elem_datalist' : ['addtest'],
+      'elem_details' : ['addtest'],
+      'elem_output' : ['addtest'],
+      'elem_progress_meter' : ['addtest'],
+      'elem_ruby' : ['addtest'],
+      'elem_time' : ['addtest'],
+      'elem_track' : ['addtest'],
+      'emoji' : ['addtest', 'canvas', 'canvastext'],
+      'es5_strictmode' : ['addtest'],
       'event_deviceorientation_motion' : ['addtest'],
-      'file_api'                       : ['addtest'],
-      'forms_placeholder'              : ['addtest'],
-      'hyphens'                        : ['addtest'],
-      'img_webp'                       : ['addtest'],
-      'url_data_uri'                   : ['addtest'],
-      'webgl_extensions'               : ['addtest'],
-      'window_framed'                  : ['addtest'],
-      'workers_sharedworkers'          : ['addtest']
+      'file_api' : ['addtest'],
+      'file_filesystem' : ['addtest', 'domprefixes'],
+      'forms_placeholder' : ['addtest', 'webforms', 'input', 'inputelem', 'smile', 'inputtypes'],
+      'forms_speechinput' : ['addtest'],
+      'forms_validation' : ['addtest'],
+      'fullscreen_api' : ['addtest', 'domprefixes'],
+      'gamepad' : ['addtest'],
+      'getusermedia' : ['addtest'],
+      'ie8compat' : ['addtest'],
+      'img_apng' : ['addtest', 'canvas'],
+      'img_webp' : ['addtest'],
+      'json' : ['addtest'],
+      'lists_reversed' : ['addtest'],
+      'mathml' : ['addtest'],
+      'network_connection' : ['addtest'],
+      'network_eventsource' : ['addtest'],
+      'notification' : ['addtest', 'domprefixes', 'testprop', 'testallprops', 'prefixed'],
+      'performance' : ['addtest', 'domprefixes', 'testprop', 'testallprops', 'prefixed'],
+      'quota_management_api' : ['addtest', 'domprefixes', 'testprop', 'testallprops', 'prefixed'],
+      'requestanimationframe' : ['addtest', 'domprefixes', 'testprop', 'testallprops', 'prefixed'],
+      'script_async' : ['addtest'],
+      'script_defer' : ['addtest'],
+      'unicode' : ['addtest', 'teststyles'],
+      'url_data_uri' : ['addtest'],
+      'userdata' : ['addtest'],
+      'web_intents' : ['addtest'],
+      'webgl_extensions' : ['addtest', 'webgl'],
+      'websockets_binary' : ['addtest'],
+      'window_framed' : ['addtest'],
+      'workers_blobworkers' : ['addtest'],
+      'workers_dataworkers' : ['addtest'],
+      'workers_sharedworkers' : ['addtest']
     },
     /**
      * Function ize
@@ -90,7 +142,7 @@
           testStack = [],
           sid = '_' + ( + new Date()),
           multilinespaceExp = new RegExp(/\s{4}\n/g);
-      
+
       this.wantedHash = (function(){
         var hash = {}, k;
         for(k = 0; k < tests.length; k++) {
@@ -142,7 +194,7 @@
 
       // actually take out the code, etc
       parsed = this._pullOutTests(js_nostr, tests);
-      
+
       for (j = 0; j < strings.length; j++) {
         // put the strings back where they belong!
         parsed = parsed.replace(RegExp("STR__"+j+"__", 'g'), function() {
@@ -171,7 +223,7 @@
 
       // return the altered version
       return parsed;
-    
+
     },
 
     _handleSpecialCases: function(source, wanted) {
@@ -182,9 +234,9 @@
 
       // Functions to run if they are NOT wanted
       specialCases = {
-        // This function removes the IE print protector
-        iepp : function(source) {
-          return normalRemoval( source, 'iepp' );
+        // This function removes the html5shiv
+        shiv : function(source) {
+          return normalRemoval( source, 'shiv' );
         },
         mq : function(source) {
           return normalRemoval( source, 'mq' );
@@ -252,7 +304,7 @@
       },
       // Speedier lookups
       wantedHash = this.wantedHash;
-     
+
       for (var name in specialCases) {
         if (specialCases.hasOwnProperty(name)) {
           // If we DONT want any of the special cases, run them
@@ -288,7 +340,7 @@
 
           // Save the name
           name = source.substr(i+6, j).toLowerCase();
-          
+
           // update counter
           i = i + j;
 
@@ -299,7 +351,7 @@
 
           // Skip past the function def
           i += 8;
-          
+
           // Look for the opening '{' character
           while (source.charAt(i) !== '{') {
             i++;
@@ -338,7 +390,7 @@
 
           // Add the semicolon
           end = i+1;
-          
+
           // Add this to the tests hash
           tests[name] = {
             "start": start,
@@ -346,7 +398,7 @@
           };
         }
       }
-      
+
       // Turn our wanted array into a hash, for speeedz
       var wantedHash = this.wantedHash; 
 
@@ -383,28 +435,28 @@
           condComp: false 
       };
       for (var i = 0, l = str.length; i < l; i++) {
- 
+
         if (mode.regex) {
           if (str[i] === '/' && str[i-1] !== '\\') {
             mode.regex = false;
           }
           continue;
         }
- 
+
         if (mode.singleQuote) {
           if (str[i] === "'" && str[i-1] !== '\\') {
              mode.singleQuote = false;
           }
           continue;
         }
- 
+
         if (mode.doubleQuote) {
           if (str[i] === '"' && str[i-1] !== '\\') {
             mode.doubleQuote = false;
           }
           continue;
         }
- 
+
         if (mode.blockComment) {
           if (str[i] === '*' && str[i+1] === '/') {
             str[i+1] = '';
@@ -413,7 +465,7 @@
           str[i] = '';
           continue;
         }
- 
+
         if (mode.lineComment) {
           if (str[i+1] === '\n' || str[i+1] === '\r') {
             mode.lineComment = false;
@@ -421,19 +473,19 @@
           str[i] = '';
           continue;
         }
- 
+
         if (mode.condComp) {
           if (str[i-2] === '@' && str[i-1] === '*' && str[i] === '/') {
             mode.condComp = false;
           }
           continue;
         }
- 
+
         mode.doubleQuote = str[i] === '"';
         mode.singleQuote = str[i] === "'";
- 
+
         if (str[i] === '/') {
- 
+
           if (str[i+1] === '*' && str[i+2] === '@') {
             mode.condComp = true;
             continue;
@@ -449,14 +501,14 @@
             continue;
           }
           mode.regex = true;
- 
+
         }
- 
+
       }
       return str.join('').slice(2, -2);
     },
-    
-    
+
+
     // IndexOf Function Stolen from UnderscoreJS, but pretty common, soo....
     _indexOf: function(array, item) {
       var ArrayProto = Array.prototype;
@@ -465,7 +517,7 @@
       return -1;
     }
   };
-  
+
   // Leak Me
   global.Modulizr = Modulizr;
 })(this);
