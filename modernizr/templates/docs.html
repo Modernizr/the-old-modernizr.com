@@ -32,16 +32,22 @@
                      <li><a href="#features-misc">Miscellaneous</a></li>
                   </ol>
                </li>
+               <li><a href="#s25">Modernizr API methods</a>
+                  <ol>
+                     <li><a href="#prefixed">prefixed() for CSS features</a></li>
+                      <li><a href="#prefixeddom">prefixed() for DOM features</a></li>                     
+                     <li><a href="#mq">mq() for media query testing</a></li>
+                  </ol>
+               </li>
+
                <li><a href="#s3">Extensibility</a>
                   <ol>
                      <li><a href="#addtest">addTest() Plugin API</a></li>
-                     <li><a href="#prefixed">Modernizr.prefixed()</a></li>
                      <li><a href="#teststyles">testStyles()</a></li>
                      <li><a href="#testprop">testProp()</a></li>
                      <li><a href="#testallprops">testAllProps()</a></li>
                      <li><a href="#hasevent">hasEvent()</a></li>
-                     <li><a href="#mq">mq() media query testing</a></li>
-                     <li><a href="#prefixes">_prefixes &amp; _domPrefixes</a></li>
+                     <li><a href="#prefixes">_prefixes</a></li>
                   </ol>
                </li>
             </ol>
@@ -153,18 +159,18 @@ Modernizr.load([
             <p>One cool feature of <code>Modernizr.load</code> is it’s complete decoupling of load and execution of scripts. That might not mean much to you, but users of the HTML5 Boilerplate might be familiar with the Google CDN copy of jQuery fallback. It looks something like this:</p>
 
 <pre>
-    &lt;script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.js">&lt;/script>
-    &lt;script>window.jQuery || document.write('&lt;script src="js/libs/jquery-1.6.1.min.js">\x3C/script>')&lt;/script>
+    &lt;script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js">&lt;/script>
+    &lt;script>window.jQuery || document.write('&lt;script src="js/libs/jquery-1.7.1.min.js">\x3C/script>')&lt;/script>
 </pre>
             <p>It works by trying to load in the script, and then immediately after, testing to see if the jQuery object is available. If It’s not, then they load a local copy of jQuery as a fallback. This is generally not that easy in script-loaders, but <code>Modernizr.load</code> has got you covered. You can just use the same logic, and <code>Modernizr.load</code> will handle the execution order for you:</p>
 
 <pre>
 Modernizr.load([
   {
-    load: '//ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.js',
+    load: '//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js',
     complete: function () {
       if ( !window.jQuery ) {
-            Modernizr.load('js/libs/jquery-1.6.1.min.js');
+            Modernizr.load('js/libs/jquery-1.7.1.min.js');
       }
     }
   },
@@ -510,14 +516,15 @@ if (Modernizr.webgl){
             <p>In addition to the tests in Modernizr "core", many other common tests are available as Modernizr plugins in the <a href="https://github.com/Modernizr/Modernizr/tree/master/feature-detects"><code>/feature-detects/</code> folder</a> of the github repo. If you did not find a test you're looking for on this page here, try there or the <a href="https://github.com/Modernizr/Modernizr/issues?labels=port+to+plugin&sort=created&direction=desc&state=open&page=1">issue tracker</a>.
 
 
-            <h3 id="s25">Modernizr Methods</h3>
+            <h2 id="s25">Modernizr Methods</h2>
 
             <p>There is a pair of methods available, giving you some added functionality you’ll probably enjoy if you do a lot of CSS3 and responsive design.</p>
 
             <section class="test" id="prefixed">
                <h3>Modernizr.prefixed()</h3>
-               <dl>
-                  <dt>JavaScript method:</dt>
+
+               <dl id="prefixedcss">
+                  <dt><h4>Detecting CSS feature prefixes</h4></dt>
                   <dd><code>Modernizr.<strong>prefixed(str)</strong></code></dd>
                </dl>
 
@@ -544,6 +551,40 @@ transEndEventName = transEndEventNames[ Modernizr.prefixed('transition') ];
 
 <span class="comment">// ... bind to the transEndEventName event... </span>
 </pre>
+
+
+ <dl id="prefixeddom">
+                  <dt><h4>Detecting DOM feature prefixes</h4></dt>
+                  <dd><code>Modernizr.<strong>prefixed(str, obj<i>[, scope]</i>)</strong></code></dd>
+               </dl>
+
+               <p>You can use <code>Modernizr.prefixed</code> to find prefixed DOM properties and methods easily. For example:
+
+               <pre>Modernizr.prefixed('requestAnimationFrame', window) <span class="comment">// fn</span></pre>
+
+               <p>By passing a second argument, you declare you are looking for a prefixed method or property on that object. If it finds something, but isn't a function, it'll return the object, boolean, number or value that it finds. For example, the quota management API: <code>Modernizr.prefixed('StorageInfo', window) <span class="comment">// object</span></code>.
+
+               <p>If it finds a function, it'll return a bound function. By default the function will be <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function/bind">bound</a> to the second argument. But you can change that by declaring a third argument that it should be bound to.</p>
+
+<pre>
+<span class="comment">// basic use</span>
+Modernizr.prefixed('requestAnimationFrame', window) <span class="comment">// fn</span>
+  
+<span class="comment">// creating a rAF polyfill</span>
+window.rAF = Modernizr.prefixed('requestAnimationFrame', window) || function(){ <span class="comment">... </span>
+
+<span class="comment">// passing a scope</span>
+var ms = Modernizr.prefixed("matchesSelector", HTMLElement.prototype, document.body)
+ms('body') <span class="comment">// true </span>
+</pre>
+
+               <p>Lastly, if you want to serach for a prefixed DOM feature and only want the name of it back, pass <code>false</code> as the 3rd argument:
+
+<pre>
+Modernizr.prefixed('requestAnimationFrame', window, false) <span class="comment">// 'webkitRequestAnimationFrame'</span>
+</pre>
+
+<p>If you want more, <a href="https://github.com/Modernizr/Modernizr/issues/478">read our github ticket for this feature</a>. Also, we included a <code>Function.prototype.bind</code> polyfill in Modernizr 2.5 by default. It supports this feature, but you're welcome to use it in your app code, as well.</p>
 
             </section>
 
@@ -588,41 +629,18 @@ transEndEventName = transEndEventNames[ Modernizr.prefixed('transition') ];
                   <dd><code>Modernizr.<strong>addTest({str: fn, str2: fn2})</strong></code></dd>
                   <dd><code>Modernizr.<strong>addTest({str: bool, str2: fn})</strong></code></dd>
                </dl>
-               <p>You may want to test additional features that Modernizr currently does not support. For that, you can use the addTest function. For example, some users have requested tests for IE's float double margin bug, and support for <code>position:fixed</code>. Using addTest, you can add these yourself and get the exact same API as the fully supported tests.</p>
+               <p>You may want to test additional features that Modernizr currently does not support. For that, you can use the addTest function. For example, some users have requested tests for IE's float double margin bug, and support for <code>position:fixed</code>. All the current tests that we've codified are <a href="https://github.com/Modernizr/Modernizr/tree/master/feature-detects">available in the Github</a>. Using addTest, you can add these yourself and get the exact same API as the fully supported tests.</p>
                <p>New signatures for this method of accepting a boolean or an object were added for Modernizr 2</p>
 
                <h4>Sample Usage:</h4>
-               <pre><span class="comment">// Test for position:fixed support</span>
-Modernizr.addTest('positionfixed', function () {
-    var test  = document.createElement('div'),
-      control = test.cloneNode(false),
-         fake = false,
-         root = document.body || (function () {
-            fake = true;
-            return document.documentElement.appendChild(document.createElement('body'));
-      }());
-
-   var oldCssText = root.style.cssText;
-   root.style.cssText = 'padding:0;margin:0';
-   test.style.cssText = 'position:fixed;top:42px';
-   root.appendChild(test);
-   root.appendChild(control);
-   
-   var ret = test.offsetTop !== control.offsetTop;
-   
-   root.removeChild(test);
-   root.removeChild(control);
-   root.style.cssText = oldCssText;
-   
-   if (fake) {
-      document.documentElement.removeChild(root);
-   }
-   
-   return ret;
+               <pre><span class="comment">// Test for &lt;track> element  support</span>
+Modernizr.addTest('track', function(){
+  var video = document.createElement('video');
+  return typeof video.addTextTrack === 'function'
 });
 </pre>
 
-               <p>Assuming the above test passes, there will now be a <code>.positionfixed</code> class on the HTML element and <code>Modernizr.positionfixed</code> will be true. IE6, of course, will now have a <code>.no-positionfixed</code> class.</p>
+               <p>Assuming the above test passes, there will now be a <code>.track</code> class on the HTML element and <code>Modernizr.track</code> will be true. IE6, of course, will now have a <code>.no-positionfixed</code> class.</p>
             </section>
 
 

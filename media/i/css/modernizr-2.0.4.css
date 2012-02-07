@@ -168,7 +168,7 @@ body, a, .subtitle, h2, .intro strong, .title, .wt, .wt:visited, .quote q, .btn 
 /* Redundancy much? Unfortunately, yes. Such is the price until a better, more reliable
    cross-platform-and-loading solution presents itself. */
 .js body, .js a, .js .current, .js .title, .js .subtitle, .js .wt, .js .quote q, .js .quote .cite-source, .js #the-end,
-.js #toc, .js #toc a, .js h2, .js .intro strong, .js .btn, .js .btn span, .js #used-by, .js #page-footer, pre .comment,
+.js #toc, .js #toc a, .js h2, .js .intro strong, .js .btn, .js .btn span, .js #used-by, .js #page-footer, .comment,
 .js #team .twitter, .js #nav a.current, .contributors-area small, .features abbr.help {
   color: transparent;
   text-shadow: rgba(0,0,0, 0) 0 1px 0;
@@ -202,7 +202,7 @@ h2, .intro strong, .title,
 /* Mid gray */
 /*.wf-active pre .comment, .tk-loaded pre .comment { color: #d9d9d9; }*/
 /* Dark gray */
-#page-footer, #team .twitter, #the-end,  .wf-active pre .comment, .tk-loaded pre .comment,
+#page-footer, #team .twitter, #the-end,  .wf-active .comment, .tk-loaded .comment,
 .wf-active #the-end, .wf-active #page-footer, .wf-active #team .twitter,
 .tk-loaded #the-end, .tk-loaded #page-footer, .tk-loaded #team .twitter { color: #999; }
 
@@ -759,7 +759,7 @@ pre {
   padding: 1em;
   width: auto;
 }
-pre .comment {
+.comment {
   font-style: oblique;
 }
 
@@ -1168,7 +1168,7 @@ details, summary { display: block; }
     margin: 0;
     padding: 0 10px 0 20px;
     position: absolute;
-    top: 1em;
+    top: -1em;
     width: 260px;
     z-index: 50;
   }
@@ -1340,7 +1340,7 @@ details, summary { display: block; }
     -o-transition: background-color .3s ease-out;
     transition: background-color .3s ease-out;
   }
-  .features label:hover {
+  .features label:hover, .features #cssprefixcontainer:hover {
     background: rgba(20,20,20, .42);
     -webkit-transition-duration: .15s;
     -moz-transition-duration: .15s;
@@ -1371,8 +1371,15 @@ details, summary { display: block; }
   .textfield:hover { background: #ccc; }
   .textfield:focus { background: #fff; }
   .features abbr.help {
-    font-weight: bold;
+    border-bottom: 1px dotted  #3589db;
+    font-weight: normal; 
+    color:inherit;
     letter-spacing: .2ex;
+        margin-right: 10px;
+  }
+  #cssprefix { 
+    width: 64px;
+
   }
 
   /* Places */
@@ -1610,7 +1617,7 @@ details, summary { display: block; }
 
     /* Documentation */
     #docs .banner {
-      height: 40em;
+      height: 42em;
     }
     #docs #primary {
       margin-left: 330px;

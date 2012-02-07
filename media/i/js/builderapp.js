@@ -61,10 +61,10 @@ jQuery(function($){
   // Special hide/show stuff for custom css classes
   $('#cssclasses input:checkbox').change(function(){
     if ( $(this).is(':checked') ) {
-      $('#cssprefixcontainer').show();
+      $('#cssprefixcontainer label:last').show();
     }
     else {
-      $('#cssprefixcontainer').hide();
+      $('#cssprefixcontainer label:last').hide();
     }
   });
 

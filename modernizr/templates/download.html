@@ -81,8 +81,11 @@
                        <li id="printshiv"><label><input type="checkbox" value="printshiv" /> html5shiv v3.2 w/ printshiv</label></li>
                         <li id="load"><label><input type="checkbox" checked value="load" /> Modernizr.load <br>( <a href="http://yepnopejs.com/" target="_new">yepnope.js</a> )</label></li>
                         <li id="mq"><label><input type="checkbox" value="mq" /> Media Queries</label></li>
-                        <li id="cssclasses"><label><input type="checkbox" checked value="cssclasses" /> Add CSS Classes</label>
-                        <div id="cssprefixcontainer">Custom Prefix <abbr class="help" title="Add a prefix if Modernizr’s default class names conflict with your CSS">(?)</abbr><input type="text" id="cssprefix" class="textfield" /></div>
+                        <li id="cssclasses">
+                          <div id="cssprefixcontainer">
+                            <label><input type="checkbox" checked value="cssclasses" /> Add CSS Classes</label>
+                            <label><abbr class="help" title="Add a prefix if Modernizr’s default class names conflict with your CSS. A prefix of `mod` means classes like `.mod-video`">className prefix:</abbr><input type="text" id="cssprefix" class="textfield" /></label>
+                          </div>
                         </li>
                      </ul>
                   </fieldset>
@@ -104,6 +107,8 @@
                   <fieldset class="features" id="community-feature-detects">
                      <details>
                         <summary>Community add-ons</summary>
+                        <div>
+                        <p>For more info, docs and gotchas on these, <a href="https://github.com/Modernizr/Modernizr/tree/master/feature-detects">browse their source on github</a>.</p>
                         <ul>
                           <li id="a_download"><label><input type="checkbox" value="a_download"> a-download</label></li>
                           <li id="audio_audiodata_api"><label><input type="checkbox" value="audio_audiodata_api"> audio-audiodata-api</label></li>
@@ -207,6 +212,7 @@
                            <li id="workers_sharedworkers"><label><input type="checkbox" value="workers_sharedworkers" /> sharedworkers</label></li>
                           --> 
                         </ul>
+                        </div>
                      </details>
                   </fieldset>
 
