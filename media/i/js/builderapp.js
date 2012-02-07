@@ -1,5 +1,5 @@
 jQuery(function($){
-  var _currentBuildVersion = '2.5.0';
+  var _currentBuildVersion = '2.5.1';
 
   // var run = false;
   // $(':checkbox').attr('checked', true);
