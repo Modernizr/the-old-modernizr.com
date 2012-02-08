@@ -27,9 +27,11 @@ window.Modernizr = (function( window, document, undefined ) {
     var version = '2.5.2',
 
     Modernizr = {},
-    
+
+    /*>>cssclasses*/
     // option for enabling the HTML classes to be added
     enableClasses = true,
+    /*>>cssclasses*/
 
     docElement = document.documentElement,
 
@@ -43,15 +45,21 @@ window.Modernizr = (function( window, document, undefined ) {
     /**
      * Create the input element for various Web Forms feature tests.
      */
-    inputElem = document.createElement('input'),
+    inputElem /*>>inputelem*/ = document.createElement('input') /*>>inputelem*/ ,
 
+    /*>>smile*/
     smile = ':)',
+    /*>>smile*/
 
     toString = {}.toString,
 
+    // TODO :: make the prefixes more granular
+    /*>>prefixes*/
     // List of property values to set for css tests. See ticket #21
     prefixes = ' -webkit- -moz- -o- -ms- '.split(' '),
+    /*>>prefixes*/
 
+    /*>>domprefixes*/
     // Following spec is to expose vendor-specific style properties as:
     //   elem.style.WebkitBorderRadius
     // and the following would be incorrect:
@@ -67,8 +75,11 @@ window.Modernizr = (function( window, document, undefined ) {
     cssomPrefixes = omPrefixes.split(' '),
 
     domPrefixes = omPrefixes.toLowerCase().split(' '),
+    /*>>domprefixes*/
 
+    /*>>ns*/
     ns = {'svg': 'http://www.w3.org/2000/svg'},
+    /*>>ns*/
 
     tests = {},
     inputs = {},
@@ -81,6 +92,7 @@ window.Modernizr = (function( window, document, undefined ) {
     featureName, // used in testing loop
 
 
+    /*>>teststyles*/
     // Inject element with style element and some CSS rules
     injectElementWithStyles = function( rule, callback, nodes, testnames ) {
 
@@ -123,8 +135,9 @@ window.Modernizr = (function( window, document, undefined ) {
       return !!ret;
 
     },
+    /*>>teststyles*/
 
-
+    /*>>mq*/
     // adapted from matchMedia polyfill
     // by Scott Jehl and Paul Irish
     // gist.github.com/786768
@@ -146,8 +159,10 @@ window.Modernizr = (function( window, document, undefined ) {
       return bool;
 
      },
+     /*>>mq*/
 
 
+    /*>>hasevent*/
     /**
       * isEventSupported determines if a given element supports the given event
       * function from yura.thinkweb2.com/isEventSupported/
@@ -189,10 +204,14 @@ window.Modernizr = (function( window, document, undefined ) {
         return isSupported;
       }
       return isEventSupported;
-    })();
+    })(),
+    /*>>hasevent*/
+
+    // TODO :: Add flag for hasownprop ? didn't last time
 
     // hasOwnProperty shim by kangax needed for Safari 2.0 support
-    var _hasOwnProperty = ({}).hasOwnProperty, hasOwnProperty;
+    _hasOwnProperty = ({}).hasOwnProperty, hasOwnProperty;
+
     if ( !is(_hasOwnProperty, 'undefined') && !is(_hasOwnProperty.call, 'undefined') ) {
       hasOwnProperty = function (object, property) {
         return _hasOwnProperty.call(object, property);
@@ -204,25 +223,25 @@ window.Modernizr = (function( window, document, undefined ) {
       };
     }
 
+    // TODO :: Add function proto bind
     // Taken from ES5-shim https://github.com/kriskowal/es5-shim/blob/master/es5-shim.js
     // ES-5 15.3.4.5
     // http://es5.github.com/#x15.3.4.5
 
     if (!Function.prototype.bind) {
-      
       Function.prototype.bind = function bind(that) {
-        
+
         var target = this;
-        
+
         if (typeof target != "function") {
             throw new TypeError();
         }
-        
+
         var args = slice.call(arguments, 1),
             bound = function () {
 
             if (this instanceof bound) {
-              
+
               var F = function(){};
               F.prototype = target.prototype;
               var self = new F;
@@ -237,7 +256,7 @@ window.Modernizr = (function( window, document, undefined ) {
               return self;
 
             } else {
-              
+
               return target.apply(
                   that,
                   args.concat(slice.call(arguments))
@@ -246,7 +265,7 @@ window.Modernizr = (function( window, document, undefined ) {
             }
 
         };
-        
+
         return bound;
       };
     }
@@ -279,6 +298,7 @@ window.Modernizr = (function( window, document, undefined ) {
         return !!~('' + str).indexOf(substr);
     }
 
+    /*>>testprop*/
     /**
      * testProps is a generic CSS / DOM property test; if a browser supports
      *   a certain property, it won't return undefined for it.
@@ -292,7 +312,9 @@ window.Modernizr = (function( window, document, undefined ) {
         }
         return false;
     }
+    /*>>testprop*/
 
+    // TODO :: add testDOMProps
     /**
      * testDOMProps is a generic DOM property test; if a browser supports
      *   a certain property, it won't return undefined for it.
@@ -310,7 +332,7 @@ window.Modernizr = (function( window, document, undefined ) {
                   // default to autobind unless override
                   return item.bind(elem || obj);
                 }
-                
+
                 // return the unbound function or obj or value
                 return item;
             }
@@ -318,6 +340,7 @@ window.Modernizr = (function( window, document, undefined ) {
         return false;
     }
 
+    /*>>testallprops*/
     /**
      * testPropsAll tests a list of DOM properties we want to check against.
      *   We specify literally ALL possible (known and/or likely) properties on
@@ -339,12 +362,13 @@ window.Modernizr = (function( window, document, undefined ) {
           return testDOMProps(props, prefixed, elem);
         }
     }
+    /*>>testallprops*/
 
+    /*>>testBundle*/
     /**
      * testBundle tests a list of CSS features that require element and style injection.
      *   By bundling them together we can reduce the need to touch the DOM multiple times.
      */
-    /*>>testBundle*/
     var testBundle = (function( styles, tests ) {
         var style = styles.join(''),
             len = tests.length;
@@ -361,7 +385,7 @@ window.Modernizr = (function( window, document, undefined ) {
                 hash[children[len].id] = children[len];
             }
 
-             /*>>touch*/          Modernizr['touch'] = ('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch || (hash['touch'] && hash['touch'].offsetTop) === 9; /*>>touch*/
+            /*>>touch*/           Modernizr['touch'] = ('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch || (hash['touch'] && hash['touch'].offsetTop) === 9; /*>>touch*/
             /*>>csstransforms3d*/ Modernizr['csstransforms3d'] = (hash['csstransforms3d'] && hash['csstransforms3d'].offsetLeft) === 9 && hash['csstransforms3d'].offsetHeight === 3;          /*>>csstransforms3d*/
             /*>>generatedcontent*/Modernizr['generatedcontent'] = (hash['generatedcontent'] && hash['generatedcontent'].offsetHeight) >= 1;       /*>>generatedcontent*/
             /*>>fontface*/        Modernizr['fontface'] = /src/i.test(cssText) &&
@@ -371,13 +395,13 @@ window.Modernizr = (function( window, document, undefined ) {
     })([
         // Pass in styles to be injected into document
         /*>>fontface*/        '@font-face {font-family:"font";src:url("https://")}'         /*>>fontface*/
-        
+
         /*>>touch*/           ,['@media (',prefixes.join('touch-enabled),('),mod,')',
                                 '{#touch{top:9px;position:absolute}}'].join('')           /*>>touch*/
-                                
+
         /*>>csstransforms3d*/ ,['@media (',prefixes.join('transform-3d),('),mod,')',
                                 '{#csstransforms3d{left:9px;position:absolute;height:3px;}}'].join('')/*>>csstransforms3d*/
-                                
+
         /*>>generatedcontent*/,['#generatedcontent:after{content:"',smile,'";visibility:hidden}'].join('')  /*>>generatedcontent*/
     ],
       [
@@ -385,7 +409,7 @@ window.Modernizr = (function( window, document, undefined ) {
         /*>>touch*/           ,'touch'            /*>>touch*/
         /*>>csstransforms3d*/ ,'csstransforms3d'  /*>>csstransforms3d*/
         /*>>generatedcontent*/,'generatedcontent' /*>>generatedcontent*/
-        
+
     ]);/*>>testBundle*/
 
 
@@ -423,7 +447,7 @@ window.Modernizr = (function( window, document, undefined ) {
 
     // this test initiates a new webgl context. 
     // webk.it/70117 is tracking a legit feature detect proposal
-    
+
     tests['webgl'] = function() {
         try {
             var canvas = document.createElement('canvas'),
@@ -709,7 +733,7 @@ window.Modernizr = (function( window, document, undefined ) {
     tests['video'] = function() {
         var elem = document.createElement('video'),
             bool = false;
-            
+
         // IE9 Running on Windows Server SKU can cause an exception to be thrown, bug #224
         try {
             if ( bool = !!elem.canPlayType ) {
@@ -720,9 +744,9 @@ window.Modernizr = (function( window, document, undefined ) {
 
                 bool.webm = elem.canPlayType('video/webm; codecs="vp8, vorbis"').replace(/^no$/,'');
             }
-            
+
         } catch(e) { }
-        
+
         return bool;
     };
 
@@ -744,7 +768,7 @@ window.Modernizr = (function( window, document, undefined ) {
                               elem.canPlayType('audio/aac;'))             .replace(/^no$/,'');
             }
         } catch(e) { }
-        
+
         return bool;
     };
 
@@ -824,17 +848,19 @@ window.Modernizr = (function( window, document, undefined ) {
         return !!document.createElementNS && /SVGClipPath/.test(toString.call(document.createElementNS(ns.svg, 'clipPath')));
     };
 
+    /*>>webforms*/
     // input features and input types go directly onto the ret object, bypassing the tests loop.
     // Hold this guy to execute in a moment.
     function webforms() {
+        /*>>input*/
         // Run through HTML5's new input attributes to see if the UA understands any.
         // We're using f which is the <input> element created early on
         // Mike Taylr has created a comprehensive resource for testing these attributes
         //   when applied to all input types:
         //   miketaylr.com/code/input-type-attr.html
         // spec: www.whatwg.org/specs/web-apps/current-work/multipage/the-input-element.html#input-type-attr-summary
-        
-        // Only input placeholder is tested while textarea's placeholder is not. 
+
+        // Only input placeholder is tested while textarea's placeholder is not.
         // Currently Safari 4 and Opera 11 have support only for the input placeholder
         // Both tests are available in feature-detects/forms-placeholder.js
         Modernizr['input'] = (function( props ) {
@@ -848,7 +874,9 @@ window.Modernizr = (function( window, document, undefined ) {
             }
             return attrs;
         })('autocomplete autofocus list placeholder max min multiple pattern required step'.split(' '));
+        /*>>input*/
 
+        /*>>inputtypes*/
         // Run through HTML5's new input types to see if the UA understands any.
         //   This is put behind the tests runloop because it doesn't return a
         //   true/false like all the other tests; instead, it returns an object
@@ -913,7 +941,9 @@ window.Modernizr = (function( window, document, undefined ) {
             }
             return inputs;
         })('search tel url email datetime date month week time datetime-local number range color'.split(' '));
+        /*>>inputtypes*/
     }
+    /*>>webforms*/
 
 
     // End of test definitions
@@ -935,10 +965,13 @@ window.Modernizr = (function( window, document, undefined ) {
         }
     }
 
+    /*>>webforms*/
     // input tests need to run.
     Modernizr.input || webforms();
+    /*>>webforms*/
 
 
+    /*>>addtest*/
     /**
      * addTest allows the user to define their own feature tests
      * the result will be added onto the Modernizr object,
@@ -976,130 +1009,228 @@ window.Modernizr = (function( window, document, undefined ) {
 
        return Modernizr; // allow chaining.
      };
+     /*>>addtest*/
 
 
     // Reset modElem.cssText to nothing to reduce memory footprint.
     setCss('');
     modElem = inputElem = null;
 
-    //>>BEGIN IEPP
-    // Enable HTML 5 elements for styling in IE & add HTML5 css
+    /*>>shiv*/
+    /*! HTML5 Shiv v3.3 | @afarkas @jdalton @jon_neal @rem | MIT/GPL2 Licensed */
+    (function(window, document) {
 
-    /*! HTML5 Shiv v3.2 | @jon_neal @afarkas @rem | MIT/GPL2 Licensed */
-    (function (win, doc) {
-        // feature detection: whether the browser supports default html5 styles
-        var supportsHtml5Styles = (function(a, docEl, compStyle) {
-            var fake, supported, root = doc.body || (fake = docEl.insertBefore(doc.createElement('body'), docEl.firstChild));
+      /** Preset options */
+      var options = window.html5 || {};
 
-            root.insertBefore(a, root.firstChild);
+      /** Used to skip problem elements */
+      var reSkip = /^<|^(?:button|iframe|input|script|textarea)$/i;
 
-            a.hidden = true;
+      /** Detect whether the browser supports default html5 styles */
+      var supportsHtml5Styles;
 
-            supported = (compStyle ? compStyle(a, null) : a.currentStyle).display === 'none';
+      /** Detect whether the browser supports unknown elements */
+      var supportsUnknownElements;
 
-            root.removeChild(a);
+      (function() {
+        var fake,
+            a = document.createElement('a'),
+            compStyle = window.getComputedStyle,
+            docEl = document.documentElement,
+            body = document.body || (fake = docEl.insertBefore(document.createElement('body'), docEl.firstChild));
 
-            fake && docEl.removeChild(fake);
+        body.insertBefore(a, body.firstChild);
+        a.hidden = true;
+        a.innerHTML = '<xyz></xyz>';
 
-            return supported;
-        })(doc.createElement('a'), doc.documentElement, win.getComputedStyle);
+        supportsHtml5Styles = (a.currentStyle || compStyle(a, null)).display == 'none';
+        supportsUnknownElements = a.childNodes.length == 1 || (function() {
+          // assign a false positive if unable to shiv
+          try {
+            (document.createElement)('a');
+          } catch(e) {
+            return true;
+          }
+          var frag = document.createDocumentFragment();
+          return (
+            typeof frag.cloneNode == 'undefined' ||
+            typeof frag.createDocumentFragment == 'undefined' ||
+            typeof frag.createElement == 'undefined'
+          );
+        }());
 
-        // feature detection: whether the browser supports unknown elements
-        var supportsUnknownElements = (function (a) {
-            a.innerHTML = '<x-element></x-element>';
+        body.removeChild(a);
+        fake && docEl.removeChild(fake);
+      }());
 
-            return a.childNodes.length === 1;
-        })(doc.createElement('a'));
+      /*--------------------------------------------------------------------------*/
 
-        var call = Date.call;
+      /**
+       * Creates a style sheet with the given CSS text and adds it to the document.
+       * @private
+       * @param {Document} ownerDocument The document.
+       * @param {String} cssText The CSS text.
+       * @returns {StyleSheet} The style element.
+       */
+      function addStyleSheet(ownerDocument, cssText) {
+        var p = ownerDocument.createElement('p'),
+            parent = ownerDocument.getElementsByTagName('head')[0] || ownerDocument.documentElement;
 
-        var defaultHtml5Elements = 'abbr article aside audio bdi canvas data datalist details figcaption figure footer header hgroup mark meter nav output progress section summary time video';
+        p.innerHTML = 'x<style>' + cssText + '</style>';
+        return parent.insertBefore(p.lastChild, parent.firstChild);
+      }
 
-        var html5 = win.html5 || {};
+      /**
+       * Returns the value of `html5.elements` as an array.
+       * @private
+       * @returns {Array} An array of shived element node names.
+       */
+      function getElements() {
+        var elements = html5.elements;
+        return typeof elements == 'string' ? elements.split(' ') : elements;
+      }
 
-        // html5 global so that more elements can be shived and also so that existing shiving can be detected on iframes
-        // more elements can be added and shived: html5.elements.push('element-name'); html5.shivDocument(document);
-        // defaults can be changed before the script is included: html5 = { shivMethods: false, shivCSS: false, elements: 'foo bar' };
-        html5 = {
-            // a list of html5 elements
-            'elements': (typeof html5.elements === 'object') ? html5.elements : (html5.elements || defaultHtml5Elements).split(' '),
-            'shivCSS': !(html5.shivCSS === false),
-            'shivMethods': !(html5.shivMethods === false),
-            'shivDocument': function (scopeDocument) {
-                if (!supportsUnknownElements && !scopeDocument.documentShived) {
-                    var documentCreateElement = scopeDocument.createElement, documentCreateDocumentFragment = scopeDocument.createDocumentFragment;
+      /**
+       * Shivs the `createElement` and `createDocumentFragment` methods of the document.
+       * @private
+       * @param {Document|DocumentFragment} ownerDocument The document.
+       */
+      function shivMethods(ownerDocument) {
+        var nodeName,
+            cache = {},
+            docCreateElement = ownerDocument.createElement,
+            docCreateFragment = ownerDocument.createDocumentFragment,
+            elements = getElements(),
+            frag = docCreateFragment(),
+            index = elements.length;
 
-                    // shiv the document
-                    for (var i = 0, elements = html5.elements, l = elements.length; i < l; ++i) {
-                        call.call(documentCreateElement, scopeDocument, elements[i]);
-                    }
+        function createDocumentFragment() {
+          var node = frag.cloneNode(false);
+          return html5.shivMethods ? (shivMethods(node), node) : node;
+        }
 
-                    // shiv the document create element method
-                    scopeDocument.createElement = function (nodeName) {
-                        var element = call.call(documentCreateElement, scopeDocument, nodeName);
+        function createElement(nodeName) {
+          // avoid shiving elements like button, iframe, input, and textarea
+          // because IE < 9 cannot set the `name` or `type` attributes of an
+          // element once it's inserted into a document
+          var node = (cache[nodeName] || (cache[nodeName] = docCreateElement(nodeName))).cloneNode(false);
+          return html5.shivMethods && !reSkip.test(nodeName) ? frag.appendChild(node) : node;
+        }
 
-                        // shiv only supported elements (supporting children, not namespaced)
-                        if (html5.shivMethods && element.canHaveChildren && !(element.xmlns || element.tagUrn)) {
-                            html5.shivDocument(element.document);
-                        }
+        while (index--) {
+          nodeName = elements[index];
+          cache[nodeName] = docCreateElement(nodeName);
+          frag.createElement(nodeName);
+        }
+        ownerDocument.createElement = createElement;
+        ownerDocument.createDocumentFragment = createDocumentFragment;
+      }
 
-                        return element;
-                    };
+      /*--------------------------------------------------------------------------*/
 
-                    // shiv the document create document fragment method
-                    scopeDocument.createDocumentFragment = function () {
-                        var frag = call.call(documentCreateDocumentFragment, scopeDocument);
+      /**
+       * Shivs the given document.
+       * @memberOf html5
+       * @param {Document} ownerDocument The document to shiv.
+       * @returns {Document} The shived document.
+       */
+      function shivDocument(ownerDocument) {
+        var shived;
+        if (ownerDocument.documentShived) {
+          return ownerDocument;
+        }
+        if (html5.shivCSS && !supportsHtml5Styles) {
+          shived = !!addStyleSheet(ownerDocument,
+            // corrects block display not defined in IE6/7/8/9
+            'article,aside,details,figcaption,figure,footer,header,hgroup,nav,section{display:block}' +
+            // corrects audio display not defined in IE6/7/8/9
+            'audio{display:none}' +
+            // corrects canvas and video display not defined in IE6/7/8/9
+            'canvas,video{display:inline-block;*display:inline;*zoom:1}' +
+            // corrects 'hidden' attribute and audio[controls] display not present in IE7/8/9
+            '[hidden]{display:none}audio[controls]{display:inline-block;*display:inline;*zoom:1}' +
+            // adds styling not present in IE6/7/8/9
+            'mark{background:#FF0;color:#000}'
+          );
+        }
+        if (html5.shivMethods && !supportsUnknownElements) {
+          shived = !shivMethods(ownerDocument);
+        }
+        if (shived) {
+          ownerDocument.documentShived = shived;
+        }
+        return ownerDocument;
+      }
 
-                        return (html5.shivMethods) ? html5.shivDocument(frag) : frag;
-                    };
-                }
+      /*--------------------------------------------------------------------------*/
 
-                // set the document head variable
-                var documentHead = scopeDocument.getElementsByTagName('head')[0];
+      /**
+       * The `html5` object is exposed so that more elements can be shived and
+       * existing shiving can be detected on iframes.
+       * @type Object
+       * @example
+       *
+       * // options can be changed before the script is included
+       * html5 = { 'elements': 'mark section', 'shivCSS': false, 'shivMethods': false };
+       */
+      var html5 = {
 
-                // shiv the default html5 styles
-                if (html5.shivCSS && !supportsHtml5Styles && documentHead) {
-                    var p = scopeDocument.createElement('p');
+        /**
+         * An array or space separated string of node names of the elements to shiv.
+         * @memberOf html5
+         * @type Array|String
+         */
+        'elements': options.elements || 'abbr article aside audio bdi canvas data datalist details figcaption figure footer header hgroup mark meter nav output progress section summary time video'.split(' '),
 
-                    p.innerHTML = 'x<style>' +
-                        'article,aside,details,figcaption,figure,footer,header,hgroup,nav,section{display:block}' + // Corrects block display not defined in IE6/7/8/9
-                        'audio{display:none}' + // Corrects audio display not defined in IE6/7/8/9
-                        'canvas,video{display:inline-block;*display:inline;*zoom:1}' + // Corrects canvas and video display not defined in IE6/7/8/9
-                        '[hidden]{display:none}audio[controls]{display:inline-block;*display:inline;*zoom:1}' + // Corrects 'hidden' attribute and audio[controls] display not present in IE7/8/9
-                        'mark{background:#FF0;color:#000}' + // Addresses styling not present in IE6/7/8/9
-                    '</style>';
+        /**
+         * A flag to indicate that the HTML5 style sheet should be inserted.
+         * @memberOf html5
+         * @type Boolean
+         */
+        'shivCSS': !(options.shivCSS === false),
 
-                    documentHead.insertBefore(p.lastChild, documentHead.firstChild);
-                }
+        /**
+         * A flag to indicate that the document's `createElement` and `createDocumentFragment`
+         * methods should be overwritten.
+         * @memberOf html5
+         * @type Boolean
+         */
+        'shivMethods': !(options.shivMethods === false),
 
-                // set the document as shivved
-                scopeDocument.documentShived = true;
+        /**
+         * A string to describe the type of `html5` object ("default" or "default print").
+         * @memberOf html5
+         * @type String
+         */
+        'type': 'default',
+        // shivs the document according to the specified `html5` object options
+        'shivDocument': shivDocument
+      };
 
-                // return the document
-                return scopeDocument;
-            }
-        };
+      /*--------------------------------------------------------------------------*/
 
-        // expose shiv type
-        html5.type = 'default';
+      // expose html5
+      window.html5 = html5;
 
-        // expose html5
-        win.html5 = html5;
+      // shiv the document
+      shivDocument(document);
 
-        // shiv the document
-        html5.shivDocument(doc);
-    })(this, document);
-
-    //>>END IEPP
+    }(this, document));
+    /*>>shiv*/
 
     // Assign private properties to the return object with prefix
     Modernizr._version      = version;
 
     // expose these for the plugin API. Look in the source for how to join() them against your input
+    /*>>prefixes*/
     Modernizr._prefixes     = prefixes;
+    /*>>prefixes*/
+    /*>>domprefixes*/
     Modernizr._domPrefixes  = domPrefixes;
     Modernizr._cssomPrefixes  = cssomPrefixes;
-    
+    /*>>domprefixes*/
+
+    /*>>mq*/
     // Modernizr.mq tests a given media query, live against the current state of the window
     // A few important notes:
     //   * If a browser does not support media queries at all (eg. oldIE) the mq() will always return false
@@ -1108,42 +1239,51 @@ window.Modernizr = (function( window, document, undefined ) {
     //       Modernizr.mq('(min-width:0)')
     // usage:
     // Modernizr.mq('only screen and (max-width:768)')
-    Modernizr.mq            = testMediaQuery;   
-    
+    Modernizr.mq            = testMediaQuery;
+    /*>>mq*/
+
+    /*>>hasevent*/
     // Modernizr.hasEvent() detects support for a given event, with an optional element to test on
     // Modernizr.hasEvent('gesturestart', elem)
-    Modernizr.hasEvent      = isEventSupported; 
+    Modernizr.hasEvent      = isEventSupported;
+    /*>>hasevent*/
 
+    /*>>testprop*/
     // Modernizr.testProp() investigates whether a given style property is recognized
     // Note that the property names must be provided in the camelCase variant.
     // Modernizr.testProp('pointerEvents')
     Modernizr.testProp      = function(prop){
         return testProps([prop]);
-    };        
+    };
+    /*>>testprop*/
 
+    /*>>testallprops*/
     // Modernizr.testAllProps() investigates whether a given style property,
     //   or any of its vendor-prefixed variants, is recognized
     // Note that the property names must be provided in the camelCase variant.
-    // Modernizr.testAllProps('boxSizing')    
-    Modernizr.testAllProps  = testPropsAll;     
+    // Modernizr.testAllProps('boxSizing')
+    Modernizr.testAllProps  = testPropsAll;
+    /*>>testallprops*/
 
 
-    
+    /*>>teststyles*/
     // Modernizr.testStyles() allows you to add custom styles to the document and test an element afterwards
     // Modernizr.testStyles('#modernizr { position:absolute }', function(elem, rule){ ... })
-    Modernizr.testStyles    = injectElementWithStyles; 
+    Modernizr.testStyles    = injectElementWithStyles;
+    /*>>teststyles*/
 
 
+    /*>>prefixed*/
     // Modernizr.prefixed() returns the prefixed or nonprefixed property name variant of your input
     // Modernizr.prefixed('boxSizing') // 'MozBoxSizing'
-    
+
     // Properties must be passed as dom-style camelcase, rather than `box-sizing` hypentated style.
     // Return values will also be the camelCase variant, if you need to translate that to hypenated style use:
     //
     //     str.replace(/([A-Z])/g, function(str,m1){ return '-' + m1.toLowerCase(); }).replace(/^ms-/,'-ms-');
-    
+
     // If you're trying to ascertain which transition end event to bind to, you might do something like...
-    // 
+    //
     //     var transEndEventNames = {
     //       'WebkitTransition' : 'webkitTransitionEnd',
     //       'MozTransition'    : 'transitionend',
@@ -1152,7 +1292,7 @@ window.Modernizr = (function( window, document, undefined ) {
     //       'transition'       : 'transitionend'
     //     },
     //     transEndEventName = transEndEventNames[ Modernizr.prefixed('transition') ];
-    
+
     Modernizr.prefixed      = function(prop, obj, elem){
       if(!obj) {
         return testPropsAll(prop, 'pfx');
@@ -1161,14 +1301,16 @@ window.Modernizr = (function( window, document, undefined ) {
         return testPropsAll(prop, obj, elem);
       }
     };
+    /*>>prefixed*/
 
 
-
+    /*>>cssclasses*/
     // Remove "no-js" class from <html> element, if it exists:
     docElement.className = docElement.className.replace(/(^|\s)no-js(\s|$)/, '$1$2') +
-                            
+
                             // Add the new classes to the <html> element.
                             (enableClasses ? ' js ' + classes.join(' ') : '');
+    /*>>cssclasses*/
 
     return Modernizr;
 

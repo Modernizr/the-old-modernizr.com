@@ -1374,8 +1374,8 @@ details, summary { display: block; }
     border-bottom: 1px dotted  #3589db;
     font-weight: normal; 
     color:inherit;
-    letter-spacing: .2ex;
         margin-right: 10px;
+        font-size: 90%;
   }
   #cssprefix { 
     width: 64px;

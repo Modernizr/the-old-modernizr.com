@@ -1,5 +1,5 @@
 /*!
- * Modernizr v2.5.1
+ * Modernizr v2.5.2
  * www.modernizr.com
  *
  * Copyright (c) Faruk Ates, Paul Irish, Alex Sexton
@@ -24,7 +24,7 @@
 
 window.Modernizr = (function( window, document, undefined ) {
 
-    var version = '2.5.1',
+    var version = '2.5.2',
 
     Modernizr = {},
     
@@ -76,6 +76,8 @@ window.Modernizr = (function( window, document, undefined ) {
 
     classes = [],
 
+    slice = classes.slice,
+
     featureName, // used in testing loop
 
 
@@ -110,7 +112,9 @@ window.Modernizr = (function( window, document, undefined ) {
       // Opera will act all quirky when injecting elements in documentElement when page is served as xml, needs fakebody too. #270
       fakeBody.innerHTML += style;
       fakeBody.appendChild(div);
-      docElement.appendChild(fakeBody);
+      if(!body){
+          docElement.appendChild(fakeBody);
+      }
 
       ret = callback(div, rule);
       // If this is done after page load we don't want to remove the body so check if body exists
@@ -205,6 +209,7 @@ window.Modernizr = (function( window, document, undefined ) {
     // http://es5.github.com/#x15.3.4.5
 
     if (!Function.prototype.bind) {
+      
       Function.prototype.bind = function bind(that) {
         
         var target = this;
