@@ -8,7 +8,7 @@
 
 {% block content_primary %}
             <section id="download" class="wt ">
-               <h2><a href="/download/" class="wt dl-link">Download Modernizr 2.5.2</a></h2>
+               <h2><a href="/download/" class="wt dl-link">Download Modernizr {{ latest_version }}</a></h2>
                <p class="intro-p">Use the <a href="/downloads/modernizr.js">Development version</a> to develop with and learn from. Then, when you’re ready for production, use the build tool below to pick only the tests you need.</p>
 
                <div class="swap-region">
@@ -77,8 +77,8 @@
                   <fieldset class="features" id="group-plugins">
                      <legend class="wt">Extra</legend>
                      <ul>
-                       <li id="shiv"><label><input type="checkbox" checked value="shiv" /> html5shiv v3.2</label></li>
-                       <li id="printshiv"><label><input type="checkbox" value="printshiv" /> html5shiv v3.2 w/ printshiv</label></li>
+                       <li id="shiv"><label><input type="checkbox" checked value="shiv" /> html5shiv v3.4</label></li>
+                       <li id="printshiv"><label><input type="checkbox" value="printshiv" /> html5shiv v3.4 w/ printshiv</label></li>
                         <li id="load"><label><input type="checkbox" checked value="load" /> Modernizr.load <br>( <a href="http://yepnopejs.com/" target="_new">yepnope.js</a> )</label></li>
                         <li id="mq"><label><input type="checkbox" value="mq" /> Media Queries</label></li>
                         <li id="cssclasses">
@@ -238,7 +238,7 @@
           Modernizr.load({
             test: window.jQuery,
             nope: '//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js',
-            both: '/i/js/builderapp.min.js?release252-yepfix152'
+            both: '/i/js/builderapp.min.js?release253-yepnope153-shiv34'
           });
         </script>
 {% endblock %}
