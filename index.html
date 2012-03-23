@@ -1,6 +1,6 @@
-{% extends 'modernizr/base.html' %}
-
-{% block content_primary %}
+---
+layout:  default
+---
             <section id="what-is" class="">
                <article>
                   <p class="intro"><strong>Modernizr</strong> is an open-source JavaScript library that helps you build the next generation of HTML5 and CSS3-powered websites.</p>
@@ -15,7 +15,7 @@
             </section><!-- #what-is -->
 
             <section id="download" class="wt col-mid homepage">
-               <h2><a href="/download/" class="wt dl-link">Download Modernizr {{ latest_version }}</a></h2>
+               <h2><a href="/download/" class="wt dl-link">Download Modernizr {{ site.latest_version }}</a></h2>
                <div class="swap-region">
                   <aside>
                      <p>Use the commented, uncompressed Development version to develop with and learn from.</p>
@@ -23,11 +23,11 @@
                   </aside>
                   <ul class="buttons">
                      <li><a class="wt docs-link" href="/docs/">View documentation</a></li>
-                     <li><a class="wt btn dev" 
-                                            href="/downloads/modernizr-{{ latest_version }}.js" 
- onclick="javascript: pageTracker._trackPageview('/downloads/modernizr-{{ latest_version }}.js');
-              GoSquared.DefaultTracker.TrackView('/downloads/modernizr-{{ latest_version }}.js', 
-                                                            'Download: {{ latest_version }} Development');">
+                     <li><a class="wt btn dev"
+                                            href="/downloads/modernizr-{{ site.latest_version }}.js"
+ onclick="javascript: pageTracker._trackPageview('/downloads/modernizr-{{ site.latest_version }}.js');
+              GoSquared.DefaultTracker.TrackView('/downloads/modernizr-{{ site.latest_version }}.js',
+                                                            'Download: {{ site.latest_version }} Development');">
                   Development <span>Uncompressed, 42 Kb</span></a></li>
                      <li><a class="wt btn prod" href="/download/">Production <span>Configure your build</span></a></li>
                   </ul>
@@ -37,7 +37,7 @@
             <article class="col-mid">
                <h2>Get started with Modernizr</h2>
                <p>While Modernizr gives you finer control over the experience through JavaScript-driven feature detection, it is important to continue to use best practices throughout your development process. Use progressive enhancement wherever you can, and don’t sacrifice accessibility for convenience or performance.</p>
-            
+
                <ul class="links-spaced">
                   <li><a rel="external" href="/docs/#installing">Documentation: Getting started</a></li>
                   <li><a rel="external" href="http://www.alistapart.com/articles/taking-advantage-of-html5-and-css3-with-modernizr/">Taking Advantage of HTML5 and CSS3 with Modernizr</a>, <cite>Faruk Ateş</cite></li>
@@ -46,26 +46,8 @@
                   <li>[wiki] <a rel="external" href="https://github.com/Modernizr/Modernizr/wiki/Undetectables">The Undetectables: features that cannot be detected</a></li>
                   <li>[wiki] <a rel="external" href="https://github.com/Modernizr/Modernizr/wiki/HTML5-Cross-Browser-Polyfills">Cross-browser Polyfills</a></li>
                </ul>
-            
+
                <p>Also check out our <a href="/resources/">Resources section</a>.</p>
 
                <p><strong>Tip:</strong> check our <a href="http://j.mp/modernizrtest" rel="external">Modernizr test suite</a> to quickly test your current browser’s features.</p>
-            </article>  
-{% endblock %}
-
-
-
-
-
-
-{% block content_secondary %}
-            
-{% include 'modernizr/community.html' %}
-            
-{% include 'modernizr/latest-news.html' %}
-
-
-	
-
-            
-{% endblock %}
+            </article>

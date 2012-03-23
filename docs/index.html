@@ -1,13 +1,8 @@
-{% extends 'modernizr/base.html' %}
-
-{% block title %}Modernizr Documentation{% endblock %}
-
-{% block current_docs %} current{% endblock %}
-
-{% block body_id %}docs{% endblock %}
-
-{% block content_primary %}
-
+---
+layout:  default
+title:   Modernizr Documentation
+body_id: docs
+---
          <h2>Documentation</h2>
 
          <section id="toc">
@@ -35,7 +30,7 @@
                <li><a href="#s25">Modernizr API methods</a>
                   <ol>
                      <li><a href="#prefixed">prefixed() for CSS features</a></li>
-                      <li><a href="#prefixeddom">prefixed() for DOM features</a></li>                     
+                      <li><a href="#prefixeddom">prefixed() for DOM features</a></li>
                      <li><a href="#mq">mq() for media query testing</a></li>
                   </ol>
                </li>
@@ -67,7 +62,7 @@
 
                <p>Modernizr aims to bring an end to the UA sniffing practice. Using feature detection is a <em>more reliable</em> mechanic to establish what you can and cannot do in the current browser, and Modernizr makes it convenient for you in a variety of ways:</p>
             </div>
-            
+
             <ol>
                <li>It tests for over 40 next-generation features, all in a matter of milliseconds</li>
                <li>It creates a JavaScript object (named <code>Modernizr</code>) that contains the results of these tests as boolean properties</li>
@@ -305,7 +300,7 @@ Modernizr.load([
                      <th id="csscolumns">CSS Columns</th><td>csscolumns</td>
                   </tr>
                   <tr>
-                     <th id="generatedcontent">Generated Content 
+                     <th id="generatedcontent">Generated Content
                       <small>(<code>:before</code>/<code>:after</code>)</small>
                      </th>
                      <td>generatedcontent</td>
@@ -345,7 +340,7 @@ Modernizr.load([
                      <p>Transitions can typically be used without using Modernizr's specific CSS class or JavaScript property, but for those occasions you want parts of your site to look and/or behave differently they are available. A good example use case is to build Modernizr into an animation engine, which uses native CSS Transitions in the browsers that have it, and relies on JavaScript for the animation in browsers that don’t.</p>
                      <p><a href="http://isotope.metafizzy.co/">Isotope</a> uses a Modernizr feature detect to use transitions along with transforms to achieve full hardware acceleration when possible, falling back to jQuery-based animation otherwise.</p>
                   </td></tr>
-               
+
                </tbody>
             </table>
 
@@ -449,7 +444,7 @@ audio.play();
                   <tr>
                      <th id="webworkers">Web Workers</th><td>webworkers</td>
                   </tr>
-               
+
                </tbody>
             </table>
 
@@ -512,7 +507,7 @@ if (Modernizr.webgl){
                </tbody>
             </table>
             <h4 id="features-extra">Additional existing tests via plugins</h4>
-            
+
             <p>In addition to the tests in Modernizr "core", many other common tests are available as Modernizr plugins in the <a href="https://github.com/Modernizr/Modernizr/tree/master/feature-detects"><code>/feature-detects/</code> folder</a> of the github repo. If you did not find a test you're looking for on this page here, try there or the <a href="https://github.com/Modernizr/Modernizr/issues?labels=port+to+plugin&sort=created&direction=desc&state=open&page=1">issue tracker</a>.
 
 
@@ -571,7 +566,7 @@ transEndEventName = transEndEventNames[ Modernizr.prefixed('transition') ];
 <pre>
 <span class="comment">// basic use</span>
 Modernizr.prefixed('requestAnimationFrame', window) <span class="comment">// fn</span>
-  
+
 <span class="comment">// creating a rAF polyfill</span>
 window.rAF = Modernizr.prefixed('requestAnimationFrame', window) || function(){ <span class="comment">... </span>
 
@@ -733,21 +728,3 @@ Modernizr._prefixes.join('prop' + ':value; ');
             </section>
 
          </section>
-
-{% endblock %}
-
-
-
-
-
-
-
-
-
-
-
-{% block content_secondary %}
-
-{% include 'modernizr/community.html' %}
-
-{% endblock %}

@@ -1,0 +1,23 @@
+---
+layout:    nil
+permalink: /news.xml
+---
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+	<channel>
+		<title>Modernizr: Latest News</title>
+		<link>http://www.modernizr.com/</link>
+		<description>Latest news about the Modernizr JavaScript library.</description>
+		<language>en-us</language>
+		<lastBuildDate>{{ site.posts.first.date | date_to_xmlschema }}</lastBuildDate>
+		{% for post in site.posts %}
+		<item>
+			<title>{{ post.title }}</title>
+			<link>http://www.modernizr.com{{ post.url }}</link>
+			<description>{{ post.content | xml_escape }}</description>
+			<pubDate>{{ post.date | date_to_xmlschema }}</pubDate>
+			<guid>http://www.modernizr.com{{ post.url }}</guid>
+		</item>
+		{% endfor %}
+	</channel>
+</rss>

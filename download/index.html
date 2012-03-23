@@ -1,14 +1,10 @@
-{% extends 'modernizr/base.html' %}
-
-{% block title %}Modernizr Download Builder{% endblock %}
-
-{% block current_download %} current{% endblock %}
-
-{% block body_id %}builder{% endblock %}
-
-{% block content_primary %}
+---
+layout:  default
+title:   Modernizr Download Builder
+body_id: builder
+---
             <section id="download" class="wt ">
-               <h2><a href="/download/" class="wt dl-link">Download Modernizr {{ latest_version }}</a></h2>
+               <h2><a href="/download/" class="wt dl-link">Download Modernizr {{ site.latest_version }}</a></h2>
                <p class="intro-p">Use the <a href="/downloads/modernizr.js">Development version</a> to develop with and learn from. Then, when you’re ready for production, use the build tool below to pick only the tests you need.</p>
 
                <div class="swap-region">
@@ -211,7 +207,7 @@
                            <li id="webgl_extensions"><label><input type="checkbox" value="webgl_extensions" /> webgl extensions</label></li>
                            <li id="window_framed"><label><input type="checkbox" value="window_framed" /> framed</label></li>
                            <li id="workers_sharedworkers"><label><input type="checkbox" value="workers_sharedworkers" /> sharedworkers</label></li>
-                          --> 
+                          -->
                         </ul>
                         </div>
                      </details>
@@ -242,14 +238,3 @@
             both: '/i/js/builderapp.min.js?release253-yepnope153-shiv34-2'
           });
         </script>
-{% endblock %}
-
-
-
-{% block content_secondary %}
-
-{% include 'modernizr/community.html' %}
-
-{% include 'modernizr/latest-news.html' %}
-
-{% endblock %}

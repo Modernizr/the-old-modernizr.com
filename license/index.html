@@ -1,13 +1,11 @@
-{% extends 'modernizr/base.html' %}
-
-{% block title %}Modernizr MIT/BSD License{% endblock %}
-
-{% block body_id %}license{% endblock %}
-
-{% block content_primary %}
+---
+layout:  default
+title:   Modernizr MIT/BSD License
+body_id: license
+---
 		<section class="standalone">
 			<h2>License</h2>
-		
+
 			<p>Modernizr is available under the MIT and BSD licenses:</p>
 
 			<h3>MIT License</h3>
@@ -61,12 +59,3 @@
 			</ol>
 
 		</section>
-{% endblock %}
-
-{% block content_secondary %}
-				
-{% include 'modernizr/community.html' %}
-				
-{% include 'modernizr/latest-news.html' %}
-				
-{% endblock %}

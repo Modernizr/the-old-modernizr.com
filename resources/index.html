@@ -1,20 +1,15 @@
-{% extends 'modernizr/base.html' %}
-
-{% block title %}Modernizr Resources{% endblock %}
-
-{% block current_resources %} current{% endblock %}
-
-{% block body_id %}resources{% endblock %}
-
-{% block content_primary %}
-
+---
+layout:  default
+title:   Modernizr Resources
+body_id: resources
+---
             <section>
                <h2>Resources</h2>
-               
+
                <p class="intro-p">This section is still brand-new and a little empty. We’re working on adding things, but if you know of a great resource for this page, please <a href="https://twitter.com/?status=@Modernizr%20here’s%20a%20great%20resource:%20">let us know</a>!</p>
-               
+
                <div class="resource-area">
-                  
+
                   <dl>
                      <dt>Official resources</dt>
                      <dd><a rel="external" href="https://github.com/Modernizr/Modernizr/">Github repository</a></dd>
@@ -24,7 +19,7 @@
                      <dd><a rel="external" href="https://github.com/Modernizr/Modernizr/wiki/Undetectables">The Undetectables: features that cannot be detected</a></dd>
                      <dd><a rel="external" href="https://github.com/Modernizr/Modernizr/wiki/HTML5-Cross-Browser-Polyfills">Cross-browser Polyfills</a></dd>
                   </dl>
-               
+
                   <dl>
                      <dt>Tutorials</dt>
                      <dd><a rel="external" href="http://www.alistapart.com/articles/taking-advantage-of-html5-and-css3-with-modernizr/">Taking Advantage of HTML5 and CSS3 with Modernizr</a><br/>— <cite>Faruk Ateş</cite></dd>
@@ -37,7 +32,7 @@
 							<dt>Third-party resources</dt>
 							<dd><a rel="external" href="http://www.browserscope.org/user/tests/table/agt1YS1wcm9maWxlcnINCxIEVGVzdBib2KQGDA">Browserscope results</a> — Modernizr’s feature detection across a large range of browsers</dd>
 						</dl>
-               
+
                   <dl>
                      <dt>Helpful tools</dt>
                      <dd><a rel="external" href="http://filamentgroup.com/lab/respondjs_fast_css3_media_queries_for_internet_explorer_6_8_and_more/">Respond.js</a> — Fast media queries for older browsers</dd>
@@ -51,17 +46,5 @@
                      <dd><a rel="external" href="http://mobilehtml5.org/">Mobile HTML5</a> — HTML5 compatiblity on mobile devices</dd>
                   </dl>
                </div>
-               
+
             </section>
-
-{% endblock %}
-
-
-
-{% block content_secondary %}
-            
-{% include 'modernizr/community.html' %}
-            
-{% include 'modernizr/latest-news.html' %}
-            
-{% endblock %}
