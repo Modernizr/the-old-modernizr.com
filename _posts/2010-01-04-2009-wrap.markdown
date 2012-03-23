@@ -1,0 +1,26 @@
+---
+layout: post
+title:  2009 is a wrap
+author: <a href="http://farukat.es/">Faruk Ateş</a>
+---
+
+Since we launched with the first public release of Modernizr on <a href="http://twitter.com/Modernizr/status/2426150132">July 1st of last year</a>, we have seen some exciting things happen. The library itself has gone from a humble 0.9 beta to a rock solid 1.1 release, almost doubling the amount of features detected whilst maintaining a small codebase and a lean, fast execution of the script.
+
+These developments have not gone unnoticed: searching the Web for "Modernizr" in June of last year produced only a couple dozen results, all from people misspelling "modernizer"; today, there are <a href="http://www.google.com/search?q=Modernizr">over 56,000 pages</a> on the Web talking about it. Mark Pilgrim's upcoming book, <a href="http://diveintohtml5.org/">Dive Into HTML5</a>, discusses Modernizr in great depth, and the <a href="http://oreilly.com/catalog/9780596155940">CSS Cookbook, 3rd Edition</a> features it as well.
+
+The Modernizr.com website itself didn't sit still either; we welcomed well over 90,000 visitors, expanded with Documentation and News areas, endured two Google AppEngine downtimes and got some great feedback on how to better present and explain Modernizr to new visitors.
+
+Of those 90K+ visitors, we have some interesting browser statistics to share with you:
+
+ * Firefox is still the web browser of choice for developers, accounting for 49% of all our visitors;
+ * Safari comes second with 30%; not a huge surprise as more and more web designers and developers switch to the Mac, and Safari's built-in Web Inspector is a handy alternative to several Firefox plugins for debugging websites with;
+ * Chrome is picking up momentum as well, guiding almost 9% of our visitors, leaving…
+ * …Internet Explorer and Opera to battle for the remainder, together with a hodgepodge of miscellaneous browsers and browser versions.
+
+ On the Operating System's side, we see the Mac platform edging out Windows just barely: 46.8% versus 46.5%. The various Linux flavors accounted for about 6% of visitors.
+
+ Looking at our screen resolutions data, I was amused and intrigued: its pie chart for Modernizr.com's visitors looks like a Trivial Pursuit logo, with almost equal shares for 1440x900, 1680x1050, 1920x1200, 1280x800, 1280x1024, with the last slice made up of all the remaining resolutions. Clearly there is no overly-dominant single resolution among web designers, but it's good to know the vast majority of our visitors has at least 1280 horizontal pixels available.
+
+ Looking ahead to 2010, we hope you'll continue to enjoy using Modernizr and perhaps even contribute to make this JavaScript library more versatile and useful as a tool for cutting-edge web developers.
+
+— <a href="http://farukat.es/">Faruk Ateş</a> and <a href="http://paulirish.com/">Paul Irish</a>

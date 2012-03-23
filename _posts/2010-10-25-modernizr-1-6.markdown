@@ -1,0 +1,28 @@
+---
+layout: post
+title:  Modernizr 1.6 &amp; The Road To 2.0
+author: <a href="http://farukat.es/">Faruk Ateş</a>
+---
+
+Today we&rsquo;re announcing the new Modernizr 1.6, an interim release in the run-up to the upcoming Modernizr 2.0&mdash;a release slated for later this year which will take the library to the next level.
+
+Before we get into what&rsquo;s new in 1.6, we want to quickly thank <a rel="external" href="http://twitter.com/darcy_clarke">Darcy Clarke</a> for his quick but handy CSS tweaks to our site, cleaning things up a little and improving legibility. Much like today&rsquo;s 1.6 release, these changes to the site reflect some of what&rsquo;s coming up in the new 2.0 release and the &ldquo;2.0&rdquo; website, if you will.
+
+As said, Modernizr 1.6 is an interim release and closes some important issues while adding a few new detections. Besides bringing it down to a mere 3.8Kb minified and gzipped, the biggest improvement is a completely revised **@font-face** test, which fixes the FOUT&mdash;Flash Of Unstyled Text&mdash;which was a somewhat common issue when combining Modernizr with Typekit.
+
+We&rsquo;ve also added support for WebGL, Touch events, <a rel="external" href="http://www.w3.org/TR/css3-flexbox/">Flexible Box Layouts</a> and Inline SVG. Additionally, several existing tests have been improved to better support newer browser releases, as well as fix some minor bugs.
+
+There are some important changes in 1.6: first, the Modernizr.websqldatabase test has been simplified. It no longer creates a database, which solves <a rel="external" href="http://github.com/Modernizr/Modernizr/issues/closed#issue/113">an annoying Safari pop-up issue</a> and stops Modernizr from littering the web with databases, but it comes at somewhat of a cost: Chrome in Incognito mode will now false-positive on this test. The extended test remains commented-out in the non-minified source, for those who need it to be exact.
+
+Second, we&rsquo;ve deprecated two properties: Modernizr.crosswindowmessaging and Modernizr.historymanagement. Going forward, these two properties are simply:
+
+ * Modernizr.postmessage
+ * Modernizr.history
+
+ Simpler, cleaner, and they now match the actual DOM property they&rsquo;re testing for. Keep in mind that, as with other tests, the Modernizr property is all-lowercase but the actual DOM property is window.post**M**essage.
+
+ Lastly, we&rsquo;ve put the oft-requested CSS text-shadow test in this release. It still false-positives in Firefox 3.0, but we think web designers are okay with that these days.
+
+ We hope you enjoy this new release, and stay tuned for big changes with the upcoming Modernizr 2.0!
+
+Download the new Modernizr 1.6 from <a href="/">the front page</a>

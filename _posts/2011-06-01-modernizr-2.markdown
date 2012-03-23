@@ -1,0 +1,33 @@
+---
+layout: post
+title:  Modernizr 2
+author: Team Modernizr
+---
+
+The long wait is over—Modernizr 2 is here! Modernizr 2 takes feature detection to the next level, enabling a powerful new approach to building great websites and applications that elegantly respond and adapt to the user’s environment.
+
+What’s new:
+
+ * Media Query testing:<br/>
+   `Modernizr.mq('only all and (max-width: 600px)') // true`
+ * Conditional resource loading via `Modernizr.load()` — powered by <a href="http://yepnopejs.com/">yepnope.js</a>;
+ * Vendor prefix detection<br/>
+   `Modernizr.prefixed('transform') // 'WebkitTransform'`
+ * A whole new set of <a href="/docs/#s3">extensibility methods</a>, so its easy to augment the Modernizr tests with your own.
+ * A brand new site!
+ * …with the <a href="/download/">custom build tool</a> baked right in;
+ * …and a completely revamped, much more detailed <a href="/docs/">Documentation</a> page.
+
+ Modernizr 2 now contains **40** feature detection tests, but only the development version will come bundled with all of them. When you are ready to get a compressed and minified production build, simply go to the <a href="/download/">Download</a> page and pick and choose only the tests and features that you need. This way, we ensure that your production build will have the absolute smallest footprint and fastest execution time possible.
+
+ A little tip: when you make a custom build, your URL will be adjusted to reflect your choices exactly. Bookmark it after building in case you ever need to go back and adjust your settings!
+
+ We know you might need to detect more than what’s available in the Modernizr core. Keep an eye on <a href="https://github.com/Modernizr/Modernizr/tree/master/feature-detects">our feature-detects</a> folder for the best-of-breed detections for everything.
+
+Want to learn how to do conditional resource loading with `Modernizr.load()`? Our new documentation comes with a great <a href="/docs/#load">Modernizr.load tutorial</a> that takes you through the basics and gets you started. Alternatively, you could check out our site’s own <a href="/i/js/modernizr.com-custom.js">modernizr.com-custom.js</a> for some inspiration.
+
+We’d love to get your feedback on the new Modernizr, the new site and our new documentation and resources pages. <a href="https://twitter.com/?status=@Modernizr%20">Let us know via Twitter</a>, especially if you come across a bug somewhere—things are still a little rough around the edges here and there, but we figured you’d prefer to have Modernizr 2 sooner rather than later.
+
+A huge thanks goes out to all of our contributors who provided code for additional tests, helped us with debugging and getting our detection algorithms right, and so much more. Additionally, special thanks go out to Simon a.k.a. Simurai, for crafting some fancy CSS3 buttons for us, Ryan Seddon for integration work, and Aaron Gustafson for making sure our ARIA roles were top notch.
+
+— Team Modernizr (Faruk Ateş, Paul Irish and Alex Sexton)

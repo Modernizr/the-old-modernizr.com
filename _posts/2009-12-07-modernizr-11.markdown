@@ -1,0 +1,26 @@
+---
+layout: post
+title:  This holiday season, give the gift of progressive enhancement with Modernizr 1.1!
+author: <a href="http://farukat.es/">Faruk Ateş</a>
+---
+
+We&rsquo;re delighted to bring you <a href="http://www.modernizr.com/releases/#release-1.1">Modernizr 1.1</a>, a handy upgrade to the increasingly popular HTML5 and CSS3 detection toolkit. Now that <a href="http://github.com/Modernizr/Modernizr">Modernizr is on Github</a> we&rsquo;re seeing contributions come in for additional features from many different people. We want to express special thanks to Remy Sharp, Mike Taylor, Jan Lehnardt, Fearphage and Ms2ger for their work pushing Modernizr forward.&nbsp;
+
+All of us who work on and contribute to Modernizr feel that it is _the_ best way to start taking advantage of HTML5 and CSS3 in your websites today, which is why this new release covers even more ground of both specifications. We&rsquo;re heading towards supporting absolutely everything from the next generation of web technologies that is being implemented by any of the major browsers today, so that you as a developer know what you can _and can&rsquo;t_ expect from your visitors&rsquo; browser.
+
+New in this release is detection for:
+
+ * localStorage
+ * sessionStorage
+ * Web Workers
+ * applicationCache
+ * All new HTML5 input properties
+ * HTML5 Audio and Video formats (supported codecs)
+
+ We also support CSS Gradients the way Firefox/Mozilla have them implemented (`linear-gradient(…)` and `radial-gradient(…)` ). We still support Safari&rsquo;s syntax (`gradient(linear|radial, …)`, and use the same &ldquo;cssgradients&rdquo; property on the Modernizr object for it. That means you&rsquo;ll be responsible for covering both Firefox and Safari&rsquo;s CSS syntax if you take advantage of this feature and are working with fallbacks for the other browsers.
+
+ If all of that still isn&rsquo;t enough for you, Modernizr now features a simple plugin architecture so that you can add your own detection tests. To use the new `addTest()` method, please refer to <a href="http://www.modernizr.com/docs/">the updated Documentation</a>.
+
+ There is a lot more planned for Modernizr and this 1.1 release lays some of the ground work to reach that goal. We hope you enjoy this release and have a great month ringing out an exciting 2009.
+
+&mdash; Team Modernizr

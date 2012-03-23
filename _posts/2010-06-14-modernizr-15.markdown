@@ -1,0 +1,34 @@
+---
+layout: post
+title:  "Modernizr 1.5: new features, unit tests added"
+author: <a href="http://farukat.es/">Faruk Ateş</a> and <a href="http://paulirish.com/">Paul Irish</a>
+---
+
+We're proud and pleased to announce the immediate release of <a href="/">Modernizr **1.5**</a>!
+
+Rather than an incremental upgrade, we've opted to shift into a higher gear and add the full shebang of what we've been working on. Here's a list of new things we detect:
+
+ * <a target="_blank" href="http://www.w3.org/TR/SVG/">SVG</a>! Including <a target="_blank" href="http://www.w3.org/TR/SVG11/masking.html">SVG Clipping Paths</a> and <a target="_blank" href="http://www.w3.org/TR/REC-smil/">SMIL</a>
+ * <a target="_blank" href="http://dev.w3.org/html5/webdatabase/">Web SQL Database</a>
+ * <a href="http://www.w3.org/TR/IndexedDB/">IndexedDB</a>
+ * <a target="_blank" href="http://dev.w3.org/html5/websockets/">Web Sockets</a>
+ * <a target="_blank" href="http://dev.w3.org/html5/spec/history.html#event-hashchange">hashchange event</a>
+ * <a target="_blank" href="http://www.w3.org/TR/html5/history.html">History and Session Management</a>
+ * <a target="_blank" href="http://dev.w3.org/html5/spec/dnd.html#dnd">HTML5 Drag and Drop</a>
+ * <a target="_blank" href="http://www.w3.org/TR/html5/comms.html#posting-messages">Cross-document Messaging</a>
+
+ Additionally, IE can now print HTML5 elements (courtesy of <a target="_blank" href="http://twitter.com/jon_neal">@jon_neal</a>'s print protector), IE9 should be fully supported (<a target="_blank" href="http://twitter.com/?status=@Modernizr%20I%20found%20an%20IE9%20inconsistency">let us know if you discover inconsistencies</a>), and we also support more browsers: older Safari versions, Nokia and Blackberry mobile browsers, and Konqueror via the -khtml- prefix. Detection of Opera's CSS3 support for transitions and transforms was fixed, as well.
+
+ A few big things have kept us busy preparing a good release. Flash detection (Flash Blockers included) became a hot topic and we really wanted to include it, but at the time no reliable or complete mechanism was available. We wanted to include (and still recommend) Mark Pilgrim's excellent <a target="_blank" href="http://code.google.com/p/flashblockdetector/">Flash Block Detector</a> but decided that it was too large a codebase to include in the default release of Modernizr&mdash;especially given the <a target="_blank" href="http://www.modernizr.com/news/updates-on-modernizr-front">modular Modernizr 2 plans</a> on the horizon&mdash;and so Flash detection is out for now.
+
+ Then came the discovery that Google Chrome implemented <a target="_blank" href="http://www.quirksmode.org/mobile/tableTouch.html">Touch events</a> even on the desktop (why, Google, why?) paired with the regrettable fact that Palm's WebOS browser _doesn't support common Touch events at all_. For a browser that only exists on touch-based devices, this was too critical an issue for us to ignore. So Touch testing went out again, too.
+
+We have many more features we'd like to include; please visit the <a href="http://github.com/Modernizr/Modernizr/issues/#list">Github issue tracker</a> to review all the additional tests.
+
+For developers, contributors and people looking to learn from Modernizr we now have a set of <a target="_blank" href="http://github.com/Modernizr/Modernizr/tree/master/test/">unit tests available on the Github repository</a>, courtesy of Paul. These help prevent errors and inconsistencies from finding their way into the source code, making Modernizr more robust and reliable. The unit tests also include a second part, which pulls the data tables in from <a target="_blank" href="http://findmebyip.com/">Find Me By IP</a> and creates a feature parity overview for all the browsers.
+
+Along with the 1.5 release comes a license upgrade: Modernizr is now <a href="/license/">dual-licensed under BSD and MIT</a>.
+
+Thanks for all the input and code to miketaylr, fearphage, kangax, richbradshaw, @itpastorn, @jon_neal, dshaw, itrelease, mathiasbynens, airportyh, jeffsmith, rjcoelho, lucideer, peol and mislav. The high quality of this release wouldn't be possible with input from experts like these.
+
+We hope you enjoy the hard work we've all put into it, but we'd love to hear your feedback on Modernizr 1.5's new changes, so <a target="_blank" href="http://twitter.com/?status=@Modernizr%20I%20think%20the%201.5%20release%20is%20%E2%80%A6%20">let us know via Twitter what you think</a>!

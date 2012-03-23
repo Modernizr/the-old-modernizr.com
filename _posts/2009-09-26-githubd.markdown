@@ -1,0 +1,6 @@
+---
+layout: post
+title:  Github'd
+author: <a href="http://farukat.es/">Faruk Ateş</a>
+---
+Just a quick announcement that <a href="http://github.com/Modernizr/Modernizr">Modernizr is now available on Github</a>. Hack away!

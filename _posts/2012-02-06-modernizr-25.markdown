@@ -1,0 +1,57 @@
+---
+layout: post
+title:  "Modernizr 2.5: Supercharged for 2012"
+author: Modernizr
+---
+
+Modernizr 2.0 came out more than eight months ago; we’ve not sat still in the period since, and today we’re proud to announce the release of Modernizr 2.5, our biggest update yet!
+
+<h4 id="newin2.5">New in 2.5</h4>
+
+The <a href="https://github.com/Modernizr/Modernizr/compare/v2.0.6...v2.5.1">list of new things in 2.5</a> is too big for Github to handle, but here are the highlights:
+
+ * More than 60 new feature detects for emerging browser features; check out <a href="https://gist.github.com/783522a92b79a0868532">the full list</a> or peruse **all** of the community-driven tests in our <a href="https://github.com/Modernizr/Modernizr/tree/master/feature-detects">feature-detects folder</a>.
+ * We now have a super robust and integrated <a href="http://modernizr.github.com/Modernizr/test/index.html">test suite</a>. Paul did a great video <a href="http://www.youtube.com/watch?feature=player_embedded&amp;v=Mbt6h1BFW8g">detailing how it works</a>.
+ * Brand new embedded and included micro-libraries: html5shiv 3.2 and yepnope .js 1.5.
+ * `Modernizr.prefixed()` can now <a href="/docs/#prefixeddom">detect prefixed DOM features</a> and give you a hook. E.g.: `Modernizr.prefixed('requestAnimationFrame', window) // rAF function`
+ * Bugfix for possible false negative when browser support for prefixed CSS Transforms is sunsetted.
+ * We now ship with a <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function/bind">Function.prototype.bind polyfill</a> included by default. You&#8217;re welcome!
+
+ Modernizr 2.5 introduces some minor backwards-compatibility breaks due to changes in features and behavior.
+
+ * We no longer include Respond.js in the builder. If you still require Respond.js in your project, just include it manually.
+ * `Modernizr._domPrefixes` has been renamed to `Modernizr._cssomPrefixes`, and a new, lower-case `Modernizr._domPrefixes` has been introduced.
+ * We’ve removed KHTML prefix testing, due to lack of usage.
+
+ We encourage all users to upgrade to Modernizr 2.5, as there should be no regressions. If you do happen to encounter issues, please <a href="https://github.com/Modernizr/Modernizr/wiki/Filing-a-bug">file them on github</a>.
+
+ <h4 id="thanks">Thanks</h4>
+
+ This great release would not have been possible were it not for the many contributions from people who volunteered bug reports, bug fixes and all new tests. We’ve made <a href="/contributors/">a dedicated page to thank everyone</a> who contributed to Modernizr 2.5; this release has been the most collaborative effort yet for Modernizr, and we couldn’t be more excited about that.
+
+We’re similarly excited to announce the expansion of the team. Ryan Seddon has been made an official member at last, and we also welcome Alexander Farkas to the team. And speaking of Ryan, he’s done a great <a href="https://learnable.com/courses/modernizr-front-end-development-done-right-2561">Learnable course on Modernizr</a>, so if you’re relatively new to the library you should check it out!
+
+<h4 id="elsewhere">Elsewhere</h4>
+
+While not a Modernizr effort, we do want to bring some attention to a very useful new reasource, ideal for people who use Modernizr: <a href="http://html5please.us/">HTML5 Please</a>. Together with <a href="http://caniuse.com/">Can I Use…</a>, these two sites should cover all your questions over which features are _reliable and safe_ to use based on what audiences you need to support.
+
+We’d also like to note that our <a href="https://github.com/Modernizr/Modernizr/wiki/HTML5-Cross-Browser-Polyfills">HTML5 Cross Browser Polyfills wiki</a> is still growing, with many more polyfills having been added.
+
+Modernizr 2.5 is the best starting library for anyone taking advantage of the latest in HTML5 and related technologies, and we hope you’ll enjoy it.
+
+---
+
+<p id="update252"><strong>Update Feb 8:</strong> we’ve included another couple of small—but significant—updates, and have released Modernizr 2.5.2.</p>
+
+Notably, this latest update includes **html5shiv 3.3**, which features an up to 16x performance increase over the shiv that was bundled in Modernizr 2.0. The html5shiv team (Jonathan Neal, John-David Dalton, and Modernizr team member Alexander Farkas) has been hard at work (<a href="https://github.com/aFarkas/html5shiv/wiki">view changelog</a>) making this <a href="http://paulirish.com/2011/the-history-of-the-html5-shiv/">foundational</a> piece of the HTML5 infrastructure fast and robust. <small>(To be clear, this is the exact same shiv available in Remy Sharp's googlecode repos.)</small> Plus, using Modernizr 2.5 (with the included html5shiv 3.x), you no longer need <a href="http://jdbartlett.com/innershiv/">innerShiv</a>; the fix is automatic.
+
+Additionally, our <a href="/download/">download builder</a> now ships with **<a href="http://yepnopejs.com/#whatsnew">Yepnope 1.5.2</a>**.
+
+We also want to highlight a few more changes from 2.5:
+
+ * We’ve toughened up `canPlayType` checks for Firefox 3.5.0, 3.5.1 and 4.0.0 - 4.0.4
+ * In iOS5 Private Browsing mode you can use `localStorage.getItem` but it throws an exception for `setItem`. We test it out and set `Modernizr.localStorage` to false if we cannot store.
+ * We now have a <a href="http://html5please.us/#datalist">`<datalist>`</a> detect with no false positives! It’s accessible through `Modernizr.input.list` [<a href="https://github.com/Modernizr/Modernizr/issues/146">#146</a>]
+ * If you use the `transitionEnd` event, we’ve <a href="http://www.modernizr.com/docs/#s25">documented</a> the correct IE10 and spec’d behavior.
+ * If you, by chance, have a class of `oh-no-js-oh-my` on the `<html>` element we wont remove it anymore as part of our `no-js` to `js` switch.
+ * The <a href="https://github.com/Modernizr/Modernizr/wiki">Modernizr wiki</a> has been reorganized. Much cleaner!
