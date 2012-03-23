@@ -1,18 +1,4 @@
-common/*
-registration/*
-
-# i know theres sensitive stuff in settings.py..
-*.py
-*.pyc
-
-# for now we're being overly cautious. probably will relax this later on.
-*.yaml
-*.mo
-*.po
-*.swp
-
-# that and this is a quicker upload. :)
-
+_site
 
 #stuff from h5bp's gitignore
 
@@ -52,4 +38,3 @@ dwsync.xml
 intermediate
 publish
 .idea
-
