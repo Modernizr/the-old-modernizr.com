@@ -1,0 +1,12 @@
+{% for post in news %}
+[[[[[[[[[[
+---
+slug:   {{ post.slug }}
+title:  {{ post.title }}
+author: {{ post.author }}
+date:   {{ post.date }}
+---
+{{ post.content }}
+]]]]]]]]]]
+
+{% endfor %}
