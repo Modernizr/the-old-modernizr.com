@@ -18,8 +18,8 @@ body_id: news
 			<article class="standalone">
 				<ul>
 			{% for post in site.posts offset:5 %}
-					<li><footer class="posted">{{ post.date | date:'%B %d, %Y' | replace:' 0',' ' }}</footer>
-					    <a href="{{ post.url }}">{{ post.title }}</a></li>
+					<li><a href="{{ post.url }}">{{ post.title }}</a>
+					<footer class="posted">{{ post.date | date:'%B %d, %Y' | replace:' 0',' ' }}</footer></li>
 			{% endfor %}
 				</ul>
 			</article>
