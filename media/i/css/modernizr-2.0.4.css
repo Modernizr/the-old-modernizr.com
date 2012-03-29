@@ -1323,6 +1323,9 @@ details, summary { display: block; }
     float: left;
     margin: 0 0 0 10px;
   }
+  #dontmin {
+    margin-bottom: 3.5px;
+  }
   .features label {
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;

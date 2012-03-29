@@ -22,6 +22,7 @@
                         <li id="borderradius"><label><input type="checkbox" value="borderradius" /> border-radius</label></li>
                         <li id="boxshadow"><label><input type="checkbox" value="boxshadow" /> box-shadow</label></li>
                         <li id="flexbox"><label><input type="checkbox" value="flexbox" /> Flexible Box Model <small>(flexbox)</small></label></li>
+                        <li id="flexbox_legacy"><label><input type="checkbox" value="flexbox_legacy" /> Flexbox Legacy</label></li>
                         <li id="hsla"><label><input type="checkbox" value="hsla" /> <abbr title="Hue, Saturation, Lightness, Alpha">hsla</abbr>()</label></li>
                         <li id="multiplebgs"><label><input type="checkbox" value="multiplebgs" /> multiple backgrounds</label></li>
                         <li id="opacity"><label><input type="checkbox" value="opacity" /> opacity</label></li>
@@ -227,7 +228,7 @@
 
                <div id="source">
                   <textarea readonly="readonly" class="source-area default" id="generatedSource">// Minified source</textarea>
-
+                  <div class="dontmin-container"><label for="dontmin"><input type="checkbox" id="dontmin" value="dontmin" /> <small>Don't Minify Source</small></label></div>
                </div>
 
                </div><!-- .swap-region -->
@@ -238,7 +239,7 @@
           Modernizr.load({
             test: window.jQuery,
             nope: '//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js',
-            both: '/i/js/builderapp.min.js?release253-yepnope153-shiv34'
+            both: '/i/js/builderapp.min.js?release253-yepnope153-shiv34-2'
           });
         </script>
 {% endblock %}

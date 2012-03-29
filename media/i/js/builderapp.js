@@ -14,7 +14,7 @@ jQuery(function($){
 
       // check ones that this relies on
       if ( $this.is(':checked') ) {
-        deps = Modulizr._dependencies[ $this.closest('li').attr('id') ];
+        deps = Modulizr._dependencies[ $this.closest('li').attr('id').replace('_','-') ];
         for( i in deps ) {
           $( '#' + deps[ i ] ).find('input:checkbox').attr('checked', 'checked');
         }
@@ -22,7 +22,7 @@ jQuery(function($){
       // uncheck ones that rely on this
       else {
         _( Modulizr._dependencies ).each(function( depArr, name ) {
-          if ( _(depArr).contains( $this.closest('li').attr('id') ) ) {
+          if ( _(depArr).contains( $this.closest('li').attr('id').replace('_','-') ) ) {
             $( '#' + name ).find('input:checkbox').removeAttr('checked');
           }
         });
@@ -40,7 +40,7 @@ jQuery(function($){
     var $this = $(this), deps, i;
     // check ones that this relies on
     if ( $this.is(':checked') ) {
-      deps = Modulizr._dependencies[ $this.closest('li').attr('id') ];
+      deps = Modulizr._dependencies[ $this.closest('li').attr('id').replace('_','-') ];
       for( i in deps ) {
         $( '#' + deps[ i ] ).find('input:checkbox').attr('checked', 'checked');
       }
@@ -48,7 +48,7 @@ jQuery(function($){
     // uncheck ones that rely on this
     else {
       _( Modulizr._dependencies ).each(function( depArr, name ) {
-        if ( _(depArr).contains( $this.closest('li').attr('id') ) ) {
+        if ( _(depArr).contains( $this.closest('li').attr('id').replace('_','-') ) ) {
           $( '#' + name ).find('input:checkbox').removeAttr('checked');
         }
       });
@@ -80,6 +80,9 @@ jQuery(function($){
     }
   });
 
+  $('#dontmin').change(function(){
+    $('#generate').click();
+  });
   // Generate the custom download
   $('#generate')
     .find('span').remove().end()
@@ -102,7 +105,7 @@ jQuery(function($){
     $('.features input:checked').each(function(){
       // Special case for Modernizr.load and selection comment
       if ( this.value !== 'load' && this.value !== 'selectioncomment' ) {
-        tests.push( this.value );
+        tests.push( this.value.replace('_', '-') );
       }
     });
 
@@ -143,7 +146,7 @@ jQuery(function($){
           tests.push('load');
         } 
         modularBuild = "\/* Modernizr " + _currentBuildVersion + " (Custom Build) | MIT & BSD\n * Build: http://www.modernizr.com/download/#-"+ 
-          tests.join('-') +
+          _(tests).map(function(x){ return x.replace('-','_'); }).join('-') +
           ( prefixClass ? '-cssclassprefix:' + prefixClass.replace(/\-/g, '!') : '' ) +
           "\n */\n" + modularBuild;
       }
@@ -156,13 +159,15 @@ jQuery(function($){
       if ( $('#cssclasses input').is(':checked') && $.trim( $('#cssprefix').val() ) ) {
         extra = '-cssclassprefix:'+$('#cssprefix').val().replace(/\s+/g, "").replace(/\-/g,'!');
       }
-      window.location = '#-' + tests.join('-') + extra;
+      window.location = '#-' + _(tests).map(function(x){ return x.replace('-', '_'); }).join('-') + extra;
       $("#generatedSource").addClass('sourceView').val( modularBuild );
     }
 
     function buildFile( modularBuild, appended ) {
-      var uglifiedModularBuild = uglify( modularBuild + ( appended || '' ), ['--extra', '--unsafe'] );
-      //var uglifiedModularBuild =  modularBuild + ( appended || '' );
+      var uglifiedModularBuild = modularBuild + ( appended || '' );
+      if ( ! $('#dontmin').is(':checked') ) {
+        uglifiedModularBuild = uglify( uglifiedModularBuild, ['--extra', '--unsafe'] );
+      }
 
       // Track the different builds
       if ( window._gaq ) {

@@ -1004,7 +1004,9 @@ window.Modernizr = (function( window, document, undefined ) {
 
          test = typeof test == 'function' ? test() : test;
 
+         /*>>cssclasses*/
          docElement.className += ' ' + (test ? '' : 'no-') + feature;
+         /*>>cssclasses*/
          Modernizr[feature] = test;
 
        }

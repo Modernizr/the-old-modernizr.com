@@ -14,8 +14,8 @@
   var Modulizr = {
     _dependencies: {
       'canvastext'      : ['canvas'],
-      'csstransforms3d' : ['prefixes', 'testprop', 'testbundle', 'teststyles'],
-      'flexbox'         : ['prefixes'],
+      'csstransforms3d' : ['prefixes', 'domprefixes', 'testprop', 'testbundle', 'teststyles', 'testallprops'],
+      'flexbox'         : ['domprefixes', 'testprop', 'testallprops'],
       'cssgradients'    : ['prefixes'],
       'opacity'         : ['prefixes'],
       'indexedDB'       : ['domprefixes'],
@@ -28,8 +28,9 @@
       'cssreflections'  : ['domprefixes', 'testprop', 'testallprops'],
       'csstransitions'  : ['domprefixes', 'testprop', 'testallprops'],
       'testallprops'    : ['domprefixes', 'testprop'],
+      'flexbox-legacy'  : ['domprefixes', 'testprop', 'testallprops'],
       'prefixed'        : ['domprefixes', 'testprop', 'testallprops'],
-      'csstransforms'   : ['testprop'],
+      'csstransforms'   : ['domprefixes', 'testprop', 'testallprops'],
       'mq'              : ['teststyles'],
       'hashchange'      : ['hasevent'],
       'draganddrop'     : ['hasevent'],
