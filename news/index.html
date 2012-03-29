@@ -13,4 +13,11 @@ body_id: news
 				{{	post.content }}
 			</article>
 			{% endfor %}
+			
+			<h2>Previous posts</h2>
+         <ul>
+			{% for post in site.posts offset:5 %}
+				<li>{{ post.date | date:'%B %d, %Y' | replace:' 0',' ' }} • <a href="{{ post.url }}">{{ post.title }}</a></li>
+			{% endfor %}
+			</ul>
 		</section>
