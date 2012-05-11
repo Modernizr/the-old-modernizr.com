@@ -259,9 +259,9 @@ Modernizr.load([
                   <tr><td id="hslanotes" colspan="2">
                      <p>In most cases you don’t need to use the rgba and hsla classes, as browsers can do the fallback naturally:</p>
 <pre>
-.my_container {  <span class="comment">/* no .rgba use necessary! */</span>
-   background-color: #ccc;
-   background-color: rgba(255,255,255, .5);
+.my_container {  <span class="comment">/* no .hsla use necessary! */</span>
+   background-color: #ccc; /* light grey fallback */
+   background-color: hsla(0, 0%, 100%, .5); /* white with alpha */
 }
 </pre>
                      </td>
