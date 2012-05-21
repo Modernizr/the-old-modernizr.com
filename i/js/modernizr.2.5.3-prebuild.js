@@ -99,7 +99,7 @@ window.Modernizr = (function( window, document, undefined ) {
       var style, ret, node,
           div = document.createElement('div'),
           // After page load injecting a fake body doesn't work so check if body exists
-          body = document.body,
+          body = document.body, 
           // IE6 and 7 won't return offsetWidth or offsetHeight unless it's in the body element, so we fake it.
           fakeBody = body ? body : document.createElement('body');
 
@@ -124,7 +124,7 @@ window.Modernizr = (function( window, document, undefined ) {
       // Opera will act all quirky when injecting elements in documentElement when page is served as xml, needs fakebody too. #270
       (body ? div : fakeBody).innerHTML += style;
       fakeBody.appendChild(div);
-      if ( !body ) {
+      if(!body){
           //avoid crashing IE8, if background image is used
           fakeBody.style.background = "";
           docElement.appendChild(fakeBody);
@@ -165,14 +165,10 @@ window.Modernizr = (function( window, document, undefined ) {
 
 
     /*>>hasevent*/
-    //
-    // isEventSupported determines if a given element supports the given event
-    // kangax.github.com/iseventsupported/
-    //
-    // The following results are known incorrects:
-    //   Modernizr.hasEvent("webkitTransitionEnd", elem) // false negative
-    //   Modernizr.hasEvent("textInput") // in Webkit. github.com/Modernizr/Modernizr/issues/333
-    //   ...
+    /**
+      * isEventSupported determines if a given element supports the given event
+      * function from yura.thinkweb2.com/isEventSupported/
+      */
     isEventSupported = (function() {
 
       var TAGNAMES = {
@@ -305,18 +301,11 @@ window.Modernizr = (function( window, document, undefined ) {
     }
 
     /*>>testprop*/
-
-    // testProps is a generic CSS / DOM property test.
-
-    // In testing support for a given CSS property, it's legit to test:
-    //    `elem.style[styleName] !== undefined`
-    // If the property is supported it will return an empty string,
-    // if unsupported it will return undefined.
-
-    // We'll take advantage of this quick test and skip setting a style
-    // on our modernizr element, but instead just testing undefined vs
-    // empty string.
-
+    /**
+     * testProps is a generic CSS / DOM property test; if a browser supports
+     *   a certain property, it won't return undefined for it.
+     *   A supported CSS property returns empty string when its not yet set.
+     */
     function testProps( props, prefixed ) {
         for ( var i in props ) {
             if ( mStyle[ props[i] ] !== undefined ) {
@@ -377,6 +366,54 @@ window.Modernizr = (function( window, document, undefined ) {
     }
     /*>>testallprops*/
 
+    /*>>testBundle*/
+    /**
+     * testBundle tests a list of CSS features that require element and style injection.
+     *   By bundling them together we can reduce the need to touch the DOM multiple times.
+     */
+    var testBundle = (function( styles, tests ) {
+        var style = styles.join(''),
+            len = tests.length;
+
+        injectElementWithStyles(style, function( node, rule ) {
+            var style = document.styleSheets[document.styleSheets.length - 1],
+                // IE8 will bork if you create a custom build that excludes both fontface and generatedcontent tests.
+                // So we check for cssRules and that there is a rule available
+                // More here: github.com/Modernizr/Modernizr/issues/288 & github.com/Modernizr/Modernizr/issues/293
+                cssText = style ? (style.cssRules && style.cssRules[0] ? style.cssRules[0].cssText : style.cssText || '') : '',
+                children = node.childNodes, hash = {};
+
+            while ( len-- ) {
+                hash[children[len].id] = children[len];
+            }
+
+            /*>>touch*/           Modernizr['touch'] = ('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch || (hash['touch'] && hash['touch'].offsetTop) === 9; /*>>touch*/
+            /*>>csstransforms3d*/ Modernizr['csstransforms3d'] = (hash['csstransforms3d'] && hash['csstransforms3d'].offsetLeft) === 9 && hash['csstransforms3d'].offsetHeight === 3;          /*>>csstransforms3d*/
+            /*>>generatedcontent*/Modernizr['generatedcontent'] = (hash['generatedcontent'] && hash['generatedcontent'].offsetHeight) >= 1;       /*>>generatedcontent*/
+            /*>>fontface*/        Modernizr['fontface'] = /src/i.test(cssText) &&
+                                                                  cssText.indexOf(rule.split(' ')[0]) === 0;        /*>>fontface*/
+        }, len, tests);
+
+    })([
+        // Pass in styles to be injected into document
+        /*>>fontface*/        '@font-face {font-family:"font";src:url("https://")}'         /*>>fontface*/
+
+        /*>>touch*/           ,['@media (',prefixes.join('touch-enabled),('),mod,')',
+                                '{#touch{top:9px;position:absolute}}'].join('')           /*>>touch*/
+
+        /*>>csstransforms3d*/ ,['@media (',prefixes.join('transform-3d),('),mod,')',
+                                '{#csstransforms3d{left:9px;position:absolute;height:3px;}}'].join('')/*>>csstransforms3d*/
+
+        /*>>generatedcontent*/,['#generatedcontent:after{content:"',smile,'";visibility:hidden}'].join('')  /*>>generatedcontent*/
+    ],
+      [
+        /*>>fontface*/        'fontface'          /*>>fontface*/
+        /*>>touch*/           ,'touch'            /*>>touch*/
+        /*>>csstransforms3d*/ ,'csstransforms3d'  /*>>csstransforms3d*/
+        /*>>generatedcontent*/,'generatedcontent' /*>>generatedcontent*/
+
+    ]);/*>>testBundle*/
+
 
     /**
      * Tests
@@ -393,7 +430,7 @@ window.Modernizr = (function( window, document, undefined ) {
     // The *old* flexbox
     // www.w3.org/TR/2009/WD-css3-flexbox-20090723/
 
-    tests['flexboxlegacy'] = function() {
+    tests['flexbox-legacy'] = function() {
         return testPropsAll('boxDirection');
     };
 
@@ -410,13 +447,19 @@ window.Modernizr = (function( window, document, undefined ) {
         return !!(Modernizr['canvas'] && is(document.createElement('canvas').getContext('2d').fillText, 'function'));
     };
 
-    // webk.it/70117 is tracking a legit WebGL feature detect proposal
-
-    // We do a soft detect which may false positive in order to avoid
-    // an expensive context creation: bugzil.la/732441
+    // this test initiates a new webgl context. 
+    // webk.it/70117 is tracking a legit feature detect proposal
 
     tests['webgl'] = function() {
-        return !!window.WebGLRenderingContext;
+        try {
+            var canvas = document.createElement('canvas'),
+                ret;
+            ret = !!(window.WebGLRenderingContext && (canvas.getContext('experimental-webgl') || canvas.getContext('webgl')));
+            canvas = undefined;
+        } catch (e){
+            ret = false;
+        }
+        return ret;
     };
 
     /*
@@ -434,41 +477,32 @@ window.Modernizr = (function( window, document, undefined ) {
      */
 
     tests['touch'] = function() {
-        var bool;
-
-        if(('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch) {
-          bool = true;
-        } else {
-          injectElementWithStyles(['@media (',prefixes.join('touch-enabled),('),mod,')','{#modernizr{top:9px;position:absolute}}'].join(''), function( node ) {
-            bool = node.offsetTop === 9;
-          });
-        }
-
-        return bool;
+        return Modernizr['touch'];
     };
 
-
-    // geolocation is often considered a trivial feature detect...
-    // Turns out, it's quite tricky to get right:
-    //
-    // Using !!navigator.geolocation does two things we don't want. It:
-    //   1. Leaks memory in IE9: github.com/Modernizr/Modernizr/issues/513
-    //   2. Disables page caching in WebKit: webk.it/43956
-    //
-    // Meanwhile, in Firefox < 8, an about:config setting could expose
-    // a false positive that would throw an exception: bugzil.la/688158
-
+    /**
+     * geolocation tests for the new Geolocation API specification.
+     *   This test is a standards compliant-only test; for more complete
+     *   testing, including a Google Gears fallback, please see:
+     *   code.google.com/p/geo-location-javascript/
+     * or view a fallback solution using google's geo API:
+     *   gist.github.com/366184
+     */
     tests['geolocation'] = function() {
-        return 'geolocation' in navigator;
+        return !!navigator.geolocation;
     };
 
-
+    // Per 1.6:
+    // This used to be Modernizr.crosswindowmessaging but the longer
+    // name has been deprecated in favor of a shorter and property-matching one.
+    // The old API is still available in 1.6, but as of 2.0 will throw a warning,
+    // and in the first release thereafter disappear entirely.
     tests['postmessage'] = function() {
       return !!window.postMessage;
     };
 
 
-    // Chrome incognito mode used to throw an exception when using openDatabase
+    // Chrome incognito mode used to throw an exception when using openDatabase 
     // It doesn't anymore.
     tests['websqldatabase'] = function() {
       return !!window.openDatabase;
@@ -479,7 +513,7 @@ window.Modernizr = (function( window, document, undefined ) {
     // - Firefox shipped moz_indexedDB before FF4b9, but since then has been mozIndexedDB
     // For speed, we don't test the legacy (and beta-only) indexedDB
     tests['indexedDB'] = function() {
-      return !!testPropsAll("indexedDB", window);
+      return !!testPropsAll("indexedDB",window);
     };
 
     // documentMode logic from YUI to filter out IE8 Compat Mode
@@ -502,12 +536,15 @@ window.Modernizr = (function( window, document, undefined ) {
         return ('draggable' in div) || ('ondragstart' in div && 'ondrop' in div);
     };
 
-    // FF3.6 was EOL'ed on 4/24/12, but the ESR version of FF10
-    // will be supported until FF19 (2/12/13), at which time, ESR becomes FF17.
-    // FF10 still uses prefixes, so check for it until then.
-    // for more ESR info, see: http://www.mozilla.org/en-US/firefox/organizations/faq/
+    // FIXME: Once FF10 is sunsetted, we can drop prefixed MozWebSocket
+    // bugzil.la/695635
     tests['websockets'] = function() {
-        return 'WebSocket' in window || 'MozWebSocket' in window;
+        for ( var i = -1, len = cssomPrefixes.length; ++i < len; ){
+          if ( window[cssomPrefixes[i] + 'WebSocket'] ){
+            return true;
+          }
+        }
+        return 'WebSocket' in window;
     };
 
 
@@ -543,9 +580,15 @@ window.Modernizr = (function( window, document, undefined ) {
     };
 
 
+    // In testing support for a given CSS property, it's legit to test:
+    //    `elem.style[styleName] !== undefined`
+    // If the property is supported it will return an empty string,
+    // if unsupported it will return undefined.
 
-    // this will false positive in Opera Mini
-    //   github.com/Modernizr/Modernizr/issues/396
+    // We'll take advantage of this quick test and skip setting a style
+    // on our modernizr element, but instead just testing undefined vs
+    // empty string.
+
 
     tests['backgroundsize'] = function() {
         return testPropsAll('backgroundSize');
@@ -588,7 +631,7 @@ window.Modernizr = (function( window, document, undefined ) {
     };
 
 
-    // Note, Android < 4 will pass this test, but can only animate
+    // Note, Android < 4 will pass this test, but can only animate 
     //   a single property at a time
     //   daneden.me/2011/12/putting-up-with-androids-bullshit/
     tests['cssanimations'] = function() {
@@ -616,8 +659,8 @@ window.Modernizr = (function( window, document, undefined ) {
 
         setCss(
              // legacy webkit syntax (FIXME: remove when syntax not in use anymore)
-              (str1 + '-webkit- '.split(' ').join(str2 + str1)
-             // standard syntax             // trailing 'background-image:'
+              (str1 + '-webkit- '.split(' ').join(str2 + str1) 
+             // standard syntax             // trailing 'background-image:' 
               + prefixes.join(str3 + str1)).slice(0, -str1.length)
         );
 
@@ -646,10 +689,8 @@ window.Modernizr = (function( window, document, undefined ) {
         if ( ret && 'webkitPerspective' in docElement.style ) {
 
           // Webkit allows this media query to succeed only if the feature is enabled.
-          // `@media (transform-3d),(-webkit-transform-3d){ ... }`
-          injectElementWithStyles('@media (transform-3d),(-webkit-transform-3d){#modernizr{left:9px;position:absolute;height:3px;}}', function( node, rule ) {
-            ret = node.offsetLeft === 9 && node.offsetHeight === 3;
-          });
+          // `@media (transform-3d),(-o-transform-3d),(-moz-transform-3d),(-ms-transform-3d),(-webkit-transform-3d),(modernizr){ ... }`
+          ret = Modernizr['csstransforms3d'];
         }
         return ret;
     };
@@ -664,32 +705,15 @@ window.Modernizr = (function( window, document, undefined ) {
     // @font-face detection routine by Diego Perini
     // javascript.nwbox.com/CSSSupport/
 
-    // false positives:
-    //   WebOS github.com/Modernizr/Modernizr/issues/342
-    //   WP7   github.com/Modernizr/Modernizr/issues/538
+    // false positives in WebOS: github.com/Modernizr/Modernizr/issues/342
     tests['fontface'] = function() {
-        var bool;
-
-        injectElementWithStyles('@font-face {font-family:"font";src:url("https://")}', function( node, rule ) {
-          var style = document.styleSheets[document.styleSheets.length - 1],
-              cssText = style ? (style.cssRules && style.cssRules[0] ? style.cssRules[0].cssText : style.cssText || '') : '';
-
-          bool = /src/i.test(cssText) && cssText.indexOf(rule.split(' ')[0]) === 0;
-        });
-
-        return bool;
+        return Modernizr['fontface'];
     };
     /*>>fontface*/
 
     // CSS generated content detection
     tests['generatedcontent'] = function() {
-        var bool;
-
-        injectElementWithStyles(['#modernizr:after{content:"',smile,'";visibility:hidden}'].join(''), function( node ) {
-          bool = node.offsetHeight >= 1;
-        });
-
-        return bool;
+        return Modernizr['generatedcontent'];
     };
 
 
@@ -718,7 +742,6 @@ window.Modernizr = (function( window, document, undefined ) {
                 bool      = new Boolean(bool);
                 bool.ogg  = elem.canPlayType('video/ogg; codecs="theora"')      .replace(/^no$/,'');
 
-                // Without QuickTime, this value will be `undefined`. github.com/Modernizr/Modernizr/issues/546
                 bool.h264 = elem.canPlayType('video/mp4; codecs="avc1.42E01E"') .replace(/^no$/,'');
 
                 bool.webm = elem.canPlayType('video/webm; codecs="vp8, vorbis"').replace(/^no$/,'');
@@ -733,7 +756,7 @@ window.Modernizr = (function( window, document, undefined ) {
         var elem = document.createElement('audio'),
             bool = false;
 
-        try {
+        try { 
             if ( bool = !!elem.canPlayType ) {
                 bool      = new Boolean(bool);
                 bool.ogg  = elem.canPlayType('audio/ogg; codecs="vorbis"').replace(/^no$/,'');
@@ -743,7 +766,7 @@ window.Modernizr = (function( window, document, undefined ) {
                 //   developer.mozilla.org/En/Media_formats_supported_by_the_audio_and_video_elements
                 //   bit.ly/iphoneoscodecs
                 bool.wav  = elem.canPlayType('audio/wav; codecs="1"')     .replace(/^no$/,'');
-                bool.m4a  = ( elem.canPlayType('audio/x-m4a;')            ||
+                bool.m4a  = ( elem.canPlayType('audio/x-m4a;')            || 
                               elem.canPlayType('audio/aac;'))             .replace(/^no$/,'');
             }
         } catch(e) { }
@@ -758,7 +781,7 @@ window.Modernizr = (function( window, document, undefined ) {
     //   `('localStorage' in window) && ` test first because otherwise Firefox will
     //   throw bugzil.la/365772 if cookies are disabled
 
-    // Also in iOS5 Private Browsing mode, attempting to use localStorage.setItem
+    // Also in iOS5 Private Browsing mode, attepting to use localStorage.setItem
     // will throw the exception:
     //   QUOTA_EXCEEDED_ERRROR DOM Exception 22.
     // Peculiarly, getItem and removeItem calls do not throw.
@@ -892,7 +915,7 @@ window.Modernizr = (function( window, document, undefined ) {
                       docElement.removeChild(inputElem);
 
                     } else if ( /^(search|tel)$/.test(inputElemType) ){
-                      // Spec doesn't define any special parsing or detectable UI
+                      // Spec doesnt define any special parsing or detectable UI
                       //   behaviors so we pass these through as true
 
                       // Interestingly, opera fails the earlier test, so it doesn't
@@ -901,6 +924,14 @@ window.Modernizr = (function( window, document, undefined ) {
                     } else if ( /^(url|email)$/.test(inputElemType) ) {
                       // Real url and email support comes with prebaked validation.
                       bool = inputElem.checkValidity && inputElem.checkValidity() === false;
+
+                    } else if ( /^color$/.test(inputElemType) ) {
+                        // chuck into DOM and force reflow for Opera bug in 11.00
+                        // github.com/Modernizr/Modernizr/issues#issue/159
+                        docElement.appendChild(inputElem);
+                        docElement.offsetWidth;
+                        bool = inputElem.value != smile;
+                        docElement.removeChild(inputElem);
 
                     } else {
                       // If the upgraded input compontent rejects the :) text, we got a winner
@@ -973,9 +1004,9 @@ window.Modernizr = (function( window, document, undefined ) {
 
          test = typeof test == 'function' ? test() : test;
 
-         if (enableClasses) {
-           docElement.className += ' ' + (test ? '' : 'no-') + feature;
-         }
+         /*>>cssclasses*/
+         docElement.className += ' ' + (test ? '' : 'no-') + feature;
+         /*>>cssclasses*/
          Modernizr[feature] = test;
 
        }
@@ -1170,7 +1201,6 @@ window.Modernizr = (function( window, document, undefined ) {
          * @type String
          */
         'type': 'default',
-
         // shivs the document according to the specified `html5` object options
         'shivDocument': shivDocument
       };
@@ -1203,7 +1233,7 @@ window.Modernizr = (function( window, document, undefined ) {
     // A few important notes:
     //   * If a browser does not support media queries at all (eg. oldIE) the mq() will always return false
     //   * A max-width or orientation query will be evaluated against the current state, which may change later.
-    //   * You must specify values. Eg. If you are testing support for the min-width media query use:
+    //   * You must specify values. Eg. If you are testing support for the min-width media query use: 
     //       Modernizr.mq('(min-width:0)')
     // usage:
     // Modernizr.mq('only screen and (max-width:768)')
@@ -1256,7 +1286,7 @@ window.Modernizr = (function( window, document, undefined ) {
     //       'WebkitTransition' : 'webkitTransitionEnd',
     //       'MozTransition'    : 'transitionend',
     //       'OTransition'      : 'oTransitionEnd',
-    //       'msTransition'     : 'MSTransitionEnd',
+    //       'msTransition'     : 'MsTransitionEnd',
     //       'transition'       : 'transitionend'
     //     },
     //     transEndEventName = transEndEventNames[ Modernizr.prefixed('transition') ];
