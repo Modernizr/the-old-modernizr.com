@@ -60,12 +60,8 @@ jQuery(function($){
 
   // Special hide/show stuff for custom css classes
   $('#cssclasses input:checkbox').change(function(){
-    if ( $(this).is(':checked') ) {
-      $('#cssprefixcontainer label:last').show();
-    }
-    else {
-      $('#cssprefixcontainer label:last').hide();
-    }
+    var checked =  $(this).is(':checked');
+    $('#cssprefixcontainer').toggle(checked);
   });
 
   // Don't let people add two shivs
@@ -144,8 +140,8 @@ jQuery(function($){
       if ( selections ) {
         if ( mLoad ) {
           tests.push('load');
-        } 
-        modularBuild = "\/* Modernizr " + _currentBuildVersion + " (Custom Build) | MIT & BSD\n * Build: http://www.modernizr.com/download/#-"+ 
+        }
+        modularBuild = "\/* Modernizr " + _currentBuildVersion + " (Custom Build) | MIT & BSD\n * Build: http://www.modernizr.com/download/#-"+
           _(tests).map(function(x){ return x.replace('-','_'); }).join('-') +
           ( prefixClass ? '-cssclassprefix:' + prefixClass.replace(/\-/g, '!') : '' ) +
           "\n */\n" + modularBuild;
@@ -329,12 +325,9 @@ jQuery(function($){
           $('input[value="'+selections[i]+'"]').attr('checked', 'checked');
         }
       }
-      if ( $('#cssclasses input:checkbox').is(':checked') ) {
-        $('#cssprefixcontainer').show();
-      }
-      else {
-        $('#cssprefixcontainer').hide();
-      }
+      var checked = $('#cssclasses input:checkbox').is(':checked');
+      $('#cssprefixcontainer').toggle(checked);
+
       $('#generate').click();
     }
   }

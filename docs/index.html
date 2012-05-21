@@ -80,6 +80,7 @@ body_id: docs
 
             <p>Drop the script tags in the <code>&lt;head></code> of your HTML. For best performance, you should have them follow after your stylesheet references. The reason we recommend placing Modernizr in the head is two-fold: the HTML5 Shiv (that enables HTML5 elements in IE) must execute before the <code>&lt;body></code>, and if you’re using any of the CSS classes that Modernizr adds, you’ll want to prevent a <abbr title="flash of unstyled content">FOUC</abbr>.</p>
 
+            <p><small>If you don't support IE8 and don't need to worry about FOUC, feel free to include modernizr.js whereever.</small></p>
 
 
             <h3 id="polyfills">Polyfills and Modernizr</h3>
@@ -258,9 +259,9 @@ Modernizr.load([
                   <tr><td id="hslanotes" colspan="2">
                      <p>In most cases you don’t need to use the rgba and hsla classes, as browsers can do the fallback naturally:</p>
 <pre>
-.my_container {  <span class="comment">/* no .rgba use necessary! */</span>
-   background-color: #ccc;
-   background-color: rgba(255,255,255, .5);
+.my_container {  <span class="comment">/* no .hsla use necessary! */</span>
+   background-color: #ccc; /* light grey fallback */
+   background-color: hsla(0, 0%, 100%, .5); /* white with alpha */
 }
 </pre>
                      </td>
@@ -472,7 +473,7 @@ audio.play();
                      <th id="svgclippaths">SVG Clip paths</th><td>svgclippaths</td>
                   </tr>
                   <tr><td id="svgclippathsnotes" colspan="2">
-                    <p>This test is only for clip paths in SVG, not necessarily applying SVG clippaths to HTML content. View this <a href="//srufaculty.sru.edu/david.dailey/svg/newstuff/clipPath4.svg">demo of SVG clippaths</a> to see the feature in action. If you're curious about clippaths on HTML, <a href="github.com/Modernizr/Modernizr/issues/213#issuecomment-1149491">read the comments here</a>.
+                    <p>This test is only for clip paths in SVG, not necessarily applying SVG clippaths to HTML content. View this <a href="//srufaculty.sru.edu/david.dailey/svg/newstuff/clipPath4.svg">demo of SVG clippaths</a> to see the feature in action. If you're curious about clippaths on HTML, <a href="https://github.com/Modernizr/Modernizr/issues/213#issuecomment-1149491">read the comments here</a>.
 
                   </td></tr>
                   <tr>
