@@ -648,7 +648,7 @@ Modernizr.addTest('track', function(){
                <h3>testStyles()</h3>
                <dl>
                   <dt>JavaScript method:</dt>
-                  <dd><code>Modernizr.<strong>testStyles(str,fn)</strong></code></dd>
+                  <dd><code>Modernizr.<strong>testStyles(str,fn[, nodes, testnames])</strong></code></dd>
                </dl>
 
                <p>Modernizr.testStyles() allows you to add custom styles to the document and test an element afterwards. An element with the id of "modernizr" is injected into the page.</p>
@@ -657,6 +657,14 @@ Modernizr.addTest('track', function(){
   Modernizr.testStyles('#modernizr { width: 9px; color: papayawhip; }', function(elem, rule){
       Modernizr.addTest('width', elem.offsetWidth == 9);
   });
+</pre>
+
+              <p>If your test requires more than a single element to be injected you can specify the <code>nodes</code> argument which accepts a number indicating how many extra child div elements you want injected inside the main element. These extra elements will default to and id of "modernizr[n]" where n is a number. If you wish to specify a specific id the <code>tesnames</code> argument allows you to pass an array of id's to apply to the child elements.</p>
+
+<pre>
+  Modernizr.testStyles('#modernizr { width: 9px; color: papayawhip; }', function(elem, rule){
+      Modernizr.addTest('width', elem.offsetWidth == 9);
+  }, 2, ["video", "image"]);
 </pre>
             </section>
 
