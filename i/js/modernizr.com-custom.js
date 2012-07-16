@@ -1,4 +1,4 @@
-/* 
+/*
    Hi!
 
    We're thrilled you're taking a peek at the Modernizr.com source code. Be advised though: this JavaScript file
@@ -20,7 +20,7 @@ if (Modernizr.fontface && Modernizr.touch) {
    document.documentElement.className += " tk-loaded wf-inactive";
 } else {
    // After 3 seconds we don't care if the FOUT happens
-   window.setTimeout(function(){ document.documentElement.className += " tk-loaded wf-active"; }, 3000);  
+   window.setTimeout(function(){ document.documentElement.className += " tk-loaded wf-active"; }, 3000);
 }
 
 // Dynamic loading configuration
@@ -33,20 +33,13 @@ Modernizr.load([
       catch(e){}
    }
   }, {
-   load: '//ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js',
-   complete: function () {
-      if (!window.jQuery) {
-         Modernizr.load('/i/js/jquery-1.6.1.min.js');
-      }
-   }
-  }, {
    test: Modernizr.csstransitions && Modernizr.csstransforms,
    yep: '/i/css/animations.css'
   },
-  
+
   // custom site script; simple for now
   '/i/js/modernizr.script-2.0.0.js',
-  
+
   // load up google analytics and livestats
   '/i/js/analytics.js'
 ]);
