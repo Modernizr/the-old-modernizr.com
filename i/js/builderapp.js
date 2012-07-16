@@ -1,5 +1,5 @@
 jQuery(function($){
-  var _currentBuildVersion = '2.5.3';
+  var _currentBuildVersion = '2.6.0';
 
   // var run = false;
   // $(':checkbox').attr('checked', true);
@@ -256,7 +256,7 @@ jQuery(function($){
       dataType: 'text',
       cache: false,
       type: 'GET',
-      url: '/i/js/modernizr.'+_currentBuildVersion+'-prebuild.js', //'/i/js/currentmod.js',//$('script[src*=modernizr]').attr('src'),
+      url: '/downloads/modernizr-latest.js',
       success:function(script) {
         // Call the modulr function to create a modular build
         var modularBuild = Modulizr.ize(script, [].slice.call(tests,0), function(){}),
