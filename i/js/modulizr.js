@@ -122,6 +122,26 @@
       'workers_blobworkers' : [],
       'workers_dataworkers' : [],
       'workers_sharedworkers' : []
+
+      /* added (but not completely) july 16 2012
+      ,
+      blob-constructor
+      blobbuilder
+      css-backgroundcliptext
+      css-backgroundposition-fourvalues
+      css-backgroundposition-xy
+      css-calc
+      css-lastchild
+      css-regions
+      css-subpixelfont
+      network-xhr2
+      style-scoped
+      svg-filters
+      upload
+      vibrate
+      vibration
+      */
+
     },
     /**
      * Function ize
