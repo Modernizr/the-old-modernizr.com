@@ -40,7 +40,7 @@ jQuery(function($){
     var $this = $(this), deps, i;
     // check ones that this relies on
     if ( $this.is(':checked') ) {
-      deps = Modulizr._dependencies[ $this.closest('li').attr('id').replace('_','-') ];
+      deps = Modulizr._dependencies[ $this.closest('li').attr('id').replace('_','-') ] ||  Modulizr._dependencies[ $this.closest('li').attr('id') ];
       for( i in deps ) {
         $( '#' + deps[ i ] ).find('input:checkbox').attr('checked', 'checked');
       }
@@ -48,7 +48,7 @@ jQuery(function($){
     // uncheck ones that rely on this
     else {
       _( Modulizr._dependencies ).each(function( depArr, name ) {
-        if ( _(depArr).contains( $this.closest('li').attr('id').replace('_','-') ) ) {
+        if ( _(depArr).contains( $this.closest('li').attr('id').replace('_','-') ) || _(depArr).contains( $this.closest('li').attr('id') ) ) {
           $( '#' + name ).find('input:checkbox').removeAttr('checked');
         }
       });
