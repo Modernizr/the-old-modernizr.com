@@ -147,7 +147,7 @@
       this.wantedHash = (function(){
         var hash = {}, k;
         for(k = 0; k < tests.length; k++) {
-          hash[tests[k]] = true;
+          hash[tests[k].replace('-', '_')] = true;
         }
         return hash;
       })();
