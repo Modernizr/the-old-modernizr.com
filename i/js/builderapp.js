@@ -293,7 +293,7 @@ jQuery(function($){
             dataType: 'text',
             cache   : false,
             type    : 'GET',
-            url     : '/i/js/html5shiv-printshiv-3.4.js',
+            url     : '/i/js/html5shiv-printshiv-3.6.js',
             success : function ( printshiv ) {
               bothDone( 'printshiv', printshiv );
               //buildFile( modularBuild, respond );
