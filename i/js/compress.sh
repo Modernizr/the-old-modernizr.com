@@ -15,6 +15,7 @@
 #uglifyjs --unsafe uglifyjs/bin/uglifyjs.js >> builderapp.min.js
 #echo ';' >> builderapp.min.js
 
+echo "Compressing the JS into builderapp.min.js..."
 
 cat modulizr.js > tmp.js
 echo ';' >> tmp.js
