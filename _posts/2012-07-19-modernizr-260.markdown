@@ -59,7 +59,7 @@ We’ve added a lot of new tests, many of which by the community, and updated ex
 
 Up next, we're going to clarify our touch detect: Is it detecting touch devices or touch events; and which touch event model?  We're also going to redesign the download page and update the documentation with some more [approachable documentation](https://hacks.mozilla.org/2012/07/the-web-developer-toolbox-modernizr/).
 
-As always, if you'd like to get involved, hop into the [Github issue tracker](https://github.com/Modernizr/Modernizr/issues).
+As always,  if you'd like to get involved, hop into the [Github issue tracker](https://github.com/Modernizr/Modernizr/issues).
 
 
 
