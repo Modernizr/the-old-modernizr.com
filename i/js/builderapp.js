@@ -277,7 +277,7 @@ jQuery(function($){
             dataType: 'text',
             cache   : false,
             type    : 'GET',
-            url     : '/i/js/modernizr.load.1.5.3.js',
+            url     : '/i/js/modernizr.load.1.5.4.js',
             success : function ( loader ) {
               //buildFile( modularBuild, loader );
               bothDone( 'load', loader );
