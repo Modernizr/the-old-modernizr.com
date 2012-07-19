@@ -43,6 +43,7 @@ We’ve added a lot of new tests, many of which by the community, and updated ex
    * svg-filters
      * Only detects SVG filters appling to SVG content. SVG filters on HTML is [awaiting](https://github.com/Modernizr/Modernizr/issues/606).
    * vibration
+   * You can [view all of these detects on Github](https://github.com/Modernizr/Modernizr/tree/master/feature-detects) and add them in the [download builder](http://modernizr.com/download) today.
 
 #### Dependencies
 
