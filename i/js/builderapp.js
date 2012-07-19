@@ -1,6 +1,10 @@
 jQuery(function($){
 
-  var _currentBuildVersion = $('script[src*="builderapp"]').data('currentbuildversion');
+  var scriptEl = $('script[src*="builderapp"]');
+
+  var _currentBuildVersion = scriptEl.data('modver');
+  var _yepnopeVersion = scriptEl.data('yepnopever');
+  var _shivVersion = scriptEl.data('shivver');
 
   // var run = false;
   // $(':checkbox').attr('checked', true);
@@ -277,7 +281,7 @@ jQuery(function($){
             dataType: 'text',
             cache   : false,
             type    : 'GET',
-            url     : '/i/js/modernizr.load.1.5.4.js',
+            url     : '/i/js/modernizr.load.' + _yepnopeVersion + '.js',
             success : function ( loader ) {
               //buildFile( modularBuild, loader );
               bothDone( 'load', loader );
@@ -294,7 +298,7 @@ jQuery(function($){
             dataType: 'text',
             cache   : false,
             type    : 'GET',
-            url     : '/i/js/html5shiv-printshiv-3.6.js',
+            url     : '/i/js/html5shiv-printshiv-' + _shivVersion + '.js',
             success : function ( printshiv ) {
               bothDone( 'printshiv', printshiv );
               //buildFile( modularBuild, respond );

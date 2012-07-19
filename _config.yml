@@ -7,3 +7,5 @@ markdown:  rdiscount
 
 # custom config
 latest_version: 2.6.1
+yepnope_version: 1.5.4
+html5shiv_version: 3.6.0
