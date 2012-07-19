@@ -1,5 +1,6 @@
 jQuery(function($){
-  var _currentBuildVersion = '2.6.0';
+
+  var _currentBuildVersion = $('script[src*="builderapp"]').data('currentbuildversion');
 
   // var run = false;
   // $(':checkbox').attr('checked', true);
