@@ -135,7 +135,7 @@
       'network-xhr2' : [],
       'style-scoped' : [],
       'svg-filters' : [],
-      'upload' : [],
+      'forms-fileinput' : [],
       'vibrate' : [],
       'vibration' : []
 
