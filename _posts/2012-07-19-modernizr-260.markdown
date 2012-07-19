@@ -1,0 +1,65 @@
+---
+layout: post
+title:  "Modernizr 2.6.0 released"
+author: Modernizr
+---
+
+Modernizr 2.6 is now available. Below is a summary of the major changes. The [full diff](https://github.com/Modernizr/Modernizr/compare/v2.5.3...v2.6.1) is also available.
+
+You can download the [latest at the builder](http://modernizr.com/download). You must upgrade if you're using geolocation or flexbox; otherwise you only _should_ upgrade. 
+
+#### Detects
+
+We’ve added a lot of new tests, many of which by the community, and updated existing ones:
+
+ * **Geolocation** used to be a trivial detect but two issues have come up recently that make it trickier. If you're using your own detect, [read the details](https://github.com/Modernizr/Modernizr/blob/eeb5ca/modernizr.js#L457-469).
+ * The ESR release of Firefox exposes MozWebsocket whereas every other supporting browser uses the standard **`WebSocket`**. We've quickened and simplified our detect accordingly.
+ * We got a last minute pull request from David Baron, the czar of Gecko, who recommended we don't allow `Modernizr.testProp('pointer-events')` to pass, and instead require the camelcased equivalent: `pointerEvents`
+ * Opera fixed a bug affecting the **`<input type=color>`** detect, so we've sped up and simplified our detect.
+ * Our detect for **flexbox** has been updated as the new spec had naming changes. The detect for the flexbox implementation that you see in older mobile WebKit is now available as `flexboxlegacy` (without a hyphen).
+ * Our **WebGL** test got much faster, though it is less reliable. We made this decision because many Modernizr users include all tests they don't use and the earlier WebGL test could last for 500ms sometimes. If your site or app relies on the WebGL test, make sure you also have a fallback in case the context creation fails. It can fail due to inadequate GPU or lack of graphics memory, see also [recovering from a lost context](http://www.khronos.org/webgl/wiki/HandlingContextLost).
+ * Plenty more inline documentation added about detection weirdness. The [source comments](https://github.com/Modernizr/Modernizr/blob/master/modernizr.js) are a fun read.
+ * As well as tightening up support for existing tests, we've also added a number of new detects, many submitted by the community:
+   * blob-constructor
+   * css-backgroundposition-shorthand
+   * css-backgroundposition-xy
+   * css-calc
+   * css-filters
+     * Detecting the [new CSS filters](http://www.html5rocks.com/en/tutorials/filters/understanding-css/), but not catching the legacy IE filter property.\
+   * css-lastchild
+   * css-mask
+     * This correctly finds the WebKit mask property without a false positive on Firefox's SVG mask support.
+   * css-regions
+     * Contributed by Adobe.
+   * css-subpixelfont
+   * exif-orientation
+     * Did you know iOS Safari is the only browser to use the orientation bit in EXIF and rotate the asset accordingly? Well, Modernizr does.
+   * forms-fileinput
+     * Detecting `<input type=file>` not working on iOS <6
+   * dart
+   * network-xhr2
+     * Which has an [interesting testing story](https://github.com/Modernizr/Modernizr/issues/385)
+   * style-scoped
+   * svg-filters
+     * Only detects SVG filters appling to SVG content. SVG filters on HTML is [awaiting](https://github.com/Modernizr/Modernizr/issues/606).
+   * vibration
+
+#### Dependencies
+
+ * **html5shiv** is now up to 3.6, fixing [some edgecases](https://github.com/aFarkas/html5shiv/compare/3.4...master) users ran into
+ * **yepnope** was updated to 1.5.4
+
+
+#### Development Workflow:
+
+ * We're using **[EditorConfig](http://editorconfig.org/)** to keep our whitespace policy consistent
+ * **[GruntJS](http://gruntjs.com)** powers our automatic linting and minification now.
+ * We are integrated with **Travis**, so after all commits, [Travis runs our test suite](travis-ci.org/#!/Modernizr/Modernizr/builds) in a headless WebKit via PhantomJS.
+
+
+Up next, we're going to clarify our touch detect: Is it detecting touch devices or touch events; and which touch event model?  We're also going to redesign the download page and update the documentation with some more [approachable documentation](https://hacks.mozilla.org/2012/07/the-web-developer-toolbox-modernizr/). 
+
+As always, if you'd like to get involved, hop into the [Github issue tracker](https://github.com/Modernizr/Modernizr/issues).
+
+
+
