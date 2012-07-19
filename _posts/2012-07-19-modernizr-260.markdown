@@ -55,7 +55,7 @@ We’ve added a lot of new tests, many of which by the community, and updated ex
 
  * We're using **[EditorConfig](http://editorconfig.org/)** to keep our whitespace policy consistent
  * **[GruntJS](http://gruntjs.com)** powers our automatic linting and minification now.
- * We are integrated with **Travis**, so after all commits, [Travis runs our test suite](travis-ci.org/#!/Modernizr/Modernizr/builds) in a headless WebKit via PhantomJS.
+ * We are integrated with **Travis**, so after all commits, [Travis runs our test suite](http://travis-ci.org/#!/Modernizr/Modernizr/builds) in a headless WebKit via PhantomJS.
 
 
 Up next, we're going to clarify our touch detect: Is it detecting touch devices or touch events; and which touch event model?  We're also going to redesign the download page and update the documentation with some more [approachable documentation](https://hacks.mozilla.org/2012/07/the-web-developer-toolbox-modernizr/).
