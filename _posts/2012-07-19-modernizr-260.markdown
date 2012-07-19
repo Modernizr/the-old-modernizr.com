@@ -1,12 +1,12 @@
 ---
 layout: post
-title:  "Modernizr 2.6.0 released"
+title:  "Modernizr 2.6 released"
 author: Modernizr
 ---
 
 Modernizr 2.6 is now available. Below is a summary of the major changes. The [full diff](https://github.com/Modernizr/Modernizr/compare/v2.5.3...v2.6.1) is also available.
 
-You can download the [latest at the builder](http://modernizr.com/download). You must upgrade if you're using geolocation or flexbox; otherwise you only _should_ upgrade. 
+You can download the [latest at the builder](http://modernizr.com/download). You must upgrade if you're using geolocation or flexbox; otherwise you only _should_ upgrade.
 
 #### Detects
 
@@ -57,7 +57,7 @@ We’ve added a lot of new tests, many of which by the community, and updated ex
  * We are integrated with **Travis**, so after all commits, [Travis runs our test suite](travis-ci.org/#!/Modernizr/Modernizr/builds) in a headless WebKit via PhantomJS.
 
 
-Up next, we're going to clarify our touch detect: Is it detecting touch devices or touch events; and which touch event model?  We're also going to redesign the download page and update the documentation with some more [approachable documentation](https://hacks.mozilla.org/2012/07/the-web-developer-toolbox-modernizr/). 
+Up next, we're going to clarify our touch detect: Is it detecting touch devices or touch events; and which touch event model?  We're also going to redesign the download page and update the documentation with some more [approachable documentation](https://hacks.mozilla.org/2012/07/the-web-developer-toolbox-modernizr/).
 
 As always, if you'd like to get involved, hop into the [Github issue tracker](https://github.com/Modernizr/Modernizr/issues).
 
