@@ -797,7 +797,7 @@ article ol {
 }
 article li {
   list-style: disc;
-  margin: .2em 0;
+  margin: 0.7em 0;
 }
 
 /* News etc. */
@@ -820,10 +820,11 @@ article li {
 }
 .standalone h4 {
   margin: 1em 0;
+  font-weight: bold;
 }
 .standalone li ul li {
   list-style: square;
-  margin-left: 2em;
+  margin: .2em 0 0.3em 2em;
 }
 .news-posts .posted {
   font-size: .9em;

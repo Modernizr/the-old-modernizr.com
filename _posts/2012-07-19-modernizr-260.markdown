@@ -25,7 +25,7 @@ We’ve added a lot of new tests, many of which by the community, and updated ex
    * css-backgroundposition-xy
    * css-calc
    * css-filters
-     * Detecting the [new CSS filters](http://www.html5rocks.com/en/tutorials/filters/understanding-css/), but not catching the legacy IE filter property.\
+     * Detecting the [new CSS filters](http://www.html5rocks.com/en/tutorials/filters/understanding-css/), but not catching the legacy IE filter property.
    * css-lastchild
    * css-mask
      * This correctly finds the WebKit mask property without a false positive on Firefox's SVG mask support.
