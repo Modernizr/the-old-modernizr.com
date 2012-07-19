@@ -121,26 +121,23 @@
       'window_framed' : [],
       'workers_blobworkers' : [],
       'workers_dataworkers' : [],
-      'workers_sharedworkers' : []
+      'workers_sharedworkers' : [],
 
-      /* added (but not completely) july 16 2012
-      ,
-      blob-constructor
-      blobbuilder
-      css-backgroundcliptext
-      css-backgroundposition-fourvalues
-      css-backgroundposition-xy
-      css-calc
-      css-lastchild
-      css-regions
-      css-subpixelfont
-      network-xhr2
-      style-scoped
-      svg-filters
-      upload
-      vibrate
-      vibration
-      */
+      /* added  july 16 2012 */
+      'blob-constructor' : [],
+      'css-backgroundcliptext' : [],
+      'css-backgroundposition-fourvalues' : [],
+      'css-backgroundposition-xy' : ['teststyles'],
+      'css-calc' : ['prefixes'],
+      'css-lastchild' : ['teststyles'],
+      'css-regions' : ['prefixed'],
+      'css-subpixelfont' : ['teststyles'],
+      'network-xhr2' : [],
+      'style-scoped' : [],
+      'svg-filters' : [],
+      'upload' : [],
+      'vibrate' : [],
+      'vibration' : []
 
     },
     /**
