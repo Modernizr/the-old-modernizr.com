@@ -1,6 +1,6 @@
 @charset "UTF-8";
 /*
-Modernizr CSS version: 2.0.5
+Modernizr CSS version: 2.1.0
 
 Foundation based on:
 HTML5 Boilerplate:    html5boilerplate.com
@@ -142,41 +142,7 @@ body, select, input, textarea {
 body {
   /* Chrome is having difficulty with gradients lately. For that and perf reasons, returning to the original bg image */
   background: #fafafa url('/i/img/bg-pink.jpg') 0 0 repeat-x;
-
-  /* Old syntax: boring…! *
-  background-image: -webkit-gradient(linear, 0 0, 0 400, from(#7ab0e6), to(#ff0));
-  background-image: -moz-linear-gradient(top, #7ab0e6 0%, #fafafa 400px);
-
-  /* New syntax: fancy gradients! *
-  background: -webkit-linear-gradient(-90deg, rgba(255, 255, 255, 0), #fafafa 485px),
-              #fafafa -webkit-repeating-linear-gradient(-45deg, #d5a5bc 0, #f5cfe2 2px, #f5cfe2 10px, #facbe0 10px, #f3ccdf 12px, #f5cfe2 20px, #f0bad3 20px, #f5cfe2 22px, #f5cfe2 30px, #facbe0 30px, #f5cfe2 32px, #facbe0 40px);
-  background: -moz-linear-gradient(-90deg, rgba(255, 255, 255, 0), #fafafa 485px),
-              #fafafa -moz-repeating-linear-gradient(-45deg, #d5a5bc 0, #f5cfe2 2px, #f5cfe2 10px, #facbe0 10px, #f3ccdf 12px, #f5cfe2 20px, #f0bad3 20px, #f5cfe2 22px, #f5cfe2 30px, #facbe0 30px, #f5cfe2 32px, #facbe0 40px);
-  background: -o-linear-gradient(-90deg, rgba(255, 255, 255, 0), #fafafa 485px),
-              #fafafa -o-repeating-linear-gradient(-45deg, #d5a5bc 0, #f5cfe2 2px, #f5cfe2 10px, #facbe0 10px, #f3ccdf 12px, #f5cfe2 20px, #f0bad3 20px, #f5cfe2 22px, #f5cfe2 30px, #facbe0 30px, #f5cfe2 32px, #facbe0 40px);
-  background: linear-gradient(-90deg, rgba(255, 255, 255, 0), #fafafa 485px),
-              #fafafa repeating-linear-gradient(-45deg, #d5a5bc 0, #f5cfe2 2px, #f5cfe2 10px, #facbe0 10px, #f3ccdf 12px, #f5cfe2 20px, #f0bad3 20px, #f5cfe2 22px, #f5cfe2 30px, #facbe0 30px, #f5cfe2 32px, #facbe0 40px);
 }
-.no-js body,
-.no-cssgradients body {
-  background: #fafafa url('/i/img/bg-blue.jpg') 0 0 repeat-x;*/
-}
-
-/*
-div, a, .subtitle, h2, .intro strong, .title, .wt, .wt:visited, .quote q, .btn {
-  -webkit-transition: color .25s ease-out, text-shadow .25s ease-out;
-  -moz-transition: color .25s ease-out, text-shadow .25s ease-out;
-  -o-transition: color .25s ease-out, text-shadow .25s ease-out;
-  transition: color .25s ease-out, text-shadow .25s ease-out;
-}
-
-.fontface.tk-loading div, .fontface.tk-loading a, .fontface.tk-loading .subtitle, .fontface.tk-loading h2, 
-.fontface.tk-loading .intro strong, .fontface.tk-loading .title, .fontface.tk-loading .wt, .fontface.tk-loading .wt:visited, 
-.fontface.tk-loading .quote q, .fontface.tk-loading .btn {
-  color: rgba(0,0,0, 0);
-}
-*/
-
 
 /*.wf-loading body { visibility:hidden; }*/
 .wf-loading body { opacity: 0; }
@@ -188,54 +154,7 @@ body {
   -o-transition: opacity .4s cubic-bezier(.9,.01,.94,.01);
   transition: opacity .4s cubic-bezier(.9,.01,.94,.01);
 }
-/* Let's transition the whole bunch! *
-body, a, .subtitle, h2, .intro strong, .title, .wt, .wt:visited, .quote q, .btn {
-  -webkit-transition: color .25s ease-out, text-shadow .25s ease-out;
-  -moz-transition: color .25s ease-out, text-shadow .25s ease-out;
-  -o-transition: color .25s ease-out, text-shadow .25s ease-out;
-  transition: color .25s ease-out, text-shadow .25s ease-out;
-}
 
-
-.fontface body {
-  opacity: 1;
-  -webkit-transition: all .5s ease-in-out;
-  -moz-transition: all .5s ease-in-out;
-  -ms-transition: all .5s ease-in-out;
-  -o-transition: all .5s ease-in-out;
-  transition: all .5s ease-in-out;
-}
-.fontface.tk-loading body {
-  opacity: 0;
-  -webkit-transition: none;
-  -moz-transition: none;
-  -ms-transition: none;
-  -o-transition: none;
-  transition: none;
-}
-.js body:before { content: ''; }
-.js.tk-loading body:before { content: 'hello'; color: red; }
-/*.js:not(.wf-loading) nav {
-  -webkit-transition-delay: .2s;
-  -moz-transition-delay: .2s;
-  -ms-transition-delay: .2s;
-  -o-transition-delay: .2s;
-  transition-delay: .2s;
-}
-.js:not(.wf-loading) #content {
-  -webkit-transition-delay: .4s;
-  -moz-transition-delay: .4s;
-  -ms-transition-delay: .4s;
-  -o-transition-delay: .4s;
-  transition-delay: .4s;
-}
-.js:not(.wf-loading) footer {
-  -webkit-transition-delay: .6s;
-  -moz-transition-delay: .6s;
-  -ms-transition-delay: .6s;
-  -o-transition-delay: .6s;
-  transition-delay: .6s;
-}*/
 
 /* Main black */
 body, .btn span, #used-by { color: #2a2a2a; }
