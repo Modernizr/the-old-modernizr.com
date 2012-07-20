@@ -32,7 +32,10 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 }
 
 /* Always force a scrollbar in non-IE */
-html { background: #fafafa; color: #141414; min-height: 100.1%; 
+html {
+  /* Chrome is having difficulty with gradients lately. For that and perf reasons, returning to the original bg image */
+  background: #fafafa url('/i/img/bg-pink.jpg') 0 0 repeat-x;
+  color: #141414; min-height: 100.1%; 
   -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
           text-size-adjust: 100%;
@@ -139,20 +142,16 @@ body, select, input, textarea {
   color: #2a2a2a;
   font: 14px/1.42857143 Helmet, Freesans, sans-serif;
 }
-body {
-  /* Chrome is having difficulty with gradients lately. For that and perf reasons, returning to the original bg image */
-  background: #fafafa url('/i/img/bg-pink.jpg') 0 0 repeat-x;
-}
 
-/*.wf-loading body { visibility:hidden; }*/
+/*.wf-loading { visibility:hidden; }*/
 .wf-loading body { opacity: 0; }
 body {
   opacity: 1;
-  -webkit-transition: opacity .4s cubic-bezier(.9,.01,.94,.01);
-  -moz-transition: opacity .4s cubic-bezier(.9,.01,.94,.01);
-  -ms-transition: opacity .4s cubic-bezier(.9,.01,.94,.01);
-  -o-transition: opacity .4s cubic-bezier(.9,.01,.94,.01);
-  transition: opacity .4s cubic-bezier(.9,.01,.94,.01);
+  -webkit-transition: opacity .2s cubic-bezier(.9,.01,.94,.01);
+  -moz-transition: opacity .2s cubic-bezier(.9,.01,.94,.01);
+  -ms-transition: opacity .2s cubic-bezier(.9,.01,.94,.01);
+  -o-transition: opacity .2s cubic-bezier(.9,.01,.94,.01);
+  transition: opacity .2s cubic-bezier(.9,.01,.94,.01);
 }
 
 
