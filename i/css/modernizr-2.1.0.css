@@ -171,9 +171,18 @@ h2, .intro strong, .title,
 #nav a:hover,
 .contributors-area small { color: #d91e76; }
 /* Mid gray */
-/*.wf-active pre .comment, .tk-loaded pre .comment { color: #d9d9d9; }*/
+.wf-active pre .comment { color: #999; }
 /* Dark gray */
 #page-footer, #team .twitter, #the-end { color: #999; }
+
+a {
+  -webkit-transition: color .2s ease-out;
+  -moz-transition: color .2s ease-out;
+  -ms-transition: color .2s ease-out;
+  -o-transition: color .2s ease-out;
+  transition: color .2s ease-out;
+}
+
 
 /* Fonts
 -------------------------------------------------------------------------------*/
