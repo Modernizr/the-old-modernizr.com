@@ -14,7 +14,7 @@
    <link rel="alternate" href="http://feeds.feedburner.com/Modernizr" type="application/rss+xml" title="RSS" />
 
    <!--[if lte IE 7]><link rel="stylesheet" href="/i/css/ie6.1.1.css" media="screen, projection"><![endif]-->
-   <!--[if (gt IE 7)|!(IE)]><!--><link rel="stylesheet" href="/i/css/modernizr-2.1.0.css?v=1" type="text/css" media="screen"><!--<![endif]-->
+   <!--[if (gt IE 7)|!(IE)]><!--><link rel="stylesheet" href="/i/css/modernizr-2.1.1.css?v=1" type="text/css" media="screen"><!--<![endif]-->
 
 
    <script>
@@ -33,55 +33,60 @@
 
 <body id="{{ page.body_id }}">
 
-   <nav role="navigation">
-      <ul id="nav">
-         <li><a class="wt{% if page.body_id == 'builder' %} current{% endif %}" href="/download/">Download</a></li>
-         <li><a class="wt{% if page.body_id == 'docs' %} current{% endif %}" href="/docs/">Documentation</a></li>
-         <li><a class="wt{% if page.body_id == 'resources' %} current{% endif %}" href="/resources/">Resources</a></li>
-         <li><a class="wt{% if page.body_id == 'news' %} current{% endif %}" href="/news/">News</a></li>
-      </ul>
-   </nav>
+  <div class="page">
 
-   <div class="container clrfx">
+     <nav role="navigation">
+        <ul id="nav">
+           <li><a class="wt{% if page.body_id == 'builder' %} current{% endif %}" href="/download/">Download</a></li>
+           <li><a class="wt{% if page.body_id == 'docs' %} current{% endif %}" href="/docs/">Documentation</a></li>
+           <li><a class="wt{% if page.body_id == 'resources' %} current{% endif %}" href="/resources/">Resources</a></li>
+           <li><a class="wt{% if page.body_id == 'news' %} current{% endif %}" href="/news/">News</a></li>
+        </ul>
+     </nav>
 
-      <header id="masthead" class="loading">
-         <hgroup>
-            <a href="/" class="banner" role="banner">
-               <h1 class="title"><img src="/i/img/logo-x12.png" alt="" class="logo">Modernizr</h1>
-               <h2 class="subtitle"><span>Front</span>-end Development Done Right</h2>
-            </a>
-         </hgroup>
-      </header>
-      <!--
-      <aside class="quote">
-         <q>Modernizr is an essential part of my toolkit of files.</q>
-         <cite>Andy Clarke</cite>, <a class="cite-source" href="http://www.stuffandnonsense.co.uk/" rel="external">Stuff &amp; Nonsense</a>
-      </aside>
-      -->
-      <aside class="quote">
-         <q>An indispensable tool.</q>
-         <cite>Bruce Bowman</cite>, <a class="cite-source" href="https://browserlab.adobe.com/" rel="external">Adobe BrowserLab Product Manager</a>
-      </aside>
+     <div class="container clrfx">
 
-      <div id="content" class="clrfx">
+        <header id="masthead" class="loading">
+           <hgroup>
+              <a href="/" class="banner" role="banner">
+                 <h1 class="title"><img src="/i/img/logo-x12.png" alt="" class="logo">Modernizr</h1>
+                 <h2 class="subtitle"><span>Front</span>-end Development Done Right</h2>
+              </a>
+           </hgroup>
+        </header>
+        <!--
+        <aside class="quote">
+           <q>Modernizr is an essential part of my toolkit of files.</q>
+           <cite>Andy Clarke</cite>, <a class="cite-source" href="http://www.stuffandnonsense.co.uk/" rel="external">Stuff &amp; Nonsense</a>
+        </aside>
+        -->
+        <aside class="quote">
+           <q>An indispensable tool.</q>
+           <cite>Bruce Bowman</cite>, <a class="cite-source" href="https://browserlab.adobe.com/" rel="external">Adobe BrowserLab Product Manager</a>
+        </aside>
 
-         <div id="primary" class="clrfx" role="main">
-            {{ content }}
-         </div><!-- #primary -->
+        <div id="content" class="clrfx">
 
-         <div id="secondary" class="clrfx" role="complementary">
-            {% include community.html %}
+           <div id="primary" class="clrfx" role="main">
+              {{ content }}
+           </div><!-- #primary -->
 
-            {% unless page.body_id == 'docs' or page.body_id == 'news' %}
-               {% include latest-news.html %}
-            {% endunless %}
-         </div><!-- #secondary -->
+           <div id="secondary" class="clrfx" role="complementary">
+              {% include community.html %}
 
-      </div><!-- #content -->
+              {% unless page.body_id == 'docs' or page.body_id == 'news' %}
+                 {% include latest-news.html %}
+              {% endunless %}
+           </div><!-- #secondary -->
 
-   </div><!-- .container -->
+        </div><!-- #content -->
 
+     </div><!-- .container -->
 
+     <div class="footer-shim"></div>
+  </div><!-- .page -->
+
+  <div class="footer-anchor">
    <footer id="page-footer">
 
       <section id="used-by">
@@ -143,6 +148,7 @@
       <!-- </div> -->
 
    </footer>
+  </div><!-- .footer-anchor -->
 
 </body>
 </html>
