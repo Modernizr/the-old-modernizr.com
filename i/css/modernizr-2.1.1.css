@@ -35,7 +35,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 html {
   /* Chrome is having difficulty with gradients lately. For that and perf reasons, returning to the original bg image */
   background: #fafafa url('/i/img/bg-pink.jpg') 0 0 repeat-x;
-  color: #141414; min-height: 100.1%;
+  color: #141414; /* min-height: 100.1%; This is breaking the sticky footer */
   -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
           text-size-adjust: 100%;
@@ -841,7 +841,7 @@ article li {
 /* Used by */
 #used-by {
   background: #d9d9d9;
-  margin: 2em 0 0;
+  margin: 0; /* top margin was causing issues for the sticky footer */
   padding: 5px 0;
 }
 #used-by h4 {
@@ -887,7 +887,8 @@ article li {
 
 /* Team */
 #team {
-  padding: 20px 0 3.2em;
+  padding: 20px 0 1.6em;
+  overflow: hidden;
 }
 #team ul {
   clear: left;
@@ -939,7 +940,6 @@ article li {
   clear: both;
   background: #141414;
   font-size: 12px;
-  padding: 0 0 1em;
 }
 /* Marketing line / design filler isn't really necessary for basic mobile: */
 #microlib {
@@ -947,7 +947,7 @@ article li {
 }
 #the-end p {
   margin: 0;
-  padding: 1em 0 0;
+  padding: 1em 0;
 }
 .sponsors {
   float: right;
@@ -1066,7 +1066,7 @@ details, summary { display: block; }
 
  * Using pixels here, but you can change to relative if that's your preference.
 
- * $footer-height: 263px; // however tall you want your footer to be.
+ * $footer-height: 270px; // however tall you want your footer to be.
 
  * Feel free to rename things to your liking and remove this comment, too. :P
  * Also, to avoid issues I just wrapped a footer around your footer, but you
@@ -1075,12 +1075,10 @@ details, summary { display: block; }
  */
 
 html,
-body {
-  height: 100%;
-}
+body { height: 100%; }
 
 .page {
-  margin-bottom: -263px;
+  margin-bottom: -285px;
   min-height: 100%;
   height: auto !important;
   height: 100%;
@@ -1089,8 +1087,21 @@ body {
 .footer-shim,
 .footer-anchor {
   clear: both;
-  height: 263px;
+  height: 285px;
 }
+
+.footer-anchor {
+  background-color: #141414;
+  /* Adding this so you can make your height taller if needed and it'll look
+  okay */
+}
+
+/* Needed to clear the contained floats because it was causing an overscroll */
+#the-end .container { overflow: hidden; }
+
+
+/* I had to adjust the height and add color behind my anchor because there is
+  Padding on the bottom of the #the-end section being a big jerk. */
 
 
 
@@ -1172,8 +1183,10 @@ body {
     height: 100px;
   }
   .banner {
+    position: relative;
+    top: -2px;
     height: 80px;
-    margin: -2px 0 0;
+    margin: 0;
     width: 238px;
 
     -webkit-box-shadow: #141414 0 0 7px, #fafafa 0 0px 2px inset;
@@ -1614,8 +1627,10 @@ body {
       font-size: 12px;
     }
     .banner {
+      position: relative;
+      top: -2px;
       height: 100px;
-      margin: -2px 0 0;
+      margin: 0 0 0;
       width: 298px;
     }
     .banner img {
