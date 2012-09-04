@@ -4,3 +4,8 @@
 guard 'jekyll' do
   watch /.*/
 end
+
+guard 'shell' do
+  watch('i/js/builderapp.js')
+  watch('i/js/modulizr.js') { `cd ./i/js/ && ./compress.sh` }
+end

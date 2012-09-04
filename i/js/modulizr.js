@@ -137,7 +137,22 @@
       'svg-filters' : [],
       'forms-fileinput' : [],
       'vibrate' : [],
-      'vibration' : []
+      'vibration' : [],
+
+      /* added sept 3rd */
+      'contentsecuritypolicy' : [],
+      'css-objectfit' : ['prefixed'],
+      'css-positionsticky' : ['prefixes'],
+      'css-supports' : [],
+      'css-vhunit' : ['teststyles'],
+      'css-vmaxunit' : ['teststyles'],
+      'css-vminunit' : ['teststyles'],
+      'css-vwunit' : ['teststyles'],
+      'forms-formattribute' : [],
+      'iframe-sandbox' : [],
+      'iframe-seamless' : [],
+      'iframe-srcdoc' : [],
+      'pointerlock-api' : ['prefixed']
 
     },
     /**
