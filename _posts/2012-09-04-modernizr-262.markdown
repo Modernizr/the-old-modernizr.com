@@ -8,7 +8,7 @@ Summer is over, back to work! We’ve released Modernizr 2.6.2 with a number of 
 
 Some notable fixes include:
 
-* Fix for a [hilarious edge case](https://github.com/Modernizr/Modernizr/issues/524) in Safari where if you set your body or html element to `overflow-y: scroll` and apply styles to the webkit-scrollbars ([see demo][http://jsbin.com/ecetor/4/edit#html]), the browser spontaneously refreshes
+* Fix for a [hilarious edge case](https://github.com/Modernizr/Modernizr/issues/524) in Safari where if you set your body or html element to `overflow-y: scroll` and apply styles to the webkit-scrollbars ([see demo](http://jsbin.com/ecetor/4/edit#html)), the browser spontaneously refreshes
 * HTML5 Shiv got a fix for better compatibility with jPlayer
 * Generated Content false-positive fix for IE7
 * Fix for our download builder and turning off css classes
