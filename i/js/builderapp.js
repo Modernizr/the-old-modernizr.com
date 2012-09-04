@@ -257,7 +257,7 @@ jQuery(function($){
       dataType: 'text',
       cache: false,
       type: 'GET',
-      url: '/downloads/modernizr-latest.js',
+      url: '/downloads/modernizr-' + _currentBuildVersion + '.js',
       success:function(script) {
         // Call the modulr function to create a modular build
         var modularBuild = Modulizr.ize(script, [].slice.call(tests,0), function(){}),
