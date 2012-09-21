@@ -179,8 +179,11 @@ jQuery(function($){
 
       // Client side file saving without flash!
       window.URL = window.webkitURL || window.URL;
-      window.BlobBuilder = window.BlobBuilder || window.WebKitBlobBuilder ||
-                           window.MozBlobBuilder;
+
+      if (Modernizr.blobbuilder) {
+        window.BlobBuilder = window.BlobBuilder || window.WebKitBlobBuilder ||
+                             window.MozBlobBuilder;
+      }
 
       var a = document.querySelector('.btn2'),
           typer = document.querySelector('#generatedSource'),
@@ -189,12 +192,19 @@ jQuery(function($){
 
       a.style.display = "none";
 
-      if(Modernizr.download && Modernizr.bloburls && Modernizr.blobbuilder) {
-        var bb = new BlobBuilder();
-        bb.append(typer.value);
+      if(Modernizr.download && Modernizr.bloburls && (Modernizr.blobbuilder || Modernizr.blob)) {
+        var bb;
+
+        if (Modernizr.blob) {
+          bb = new Blob([typer.value], { type: "application/octet-stream" });
+          a.href = window.URL.createObjectURL(bb);
+        } else if(Modernizr.blobbuilder) {
+          bb = new BlobBuilder();
+          bb.append(typer.value);
+          a.href = window.URL.createObjectURL(bb.getBlob("application/octet-stream"));
+        }
 
         a.download = fileName+".js";
-        a.href = window.URL.createObjectURL(bb.getBlob("application/octet-stream"));
         a.style.display = "inline-block";
 
         a.onclick = function(e) {

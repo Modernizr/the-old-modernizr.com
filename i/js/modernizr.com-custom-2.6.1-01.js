@@ -31,6 +31,14 @@ Modernizr.addTest({
   "blobbuilder": function() {
     return  !!(window.BlobBuilder || window.MozBlobBuilder || window.WebKitBlobBuilder);
   },
+  // Blob ctor supersedes BlobBuilder
+  "blob": function() {
+    try {
+      return !!new Blob();
+    } catch (e) {
+      return false;
+    }
+  },
   // Blob URL support
   "bloburls": function() {
     return !!(window.URL && window.URL.createObjectURL || window.webkitURL && window.webkitURL.createObjectURL);;
