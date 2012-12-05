@@ -9,263 +9,16 @@ body_id: builder
 
                <div class="swap-region">
                <form action="#" class="builder">
-                  <fieldset class="features" id="group-css3">
-                     <legend class="wt"><abbr title="Cascading Style Sheets">CSS</abbr>3</legend>
-                     <ul>
-                        <li id="fontface"><label><input type="checkbox" value="fontface" /> @font-face</label></li>
-                        <li id="backgroundsize"><label><input type="checkbox" value="backgroundsize" /> background-size</label></li>
-                        <li id="borderimage"><label><input type="checkbox" value="borderimage" /> border-image</label></li>
-                        <li id="borderradius"><label><input type="checkbox" value="borderradius" /> border-radius</label></li>
-                        <li id="boxshadow"><label><input type="checkbox" value="boxshadow" /> box-shadow</label></li>
-                        <li id="flexbox"><label><input type="checkbox" value="flexbox" /> Flexible Box Model <small>(flexbox)</small></label></li>
-                        <li id="flexboxlegacy"><label><input type="checkbox" value="flexboxlegacy" /> Flexbox Legacy</label></li>
-                        <li id="hsla"><label><input type="checkbox" value="hsla" /> <abbr title="Hue, Saturation, Lightness, Alpha">hsla</abbr>()</label></li>
-                        <li id="multiplebgs"><label><input type="checkbox" value="multiplebgs" /> multiple backgrounds</label></li>
-                        <li id="opacity"><label><input type="checkbox" value="opacity" /> opacity</label></li>
-                        <li id="rgba"><label><input type="checkbox" value="rgba" /> <abbr title="Red, Green, Blue, Alpha">rgba</abbr>()</label></li>
-                        <li id="textshadow"><label><input type="checkbox" value="textshadow" /> text-shadow</label></li>
-                        <li id="cssanimations"><label><input type="checkbox" value="cssanimations" /> CSS Animations</label></li>
-                        <li id="csscolumns"><label><input type="checkbox" value="csscolumns" /> CSS Columns</label></li>
-                        <li id="generatedcontent"><label><input type="checkbox" value="generatedcontent" /> CSS Generated Content</label></li>
-                        <li class="note">(:before/:after)</li>
-                        <li id="cssgradients"><label><input type="checkbox" value="cssgradients" /> CSS Gradients</label></li>
-                        <li id="cssreflections"><label><input type="checkbox" value="cssreflections" /> CSS Reflections</label></li>
-                        <li id="csstransforms"><label><input type="checkbox" value="csstransforms" /> CSS 2D Transforms</label></li>
-                        <li id="csstransforms3d"><label><input type="checkbox" value="csstransforms3d" /> CSS 3D Transforms</label></li>
-                        <li id="csstransitions"><label><input type="checkbox" value="csstransitions" /> CSS Transitions</label></li>
+                  <fieldset class="options">
+                     <legend class="wt">Options</legend>
+                     <ul id="options-list">
                      </ul>
                   </fieldset>
-                  <fieldset class="features" id="group-html5">
-                     <legend class="wt"><abbr title="HyperText Markup Language">HTML</abbr>5</legend>
-                     <ul>
-                        <li id="applicationcache"><label><input type="checkbox" value="applicationcache" /> applicationCache</label></li>
-                        <li id="canvas"><label><input type="checkbox" value="canvas" /> Canvas</label></li>
-                        <li id="canvastext"><label><input type="checkbox" value="canvastext" /> Canvas Text</label></li>
-                        <li id="draganddrop"><label><input type="checkbox" value="draganddrop" /> Drag 'n Drop</label></li>
-                        <li id="hashchange"><label><input type="checkbox" value="hashchange" /> hashchange</label></li>
-                        <li id="history"><label><input type="checkbox" value="history" /> History <small>(pushState)</small></label></li>
-                        <li id="audio"><label><input type="checkbox" value="audio" /> HTML5 Audio</label></li>
-                        <li id="video"><label><input type="checkbox" value="video" /> HTML5 Video</label></li>
-                        <li id="indexeddb"><label><input type="checkbox" value="indexeddb" /> IndexedDB</label></li>
-                        <li id="input"><label><input type="checkbox" value="input" /> Input Attributes</label></li>
-                        <li class="note"><em>Note: does not add classes</em></li>
-                        <li id="inputtypes"><label><input type="checkbox" value="inputtypes" /> Input Types</label></li>
-                        <li class="note"><em>Note: does not add classes</em></li>
-                        <li id="localstorage"><label><input type="checkbox" value="localstorage" /> localStorage</label></li>
-                        <li id="postmessage"><label><input type="checkbox" value="postmessage" /> postMessage</label></li>
-                        <li id="sessionstorage"><label><input type="checkbox" value="sessionstorage" /> sessionStorage</label></li>
-                        <li id="websockets"><label><input type="checkbox" value="websockets" /> Web Sockets</label></li>
-                        <li id="websqldatabase"><label><input type="checkbox" value="websqldatabase" /> Web SQL Database</label></li>
-                        <li id="webworkers"><label><input type="checkbox" value="webworkers" /> Web Workers</label></li>
+                  <fieldset class="feature-detects">
+                     <legend class="wt">Feature Detects</legend>
+                     <ul id="fd-list">
                      </ul>
                   </fieldset>
-                  <fieldset class="features" id="group-misc">
-                     <legend class="wt"><abbr title="Miscellaneous">Misc.</abbr></legend>
-                     <ul>
-                        <li id="geolocation"><label><input type="checkbox" value="geolocation" /> Geolocation API</label></li>
-                        <li id="inlinesvg"><label><input type="checkbox" value="inlinesvg" /> Inline SVG</label></li>
-                        <li id="smil"><label><input type="checkbox" value="smil" /> SMIL</label></li>
-                        <li id="svg"><label><input type="checkbox" value="svg" /> SVG</label></li>
-                        <li id="svgclippaths"><label><input type="checkbox" value="svgclippaths" /> SVG clip paths</label></li>
-                        <li id="touch"><label><input type="checkbox" value="touch" /> Touch Events</label></li>
-                        <li id="webgl"><label><input type="checkbox" value="webgl" /> WebGL</label></li>
-                     </ul>
-                  </fieldset>
-                  <fieldset class="features" id="group-plugins">
-                     <legend class="wt">Extra</legend>
-                     <ul>
-                       <li id="shiv"><label><input type="checkbox" checked value="shiv" /> html5shiv v3.6</label></li>
-                       <li id="printshiv"><label><input type="checkbox" value="printshiv" /> html5shiv v3.6 w/ printshiv</label></li>
-                        <li id="load"><label><input type="checkbox" checked value="load" /> Modernizr.load <br>( <a href="http://yepnopejs.com/" target="_new">yepnope.js</a> )</label></li>
-                        <li id="mq"><label><input type="checkbox" value="mq" /> Media Queries</label></li>
-                        <li id="cssclasses">
-                          <label><input type="checkbox" checked value="cssclasses" /> Add CSS Classes</label>
-                          <div id="cssprefixcontainer">
-                            <label><abbr class="help" title="Add a prefix if Modernizr’s default class names conflict with your CSS. A prefix of `mod-` means classes like `.mod-video`">className prefix:</abbr><input type="text" id="cssprefix" class="textfield" /></label>
-                          </div>
-                        </li>
-                     </ul>
-                  </fieldset>
-                  <fieldset class="features" id="group-extensibility">
-                     <details>
-                        <summary>Extensibility</summary>
-                        <ul>
-                           <li id="addtest"><label><input type="checkbox" value="addtest" /> Modernizr.addTest</label></li>
-                           <li id="prefixed"><label><input type="checkbox" value="prefixed" /> Modernizr.prefixed()</label></li>
-                           <li id="teststyles"><label><input type="checkbox" value="teststyles" /> Modernizr.testStyles()</label></li>
-                           <li id="testprop"><label><input type="checkbox" value="testprop" /> Modernizr.testProp()</label></li>
-                           <li id="testallprops"><label><input type="checkbox" value="testallprops" /> Modernizr.testAllProps()</label></li>
-                           <li id="hasevent"><label><input type="checkbox" value="hasevent" /> Modernizr.hasEvent()</label></li>
-                           <li id="prefixes"><label><input type="checkbox" value="prefixes" /> Modernizr._prefixes</label></li>
-                           <li id="domprefixes"><label><input type="checkbox" value="domprefixes" /> Modernizr._domPrefixes</label></li>
-                        </ul>
-                     </details>
-                  </fieldset>
-                  <fieldset class="features" id="community-feature-detects">
-                     <details>
-                        <summary>Non-core detects</summary>
-                        <div>
-                        <p>For more info, docs and gotchas on these, <a href="https://github.com/Modernizr/Modernizr/tree/master/feature-detects">browse their source on github</a>.</p>
-                        <ul>
-                          <li id="a_download"><label><input type="checkbox" value="a_download"> a-download</label></li>
-                          <li id="audio_audiodata_api"><label><input type="checkbox" value="audio_audiodata_api"> audio-audiodata-api</label></li>
-                          <li id="audio_webaudio_api"><label><input type="checkbox" value="audio_webaudio_api"> audio-webaudio-api</label></li>
-                          <li id="battery_api"><label><input type="checkbox" value="battery_api"> battery-api</label></li>
-                          <li id="battery_level"><label><input type="checkbox" value="battery_level"> battery-level</label></li>
-                          <li id="blob_constructor"><label><input type="checkbox" value="blob_constructor"> blob-constructor</label></li>
-                          <li id="canvas_todataurl_type"><label><input type="checkbox" value="canvas_todataurl_type"> canvas-todataurl-type</label></li>
-                          <li id="contenteditable"><label><input type="checkbox" value="contenteditable"> contenteditable</label></li>
-
-                          <li id="contentsecuritypolicy"><label><input type="checkbox" value="contentsecuritypolicy"> contentsecuritypolicy</label></li>
-
-
-
-                          <li id="contextmenu"><label><input type="checkbox" value="contextmenu"> contextmenu</label></li>
-                          <li id="cookies"><label><input type="checkbox" value="cookies"> cookies</label></li>
-                          <li id="cors"><label><input type="checkbox" value="cors"> cors</label></li>
-
-                          <!-- its broken
-                          <li id="css_backgroundcliptext"><label><input type="checkbox" value="css_backgroundcliptext"> css-backgroundcliptext</label></li>
-                        -->
-
-                          <li id="css_backgroundposition_shorthand"><label><input type="checkbox" value="css_backgroundposition_shorthand"> css-backgroundposition-shorthand</label></li>
-                          <li id="css_backgroundposition_xy"><label><input type="checkbox" value="css_backgroundposition_xy"> css-backgroundposition-xy</label></li>
-                          <li id="css_backgroundrepeat"><label><input type="checkbox" value="css_backgroundrepeat"> css-backgroundrepeat</label></li>
-                          <li id="css_backgroundsizecover"><label><input type="checkbox" value="css_backgroundsizecover"> css-backgroundsizecover</label></li>
-                          <li id="css_boxsizing"><label><input type="checkbox" value="css_boxsizing"> css-boxsizing</label></li>
-                          <li id="css_calc"><label><input type="checkbox" value="css_calc"> css-calc</label></li>
-                          <li id="css_cubicbezierrange"><label><input type="checkbox" value="css_cubicbezierrange"> css-cubicbezierrange</label></li>
-                          <li id="css_displayrunin"><label><input type="checkbox" value="css_displayrunin"> css-displayrunin</label></li>
-                          <li id="css_displaytable"><label><input type="checkbox" value="css_displaytable"> css-displaytable</label></li>
-                          <li id="css_filters"><label><input type="checkbox" value="css_filters"> css-filters</label></li>
-                          <li id="css_hyphens"><label><input type="checkbox" value="css_hyphens"> css-hyphens</label></li>
-                          <li id="css_lastchild"><label><input type="checkbox" value="css_lastchild"> css-lastchild</label></li>
-                          <li id="css_mask"><label><input type="checkbox" value="css_mask"> css-mask</label></li>
-                          <li id="css_mediaqueries"><label><input type="checkbox" value="css_mediaqueries"> css-mediaqueries</label></li>
-                          <li id="css_objectfit"><label><input type="checkbox" value="css_objectfit"> css-objectfit</label></li>
-
-
-
-                          <li id="css_overflow_scrolling"><label><input type="checkbox" value="css_overflow_scrolling"> css-overflow-scrolling</label></li>
-                          <li id="css_pointerevents"><label><input type="checkbox" value="css_pointerevents"> css-pointerevents</label></li>
-                          <li id="css_positionsticky"><label><input type="checkbox" value="css_positionsticky"> css-positionsticky</label></li>
-
-
-
-                          <li id="css_remunit"><label><input type="checkbox" value="css_remunit"> css-remunit</label></li>
-                          <li id="css_regions"><label><input type="checkbox" value="css_regions"> css-regions</label></li>
-                          <li id="css_resize"><label><input type="checkbox" value="css_resize"> css-resize</label></li>
-                          <li id="css_scrollbars"><label><input type="checkbox" value="css_scrollbars"> css-scrollbars</label></li>
-                          <li id="css_subpixelfont"><label><input type="checkbox" value="css_subpixelfont"> css-subpixelfont</label></li>
-                          <li id="css_supports"><label><input type="checkbox" value="css_supports"> css @supports</label></li>
-
-                          <li id="css_userselect"><label><input type="checkbox" value="css_userselect"> css-userselect</label></li>
-
-                          <li id="css_vhunit"><label><input type="checkbox" value="css_vhunit"> css-vhunit</label></li>
-                          <li id="css_vmaxunit"><label><input type="checkbox" value="css_vmaxunit"> css-vmaxunit</label></li>
-                          <li id="css_vminunit"><label><input type="checkbox" value="css_vminunit"> css-vminunit</label></li>
-                          <li id="css_vwunit"><label><input type="checkbox" value="css_vwunit"> css-vwunit</label></li>
-
-
-                          <li id="custom_protocol_handler"><label><input type="checkbox" value="custom_protocol_handler"> custom-protocol-handler</label></li>
-                          <li id="dataview_api"><label><input type="checkbox" value="dataview_api"> dataview-api</label></li>
-                          <li id="dom_classlist"><label><input type="checkbox" value="dom_classlist"> dom-classlist</label></li>
-                          <li id="dom_createElement_attrs"><label><input type="checkbox" value="dom_createElement_attrs"> dom-createElement-attrs</label></li>
-                          <li id="dom_dataset"><label><input type="checkbox" value="dom_dataset"> dom-dataset</label></li>
-                          <li id="dom_microdata"><label><input type="checkbox" value="dom_microdata"> dom-microdata</label></li>
-                          <li id="elem_datalist"><label><input type="checkbox" value="elem_datalist"> elem-datalist</label></li>
-                          <li id="elem_details"><label><input type="checkbox" value="elem_details"> elem-details</label></li>
-                          <li id="elem_output"><label><input type="checkbox" value="elem_output"> elem-output</label></li>
-                          <li id="elem_progress_meter"><label><input type="checkbox" value="elem_progress_meter"> elem-progress-meter</label></li>
-                          <li id="elem_ruby"><label><input type="checkbox" value="elem_ruby"> elem-ruby</label></li>
-                          <li id="elem_time"><label><input type="checkbox" value="elem_time"> elem-time</label></li>
-                          <li id="elem_track"><label><input type="checkbox" value="elem_track"> elem-track</label></li>
-                          <li id="emoji"><label><input type="checkbox" value="emoji"> emoji</label></li>
-                          <li id="es5_strictmode"><label><input type="checkbox" value="es5_strictmode"> es5-strictmode</label></li>
-                          <li id="event_deviceorientation_motion"><label><input type="checkbox" value="event_deviceorientation_motion"> event-deviceorientation-motion</label></li>
-                          <li id="exif_orientation"><label><input type="checkbox" value="exif_orientation"> exif-orientation</label></li>
-                          <li id="file_api"><label><input type="checkbox" value="file_api"> file-api</label></li>
-                          <li id="forms_fileinput"><label><input type="checkbox" value="forms_fileinput"> forms-fileinput</label></li>
-                          <li id="forms_formattribute"><label><input type="checkbox" value="forms_formattribute"> forms-formattribute</label></li>
-
-
-                          <li id="file_filesystem"><label><input type="checkbox" value="file_filesystem"> file-filesystem</label></li>
-                          <li id="forms_placeholder"><label><input type="checkbox" value="forms_placeholder"> forms-placeholder</label></li>
-                          <li id="forms_speechinput"><label><input type="checkbox" value="forms_speechinput"> forms-speechinput</label></li>
-                          <li id="forms_validation"><label><input type="checkbox" value="forms_validation"> forms-validation</label></li>
-                          <li id="fullscreen_api"><label><input type="checkbox" value="fullscreen_api"> fullscreen-api</label></li>
-                          <li id="gamepad"><label><input type="checkbox" value="gamepad"> gamepad</label></li>
-                          <li id="getusermedia"><label><input type="checkbox" value="getusermedia"> getusermedia</label></li>
-                          <li id="ie8compat"><label><input type="checkbox" value="ie8compat"> ie8compat</label></li>
-                          <li id="iframe_sandbox"><label><input type="checkbox" value="iframe_sandbox"> iframe-sandbox</label></li>
-                          <li id="iframe_seamless"><label><input type="checkbox" value="iframe_seamless"> iframe-seamless</label></li>
-                          <li id="iframe_srcdoc"><label><input type="checkbox" value="iframe_srcdoc"> iframe-srcdoc</label></li>
-
-
-                          <li id="img_apng"><label><input type="checkbox" value="img_apng"> img-apng</label></li>
-                          <li id="img_webp"><label><input type="checkbox" value="img_webp"> img-webp</label></li>
-                          <li id="json"><label><input type="checkbox" value="json"> json</label></li>
-                          <li id="lists_reversed"><label><input type="checkbox" value="lists_reversed"> lists-reversed</label></li>
-                          <li id="mathml"><label><input type="checkbox" value="mathml"> mathml</label></li>
-                          <li id="network_connection"><label><input type="checkbox" value="network_connection"> network-connection</label></li>
-                          <li id="network_eventsource"><label><input type="checkbox" value="network_eventsource"> network-eventsource</label></li>
-                          <li id="network_xhr2"><label><input type="checkbox" value="network_xhr2"> network-xhr2</label></li>
-                          <li id="notification"><label><input type="checkbox" value="notification"> notification</label></li>
-                          <li id="performance"><label><input type="checkbox" value="performance"> performance</label></li>
-                          <li id="pointerlock_api"><label><input type="checkbox" value="pointerlock_api"> pointerlock-api</label></li>
-
-                          <li id="quota_management_api"><label><input type="checkbox" value="quota_management_api"> quota-management-api</label></li>
-                          <li id="requestanimationframe"><label><input type="checkbox" value="requestanimationframe"> requestanimationframe</label></li>
-                          <li id="script_async"><label><input type="checkbox" value="script_async"> script-async</label></li>
-                          <li id="script_defer"><label><input type="checkbox" value="script_defer"> script-defer</label></li>
-                          <li id="style_scoped"><label><input type="checkbox" value="style_scoped"> style-scoped</label></li>
-                          <li id="svg_filters"><label><input type="checkbox" value="svg_filters"> svg-filters</label></li>
-                          <li id="unicode"><label><input type="checkbox" value="unicode"> unicode</label></li>
-                          <li id="url_data_uri"><label><input type="checkbox" value="url_data_uri"> url-data-uri</label></li>
-
-                          <li id="userdata"><label><input type="checkbox" value="userdata"> userdata</label></li>
-                          <li id="vibration"><label><input type="checkbox" value="vibration"> vibration</label></li>
-                          <li id="web_intents"><label><input type="checkbox" value="web_intents"> web-intents</label></li>
-                          <li id="webgl_extensions"><label><input type="checkbox" value="webgl_extensions"> webgl-extensions</label></li>
-                          <li id="websockets_binary"><label><input type="checkbox" value="websockets_binary"> websockets-binary</label></li>
-                          <li id="window_framed"><label><input type="checkbox" value="window_framed"> window-framed</label></li>
-                          <li id="workers_blobworkers"><label><input type="checkbox" value="workers_blobworkers"> workers-blobworkers</label></li>
-                          <li id="workers_dataworkers"><label><input type="checkbox" value="workers_dataworkers"> workers-dataworkers</label></li>
-                          <li id="workers_sharedworkers"><label><input type="checkbox" value="workers_sharedworkers"> workers-sharedworkers</label></li>
-
-
-                          <!-- old community list
-                           <li id="cookies"><label><input type="checkbox" value="cookies" /> Cookies</label></li>
-                           <li id="css_backgroundrepeat"><label><input type="checkbox" value="css_backgroundrepeat" /> background-repeat</label></li>
-                           <li id="css_backgroundsizecover"><label><input type="checkbox" value="css_backgroundsizecover" /> background-size-cover</label></li>
-                           <li id="css_boxsizing"><label><input type="checkbox" value="css_boxsizing" /> box-sizing</label></li>
-                           <li id="css_cubicbezierrange"><label><input type="checkbox" value="css_cubicbezierrange" /> cubic-bezier-range</label></li>
-                           <li id="css_displaytable"><label><input type="checkbox" value="css_displaytable" /> display table</label></li>
-                           <li id="css_overflow_scrolling"><label><input type="checkbox" value="css_overflow_scrolling" /> overflow-scrolling</label></li>
-                           <li id="css_pointerevents"><label><input type="checkbox" value="css_pointerevents" /> pointer events</label></li>
-                           <li id="css_userselect"><label><input type="checkbox" value="css_userselect" /> userselect</label></li>
-                           <li id="custom_protocol_handler"><label><input type="checkbox" value="custom_protocol_handler" /> Custom Protocol Handler</label></li>
-                           <li id="dom_createElement_attrs"><label><input type="checkbox" value="dom_createElement_attrs" /> createElement attr</label></li>
-                           <li id="elem_details"><label><input type="checkbox" value="elem_details" /> details</label></li>
-                           <li id="elem_progress_meter"><label><input type="checkbox" value="elem_progress_meter" /> Progress Meter</label></li>
-                           <li id="emoji"><label><input type="checkbox" value="emoji" /> Emoji</label></li>
-                           <li id="event_deviceorientation_motion"><label><input type="checkbox" value="event_deviceorientation_motion" /> deviceorientation motion</label></li>
-                           <li id="file_api"><label><input type="checkbox" value="file_api" /> File API</label></li>
-                           <li id="forms_placeholder"><label><input type="checkbox" value="forms_placeholder" /> placeholder</label></li>
-                           <li id="hyphens"><label><input type="checkbox" value="hyphens" /> hyphens</label></li>
-                           <li id="img_webp"><label><input type="checkbox" value="img_webp" /> webp</label></li>
-                           <li id="url_data_uri"><label><input type="checkbox" value="url_data_uri" /> data-uri</label></li>
-                           <li id="webgl_extensions"><label><input type="checkbox" value="webgl_extensions" /> webgl extensions</label></li>
-                           <li id="window_framed"><label><input type="checkbox" value="window_framed" /> framed</label></li>
-                           <li id="workers_sharedworkers"><label><input type="checkbox" value="workers_sharedworkers" /> sharedworkers</label></li>
-                          -->
-                        </ul>
-                        </div>
-                     </details>
-                  </fieldset>
-
-
-
 
                   <div class="buttons-area">
                      <a href="#-generate" class="wt btn dev" id="generate">Generate! <span>(requires JavaScript)</span></a>
@@ -282,4 +35,23 @@ body_id: builder
 
             </section>
 
-        <script src="/i/js/builderapp.min.js?sept3" async data-currentbuildversion="{{ site.latest_version }}"></script>
+            <script>
+var data = {"feature-detects":["applicationcache","audio","battery","blob","canvas","canvastext","contenteditable","contentsecuritypolicy","contextmenu","cookies","cors","custom-protocol-handler","dart","dataview-api","draganddrop","emoji","exif-orientation","fullscreen-api","gamepad","geolocation","getusermedia","hashchange","history","ie8compat","indexedDB","input","inputtypes","json","lists-reversed","mathml","notification","pagevisibility-api","performance","pointerlock-api","postmessage","quota-management-api","requestanimationframe","svg","touch","unicode","userdata","vibration","video","web-intents","webgl","websockets","a/download","battery/lowbattery","audio/audiodata","audio/webaudio","canvas/todataurl","css/animations","css/backgroundposition-shorthand","css/backgroundposition-xy","css/backgroundrepeat","css/backgroundsize","css/backgroundsizecover","css/borderimage","css/borderradius","css/boxshadow","css/boxsizing","css/calc","css/columns","css/cubicbezierrange","css/displayrunin","css/displaytable","css/filters","css/flexbox","css/flexboxlegacy","css/fontface","css/generatedcontent","css/gradients","css/hsla","css/hyphens","css/lastchild","css/mask","css/mediaqueries","css/multiplebgs","css/objectfit","css/opacity","css/overflow-scrolling","css/pointerevents","css/positionsticky","css/reflections","css/regions","css/remunit","css/resize","css/rgba","css/scrollbars","css/subpixelfont","css/supports","css/textshadow","css/transforms","css/transforms3d","css/transitions","css/userselect","css/vhunit","css/vmaxunit","css/vminunit","css/vwunit","dom/classlist","dom/createElement-attrs","dom/dataset","dom/microdata","elem/datalist","elem/details","elem/output","elem/progress-meter","elem/ruby","elem/time","elem/track","es5/strictmode","event/deviceorientation-motion","file/api","file/filesystem","forms/fileinput","forms/formattribute","forms/inputnumber-l10n","forms/placeholder","forms/speechinput","forms/validation","iframe/sandbox","iframe/seamless","iframe/srcdoc","img/apng","img/webp-lossless","img/webp","network/connection","network/eventsource","network/xhr2","script/async","script/defer","storage/localstorage","storage/sessionstorage","storage/websqldatabase","style/scoped","svg/clippaths","svg/filters","svg/inline","svg/smil","url/data-uri","webgl/extensions","websockets/binary","window/framed","workers/blobworkers","workers/dataworkers","workers/sharedworkers","workers/webworkers"],"options":["addTest","attrs","classes","contains","createElement","cssomPrefixes","docElement","domPrefixes","fnBind","hasEvent","hasOwnProp","html5printshiv","html5shiv","injectElementWithStyles","inputattrs","inputElem","inputs","is","inputtypes","isEventSupported","load","modElem","mq","mStyle","omPrefixes","prefixed","prefixes","setClasses","setCss","setCssAll","slice","smile","testAllProps","testDOMProps","testMediaQuery","testProp","testProps","testPropsAll","testRunner","tests","testStyles","toStringFn"]};
+$(function () {
+  var fds = "";
+  $.each(data['feature-detects'], function (idx, item) {
+    fds += '<li id="'+item+'"><label><input type="checkbox" value="test/'+item+'" />'+item+'</label></li>'
+  });
+
+  var ops = "";
+  $.each(data['options'], function (idx, item) {
+    ops += '<li id="'+item+'"><label><input type="checkbox" value="'+item+'" />'+item+'</label></li>'
+  });
+
+  $('#options-list').html(ops);
+  $('#fd-list').html(fds);
+});
+            </script>
+            <script src="/i/js/modernizr-git/r.js"></script>
+            <script src="http://underscorejs.org/underscore-min.js"></script>
+        <script src="/i/js/builderapp2.js?sept3" async data-currentbuildversion="{{ site.latest_version }}"></script>
