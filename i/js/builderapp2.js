@@ -9,27 +9,11 @@
   var buildButton = document.getElementById('generate');
   // Handle a build
   buildButton.onclick = function () {
-    var config = JSON.stringify({
-      "options": [
-        "setClasses",
-        "addTest",
-        "html5printshiv",
-        "load",
-        "testProp",
-        "fnBind"
-      ],
-      "feature-detects": [
-        "test/a/download",
-        "test/audio/audiodata"
-      ]
-    });
-    try {
-      config = JSON.parse(config);
-    }
-    catch(e) {
-      alert('Bad config, yo');
-      return;
-    }
+    var config = {
+      'feature-detects' : $.makeArray($('#fd-list input:checked').map(function(){ return this.value; })),
+      'options' : $.makeArray($('#options-list input:checked').map(function(){ return this.value; }))
+    };
+    console.log(config);
 
     require(['src/generate'], function( generate ) {
       window.modInit = generate(config);
