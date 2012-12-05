@@ -13,7 +13,6 @@
       'feature-detects' : $.makeArray($('#fd-list input:checked').map(function(){ return this.value; })),
       'options' : $.makeArray($('#options-list input:checked').map(function(){ return this.value; }))
     };
-    console.log(config);
 
     require(['src/generate'], function( generate ) {
       window.modInit = generate(config);
@@ -52,11 +51,16 @@
           output = output.replace('define("modernizr-init", function(){});', '');
           //var outBox = document.getElementById('buildoutput');
           var outBoxMin = document.getElementById('generatedSource');
-          //outBox.innerHTML = output;
-          require({context: 'build'}, ['uglifyjs2'], function (u2){
-            var UglifyJS = u2.UglifyJS;
-            outBoxMin.innerHTML = '/*! Modernizr 3.0.0pre (Custom Build) | MIT */\n' + minify(UglifyJS, output, {});
-          });
+
+          if ( $('#dontmin').is(':checked') ) {
+            outBoxMin.innerHTML = '/*! Modernizr 3.0.0pre (Custom Build) | MIT */\n' + output;
+          }
+          else {
+            require({context: 'build'}, ['uglifyjs2'], function (u2){
+              var UglifyJS = u2.UglifyJS;
+              outBoxMin.innerHTML = '/*! Modernizr 3.0.0pre (Custom Build) | MIT */\n' + minify(UglifyJS, output, {});
+            });
+          }
 
           // add in old hack for now, just so i don't forget
           //outBoxMin.innerHTML = uglify( output, ['--extra', '--unsafe'] ).replace( "return a.history&&history.pushState", "return !!(a.history&&history.pushState)" );
