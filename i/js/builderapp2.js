@@ -10,12 +10,13 @@
   // Handle a build
   buildButton.onclick = function () {
     var config = {
+      'classPrefix' : '',
       'feature-detects' : $.makeArray($('#fd-list input:checked').map(function(){ return this.value; })),
       'options' : $.makeArray($('#options-list input:checked').map(function(){ return this.value; }))
     };
 
     require(['src/generate'], function( generate ) {
-      window.modInit = generate(config);
+      var modInit = generate(config);
 
       requirejs.optimize({
         "baseUrl" : "../i/js/modernizr-git/src/",
@@ -28,6 +29,9 @@
         wrap: {
           start: ";(function(window, document, undefined){",
           end: "})(this, document);"
+        },
+        rawText: {
+          'modernizr-init' : modInit
         },
         onBuildWrite: function (id, path, contents) {
           if ((/define\(.*?\{/).test(contents)) {
@@ -49,6 +53,10 @@
         },
         out : function (output) {
           output = output.replace('define("modernizr-init", function(){});', '');
+          // Hack the prefix into place. Anything is way to big for something so small.
+          if ( config && config.classPrefix ) {
+            output = output.replace("classPrefix : '',", "classPrefix : '" + config.classPrefix.replace(/"/g, '\\"') + "',");
+          }
           //var outBox = document.getElementById('buildoutput');
           var outBoxMin = document.getElementById('generatedSource');
 
