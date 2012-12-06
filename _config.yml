@@ -6,4 +6,4 @@ permalink: /news/:title/
 markdown:  rdiscount
 
 # custom config
-latest_version: 2.6.2
+latest_version: 3.0.0pre
