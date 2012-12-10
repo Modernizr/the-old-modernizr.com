@@ -38,6 +38,6 @@ And lastly, there have been updates to these tests:
 * elem-track - reflecting partial support by IE10
 * gamepad api
 
-For more details on the exact code changes of this release, see [the full changelog on Github](https://github.com/Modernizr/Modernizr/compare/v2.6.1...v2.6.2).
+For more details on the exact code changes of this release, see [the full changelog on GitHub](https://github.com/Modernizr/Modernizr/compare/v2.6.1...v2.6.2).
 
 We thank our great dev community who have contributed much of the work for this update. Thanks to their moms and dads, too.

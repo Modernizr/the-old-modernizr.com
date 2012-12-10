@@ -32,7 +32,7 @@ Yes, under HTML5—which is what Modernizr is meant to be used under—it is per
 **Additional note:**<br />
 Modernizr 1.0 also checks for (and if found, removes) the class `no-js` from the `html` element. In its place, it adds the class `js`, which means that if you start your templates with the code `<html class="no-js">` and then include the Modernizr library, you can use the classes `.no-js` and `.js` to respectively determine whether JavaScript is disabled or enabled in the browser.
 
-**Will Modernizr go on Github / Bitbucket / similar now that it is 1.0?**<br />
+**Will Modernizr go on GitHub / Bitbucket / similar now that it is 1.0?**<br />
 Yes, very soon it will get hosted on a public repository so that people can contribute a little more directly. We haven't decided yet which one, but no new releases will be made until it's hosted publicly.
 
 **What do you have planned for the next release?**<br />

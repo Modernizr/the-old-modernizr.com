@@ -8,7 +8,7 @@ Modernizr 2.0 came out more than eight months ago; we’ve not sat still in the 
 
 <h4 id="newin2.5">New in 2.5</h4>
 
-The <a href="https://github.com/Modernizr/Modernizr/compare/v2.0.6...v2.5.1">list of new things in 2.5</a> is too big for Github to handle, but here are the highlights:
+The <a href="https://github.com/Modernizr/Modernizr/compare/v2.0.6...v2.5.1">list of new things in 2.5</a> is too big for GitHub to handle, but here are the highlights:
 
  * More than 60 new feature detects for emerging browser features; check out <a href="https://gist.github.com/783522a92b79a0868532">the full list</a> or peruse **all** of the community-driven tests in our <a href="https://github.com/Modernizr/Modernizr/tree/master/feature-detects">feature-detects folder</a>.
  * We now have a super robust and integrated <a href="http://modernizr.github.com/Modernizr/test/index.html">test suite</a>. Paul did a great video <a href="http://www.youtube.com/watch?feature=player_embedded&amp;v=Mbt6h1BFW8g">detailing how it works</a>.
@@ -23,7 +23,7 @@ The <a href="https://github.com/Modernizr/Modernizr/compare/v2.0.6...v2.5.1">lis
  * `Modernizr._domPrefixes` has been renamed to `Modernizr._cssomPrefixes`, and a new, lower-case `Modernizr._domPrefixes` has been introduced.
  * We’ve removed KHTML prefix testing, due to lack of usage.
 
- We encourage all users to upgrade to Modernizr 2.5, as there should be no regressions. If you do happen to encounter issues, please <a href="https://github.com/Modernizr/Modernizr/wiki/Filing-a-bug">file them on github</a>.
+ We encourage all users to upgrade to Modernizr 2.5, as there should be no regressions. If you do happen to encounter issues, please <a href="https://github.com/Modernizr/Modernizr/wiki/Filing-a-bug">file them on GitHub</a>.
 
  <h4 id="thanks">Thanks</h4>
 
