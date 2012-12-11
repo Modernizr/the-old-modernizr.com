@@ -23,9 +23,9 @@ Rather than an incremental upgrade, we've opted to shift into a higher gear and 
 
  Then came the discovery that Google Chrome implemented <a target="_blank" href="http://www.quirksmode.org/mobile/tableTouch.html">Touch events</a> even on the desktop (why, Google, why?) paired with the regrettable fact that Palm's WebOS browser _doesn't support common Touch events at all_. For a browser that only exists on touch-based devices, this was too critical an issue for us to ignore. So Touch testing went out again, too.
 
-We have many more features we'd like to include; please visit the <a href="http://github.com/Modernizr/Modernizr/issues/#list">Github issue tracker</a> to review all the additional tests.
+We have many more features we'd like to include; please visit the <a href="http://github.com/Modernizr/Modernizr/issues/#list">GitHub issue tracker</a> to review all the additional tests.
 
-For developers, contributors and people looking to learn from Modernizr we now have a set of <a target="_blank" href="http://github.com/Modernizr/Modernizr/tree/master/test/">unit tests available on the Github repository</a>, courtesy of Paul. These help prevent errors and inconsistencies from finding their way into the source code, making Modernizr more robust and reliable. The unit tests also include a second part, which pulls the data tables in from <a target="_blank" href="http://findmebyip.com/">Find Me By IP</a> and creates a feature parity overview for all the browsers.
+For developers, contributors and people looking to learn from Modernizr we now have a set of <a target="_blank" href="http://github.com/Modernizr/Modernizr/tree/master/test/">unit tests available on the GitHub repository</a>, courtesy of Paul. These help prevent errors and inconsistencies from finding their way into the source code, making Modernizr more robust and reliable. The unit tests also include a second part, which pulls the data tables in from <a target="_blank" href="http://findmebyip.com/">Find Me By IP</a> and creates a feature parity overview for all the browsers.
 
 Along with the 1.5 release comes a license upgrade: Modernizr is now <a href="/license/">dual-licensed under BSD and MIT</a>.
 

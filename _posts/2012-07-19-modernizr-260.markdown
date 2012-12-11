@@ -43,7 +43,7 @@ We’ve added a lot of new tests, many of which by the community, and updated ex
    * svg-filters
      * Only detects SVG filters appling to SVG content. SVG filters on HTML is [awaiting](https://github.com/Modernizr/Modernizr/issues/606).
    * vibration
-   * You can [view all of these detects on Github](https://github.com/Modernizr/Modernizr/tree/master/feature-detects) and add them in the [download builder](http://modernizr.com/download) today.
+   * You can [view all of these detects on GitHub](https://github.com/Modernizr/Modernizr/tree/master/feature-detects) and add them in the [download builder](http://modernizr.com/download) today.
 
 #### Dependencies
 
@@ -60,7 +60,7 @@ We’ve added a lot of new tests, many of which by the community, and updated ex
 
 Up next, we're going to clarify our touch detect: Is it detecting touch devices or touch events; and which touch event model?  We're also going to redesign the download page and update the documentation with some more [approachable documentation](https://hacks.mozilla.org/2012/07/the-web-developer-toolbox-modernizr/).
 
-As always,  if you'd like to get involved, hop into the [Github issue tracker](https://github.com/Modernizr/Modernizr/issues).
+As always,  if you'd like to get involved, hop into the [GitHub issue tracker](https://github.com/Modernizr/Modernizr/issues).
 
 
 
