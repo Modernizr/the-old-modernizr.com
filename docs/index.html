@@ -630,7 +630,7 @@ Modernizr.prefixed('requestAnimationFrame', window, false) <span class="comment"
                   <dd><code>Modernizr.<strong>addTest({str: bool, str2: fn})</strong></code></dd>
                </dl>
                <p>You may want to test additional features that Modernizr currently does not support. For that, you can use the addTest function. For example, some users have requested tests for IE's float double margin bug, and support for <code>position:fixed</code>. All the current tests that we've codified are <a href="https://github.com/Modernizr/Modernizr/tree/master/feature-detects">available in the GitHub</a>. Using addTest, you can add these yourself and get the exact same API as the fully supported tests.</p>
-               <p>New signatures for this method of accepting a boolean or an object were added for Modernizr 2</p>
+
 
                <h4>Sample Usage:</h4>
                <pre><span class="comment">// Test for &lt;track> element  support</span>
@@ -641,6 +641,9 @@ Modernizr.addTest('track', function(){
 </pre>
 
                <p>Assuming the above test passes, there will now be a <code>.track</code> class on the HTML element and <code>Modernizr.track</code> will be true. IE6, of course, will now have a <code>.no-track</code> class.</p>
+
+
+               <p><b>NOTE:</b> We recommend using a test name <em>without</em> dashes. This is to avoid a scenario where a user will access the property via  awkward syntax like: <code>if (Modernizr['dashed-prop']) { ...</code>.</p>
             </section>
 
 
