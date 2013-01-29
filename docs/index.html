@@ -596,16 +596,18 @@ Modernizr.prefixed('requestAnimationFrame', window, false) <span class="comment"
                   <dt>JavaScript method:</dt>
                   <dd><code>Modernizr.<strong>mq(str)</strong></code></dd>
                </dl>
-               <p>Modernizr.mq tests a given media query, live against the current state of the window</p>
+               <p>Modernizr.mq tests a given media query, live against the current state of the window. </p>
                <p>A few important notes:</p>
 
                <ul>
-                  <li>If a browser does not support media queries at all (eg. oldIE) the mq() will always return false</li>
+                  <li>If a browser does not support media queries at all (eg. oldIE) the mq() will always return false;</li>
                   <li>A max-width or orientation query will be evaluated against the current state, which may change later.</li>
                   <li>You should specify the media type, though commonly the <code>all</code> type is good enough:
                       <pre>Modernizr.mq('only all and (max-width: 400px)')</pre></li>
-                  <li>You must specify values. Eg. If you are testing support for the min-width media query use:
+                  <li>You <em>must</em> specify values. Eg. If you are testing support for the min-width media query use:
                      <pre>Modernizr.mq('(min-width: 0px)')</pre></li>
+                  <li>If you are testing solely for Media Query support itself, use:
+                    <pre>Modernizr.mq('only all'); <span class="comment">// true if MQ are supported, false if not</span></pre></li>
                </ul>
 
                <p>Sample usage:</p>
