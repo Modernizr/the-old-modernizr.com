@@ -18,7 +18,7 @@
       'flexbox'         : ['domprefixes', 'testprop', 'testallprops'],
       'cssgradients'    : ['prefixes'],
       'opacity'         : ['prefixes'],
-      'indexedDB'       : ['domprefixes'],
+      'indexeddb'       : ['domprefixes', 'testprop', 'testallprops'],
       'backgroundsize'  : ['domprefixes', 'testprop', 'testallprops'],
       'borderimage'     : ['domprefixes', 'testprop', 'testallprops'],
       'borderradius'    : ['domprefixes', 'testprop', 'testallprops'],
