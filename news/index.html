@@ -17,7 +17,7 @@ body_id: news
 			<h2>Previous posts</h2>
 			<article class="standalone">
 				<ul>
-			{% for post in site.posts offset:5 %}
+			{% for post in site.posts offset:3 %}
 					<li><a href="{{ post.url }}">{{ post.title }}</a>
 					<footer class="posted">{{ post.date | date:'%B %d, %Y' | replace:' 0',' ' }}</footer></li>
 			{% endfor %}
