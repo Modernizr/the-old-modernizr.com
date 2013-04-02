@@ -3,10 +3,10 @@ layout:  default
 body_id: news
 ---
 		<section class="news-posts">
-			<h2>News</h2>
+			<h3>News</h3>
 
 			<article class="standalone">
-				<h3>{{ page.title }}</h3>
+				<h2>{{ page.title }}</h2>
 				<footer class="posted">By {{ page.author }}, posted on <a href="{{ page.url }}">{{ page.date | date:'%B %d, %Y' | replace:' 0',' ' }}</a>.</footer>
 				{{ content }}
 			</article>
