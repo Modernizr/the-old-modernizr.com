@@ -6,7 +6,7 @@ body_id: news
 		<section class="news-posts">
 			<h3>News</h3>
 
-			{% for post in site.posts limit:5 %}
+			{% for post in site.posts limit:3 %}
 			<article class="standalone">
 				<h2>{{ post.title }}</h2>
 				<footer class="posted">By {{ post.author }}, posted on <a href="{{ post.url }}">{{ post.date | date:'%B %d, %Y' | replace:' 0',' ' }}</a>.</footer>
