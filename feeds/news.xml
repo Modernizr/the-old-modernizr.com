@@ -12,7 +12,7 @@ permalink: /news.xml
 		<lastBuildDate>{{ site.posts.first.date | date_to_xmlschema }}</lastBuildDate>
 		{% for post in site.posts %}
 		<item>
-			<title>{{ post.title }}</title>
+			<title>{{ post.title | xml_escape }}</title>
 			<link>http://www.modernizr.com{{ post.url }}</link>
 			<description>{{ post.content | xml_escape }}</description>
 			<pubDate>{{ post.date | date_to_xmlschema }}</pubDate>
