@@ -1566,9 +1566,9 @@ body { height: 100%; }
     display: inline-block;
     font-size: 12px;
   }
-  #team ul li:nth-child(3) {
+/*  #team ul li:nth-child(3) {
     clear: left;
-  }
+  }*/
 
 
   #the-end .sponsors {
