@@ -336,7 +336,7 @@ jQuery(function($){
           $('#dontmin').attr('checked', 'checked');
         }
         else {
-          $('input[value="'+selections[i]+'"]').attr('checked', 'checked');
+          $(document).find('input[value="'+selections[i]+'"]').attr('checked', 'checked');
         }
       }
       var checked = $('#cssclasses input:checkbox').is(':checked');
