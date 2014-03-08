@@ -65,6 +65,7 @@
       'css_cubicbezierrange' : ['prefixes'],
       'css_displayrunin' : ['teststyles'],
       'css_displaytable' : [],
+      'css_filters': ['prefixes'],
       'css_hyphens' : ['prefixes', 'testallprops'],
       'css_mask' : ['testallprops'],
       'css_mediaqueries' : ['teststyles', 'mq'],
