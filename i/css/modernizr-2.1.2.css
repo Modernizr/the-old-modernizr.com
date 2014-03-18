@@ -1,0 +1,1755 @@
+@charset "UTF-8";
+/*
+Modernizr CSS version: 2.1.0
+
+Foundation based on:
+HTML5 Boilerplate:    html5boilerplate.com
+HTML5 Reset WP Theme: github.com/murtaugh/HTML5-Reset-Wordpress-Theme
+
+Written by:
+Faruk Ateş
+
+Thanks go out to:
+Eric Meyer, Richard Clark, HTML5 Doctor, Paul Irish, Tim Murtaugh, Chris Coyier, Jeff Starr
+*/
+
+/* Reset with some modernizr.com-specific adjustments
+-------------------------------------------------------------------------------*/
+
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, details, figure, figcaption, footer, header, hgroup, menu, nav, section, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    font-weight: normal;
+    vertical-align: baseline;
+    background: transparent;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+/* Always force a scrollbar in non-IE */
+html {
+  /* Chrome is having difficulty with gradients lately. For that and perf reasons, returning to the original bg image */
+  background: #fafafa url('/i/img/bg-pink.jpg') 0 0 repeat-x;
+  color: #141414; /* min-height: 100.1%; This is breaking the sticky footer */
+  -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+          text-size-adjust: 100%;
+}
+
+/**
+ * Font normalization inspired by YUI Library's fonts.css: developer.yahoo.com/yui/
+ */
+body { font:13px/1.231 sans-serif; *font-size:small; } /* Hack retained to preserve specificity */
+select, input, textarea, button { font:99% sans-serif; }
+
+/* Normalize monospace sizing:
+   en.wikipedia.org/wiki/MediaWiki_talk:Common.css/Archive_11#Teletype_style_fix_for_Chrome */
+pre, code, kbd, samp { font-family: Inconsolata, monospace, sans-serif; }
+
+/* Responsive images and other embedded objects
+   Note: keeping IMG here will cause problems if you're using foreground images as sprites, like, say for Google Maps custom placemarkers.
+   There has been a report of problems with standard Google maps as well, but we haven't been able to duplicate or diagnose the issue. */
+img,
+object,
+embed {max-width: 100%;}
+
+/* we use a lot of ULs that aren't bulleted.
+    don't forget to restore the bullets within content. */
+ul { list-style: none; }
+
+ins { color: #6abb29; text-decoration: none; }
+
+del { color: #b22; text-decoration: line-through; }
+
+mark { background-color: #ff9; color: #000; font-style: italic; font-weight: bold; }
+
+blockquote, q { quotes: none; }
+
+blockquote:before, q:before { content: '“'; position: absolute; margin-left: -.42em;}
+blockquote:after, q:after { content: '”'; }
+
+abbr[title], dfn[title] { border-bottom: 1px dotted; cursor: help; }
+
+table { border-collapse: collapse; border-spacing: 0; }
+
+hr { display: block; height: 1px; border: 0; border-top: 1px solid #ccc; margin: 1em 0; padding: 0; }
+
+input, select { vertical-align: middle; }
+
+/* Accessible focus treatment: people.opera.com/patrickl/experiments/keyboard/test */
+a:hover, a:active { outline: none; }
+
+/*ul, ol { margin-left: 2em; }*/
+ol { list-style-type: decimal; }
+
+/* Remove margins for navigation lists */
+nav ul, nav li { margin: 0; list-style:none; list-style-image: none; }
+
+small { font-size: 85%; }
+strong, th { font-weight: bold; }
+
+th, td { vertical-align: top; }
+
+/* Set sub, sup without affecting line-height: gist.github.com/413930 */
+sub, sup { font-size: 75%; line-height: 0; position: relative; }
+sup { top: -0.5em; }
+sub { bottom: -0.25em; }
+
+pre {
+  /* www.pathf.com/blogs/2008/05/formatting-quoted-code-in-blog-posts-css21-white-space-pre-wrap/ */
+  white-space: pre; white-space: pre-wrap; word-wrap: break-word;
+}
+
+textarea { overflow: auto; } /* www.sitepoint.com/blogs/2010/08/20/ie-remove-textarea-scrollbars/ */
+
+/* Align checkboxes, radios, text inputs with their label by: Thierry Koblentz tjkdesign.com/ez-css/css/base.css ; */
+input[type="radio"] { vertical-align: text-bottom; }
+input[type="checkbox"] { vertical-align: bottom; }
+
+/* Hand cursor on clickable input elements */
+label, input[type="button"], input[type="submit"], input[type="image"], button { cursor: pointer; }
+
+/* Webkit browsers add a 2px margin outside the chrome of form elements */
+button, input, select, textarea { margin: 0; }
+
+/* Colors for form validity */
+input:valid, textarea:valid   {  }
+input:invalid, textarea:invalid {
+   border-radius: 1px; -moz-box-shadow: 0px 0px 5px red; -webkit-box-shadow: 0px 0px 5px red; box-shadow: 0px 0px 5px red;
+}
+.no-boxshadow input:invalid, .no-boxshadow textarea:invalid { background-color: #f0dddd; }
+
+
+/* These selection declarations have to be separate
+   No text-shadow: twitter.com/miketaylr/status/12228805301
+   Also: hot pink! */
+::-moz-selection{ background: #d91e76; color:#fff; text-shadow: none; }
+::selection { background:#d91e76; color:#fff; text-shadow: none; }
+
+
+/* Make buttons play nice in IE:
+   www.viget.com/inspire/styling-the-button-element-in-internet-explorer/ */
+button {  width: auto; overflow: visible; }
+
+
+/* Base font & color styles: no JS versions */
+body, select, input, textarea {
+  color: #2a2a2a;
+  font: 14px/1.42857143 Helmet, Freesans, sans-serif;
+}
+
+/*.wf-loading { visibility:hidden; }*/
+.wf-loading body { opacity: 0; }
+body {
+  opacity: 1;
+  -webkit-transition: opacity .2s cubic-bezier(.9,.01,.94,.01);
+  -moz-transition: opacity .2s cubic-bezier(.9,.01,.94,.01);
+  -ms-transition: opacity .2s cubic-bezier(.9,.01,.94,.01);
+  -o-transition: opacity .2s cubic-bezier(.9,.01,.94,.01);
+  transition: opacity .2s cubic-bezier(.9,.01,.94,.01);
+}
+
+
+/* Main black */
+body, .btn span, #used-by { color: #2a2a2a; }
+/* Main gray */
+.quote q, .quote .cite-source:link, .quote .cite-source:visited { color: #424242; }
+/* Blue styles */
+a, a:active, .subtitle, .features abbr.help { color: #3589db; -webkit-tap-highlight-color: #d91e76; }
+/* White styles */
+.wt, .btn, #toc, #toc a { color: #fafafa; }
+/* Pink styles */
+a:focus, a:hover,
+h2, .intro strong, .title,
+#nav a.current,
+#nav a:focus,
+#nav a:hover,
+.contributors-area small { color: #d91e76; }
+/* Mid gray */
+.wf-active pre .comment { color: #999; }
+/* Dark gray */
+#page-footer, #team .twitter, #the-end { color: #999; }
+
+a {
+  -webkit-transition: color .2s ease-out;
+  -moz-transition: color .2s ease-out;
+  -ms-transition: color .2s ease-out;
+  -o-transition: color .2s ease-out;
+  transition: color .2s ease-out;
+}
+
+
+/* Fonts
+-------------------------------------------------------------------------------*/
+@font-face {
+    font-family: 'TurkishCSs';
+    src: url('/i/fonts/pn-css-bold.eot');
+    src: url('/i/fonts/pn-css-bold.eot?#iefix') format('embedded-opentype'),
+         url('/i/fonts/pn-css-bold.woff') format('woff'),
+         url('/i/fonts/pn-css-bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'TurkishCSs';
+    src: url('/i/fonts/pn-css-boldit.eot');
+    src: url('/i/fonts/pn-css-boldit.eot?#iefix') format('embedded-opentype'),
+         url('/i/fonts/pn-css-boldit.woff') format('woff'),
+         url('/i/fonts/pn-css-boldit.ttf') format('truetype');
+    font-weight: bold;
+    font-style: italic;
+}
+@font-face {
+    font-family: 'TurkishCSs';
+    src: url('/i/fonts/pn-css-regular.eot');
+    src: url('/i/fonts/pn-css-regular.eot?#iefix') format('embedded-opentype'),
+         url('/i/fonts/pn-css-regular.woff') format('woff'),
+         url('/i/fonts/pn-css-regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'TurkishCSs';
+    src: url('/i/fonts/pn-css-regularitalic.eot');
+    src: url('/i/fonts/pn-css-regularitalic.eot?#iefix') format('embedded-opentype'),
+         url('/i/fonts/pn-css-regularitalic.woff') format('woff'),
+         url('/i/fonts/pn-css-regularitalic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+}
+
+/* Typekit override */
+body .title,
+.wf-active header,
+.wf-active nav,
+.wf-active article,
+.wf-active section {
+    font-family: 'TurkishCSs', "proxima-nova-1","proxima-nova-2", Helmet, Freesans, sans-serif !important;
+}
+
+
+
+
+/* Mobile-friendly base styles
+-------------------------------------------------------------------------------*/
+
+/* Nav bar */
+nav {
+  background: #282828;
+  height: 40px;
+  -webkit-box-shadow: rgba(20,20,20, .28) 0 2px 4px;
+  -moz-box-shadow: rgba(20,20,20, .28) 0 2px 4px;
+  box-shadow: rgba(20,20,20, .28) 0 2px 4px;
+}
+#nav {
+  text-align: center;
+}
+#nav li {
+  display: inline;
+}
+#nav a {
+  display: inline-block;
+  font-size: 12px;
+  height: 40px;
+  line-height: 42px;
+  margin: 0 3px 0;
+  padding: 0 4px;
+  text-decoration: none;
+  vertical-align: bottom;
+}
+
+
+/* Quote */
+.quote, h2 {
+  font: 14px/1.4em "athelas-1","athelas-2", Baskerville, Georgia, serif;
+  margin: .8em 1em;
+}
+.quote q {
+  display: block;
+  font-size: 1.2em;
+}
+.quote q, .wf-active .quote q { text-shadow: rgba(250,250,250, .28) 0 1px 0; }
+.quote cite {
+  font-style: normal;
+  opacity: .666;
+}
+.quote cite:before {
+  content: '— ';
+}
+.quote .cite-source {
+  font-style: italic;
+  opacity: .666;
+}
+.quote .cite-source:focus,
+.quote .cite-source:hover {
+  text-decoration: none;
+}
+.quote.hidden {
+  opacity: 0;
+}
+
+
+/* Masthead / banner */
+#masthead {
+    height: 60px;
+    position: relative;
+
+    /* Force GPU */
+    -webkit-transform: translateZ(0);
+}
+.banner {
+    background: #141414 no-repeat;
+    background-image: -webkit-gradient(radial, 210 -25, 20, -75 119, 120, from(rgba(250, 250, 250, .1)), to(rgba(20, 20, 20, 0)));
+    border: 1px solid #141414;
+
+    -webkit-border-radius: 0 0 8px 8px;
+    -moz-border-radius: 0 0 8px 8px;
+    border-radius: 0 0 8px 8px;
+
+    display: block;
+    height: 60px;
+    line-height: 20px;
+    margin: 0 auto;
+    max-width: 300px;
+    text-decoration: none;
+    width: auto;
+
+    -webkit-transition: height .5s ease-in-out;
+    -moz-transition: height .5s ease-in-out;
+    -o-transition: height .5s ease-in-out;
+    transition: height .5s ease-in-out;
+}
+
+.banner img {
+  height: 24px;
+  width: 50px;
+}
+
+.title {
+    font-size: 36px;
+    font-weight: 300;
+    margin: 0;
+    padding: 12px 0 0 30px;
+    -webkit-perspective: preserve-3d;
+}
+.title, .wf-active .title { text-shadow: #000 0 1px 0; }
+.title .logo {
+    margin: 0 8px 0 0;
+    -webkit-transform-origin: 50% 100%;
+    -moz-transform-origin: 50% 100%;
+    -o-transform-origin: 50% 100%;
+    transform-origin: 50% 100%;
+}
+.subtitle {
+  display: none;
+  text-transform: uppercase;
+}
+.subtitle span {
+    position: relative;
+    z-index: 10;
+}
+
+
+
+/* Places */
+#places li.donate {
+  display: none;
+}
+.js #places li.donate {
+  display: list-item;
+}
+#places .icon {
+  float: left;
+  height: 30px;
+  line-height: 30px;
+  margin: 5px 0;
+  text-align: center;
+  text-decoration: none;
+  width: 50%;
+}
+
+
+
+/* Download box */
+#download {
+  background: #424242;
+  background: -webkit-gradient(linear, 0 0, 0 180, from(#2a2a2a), to(#424242));
+  background: -moz-linear-gradient(top, #2a2a2a, #424242 180px);
+  background: -o-linear-gradient(top, #2a2a2a, #424242 180px);
+  background: linear-gradient(top, #2a2a2a, #424242 180px);
+  border: 1px solid #141414;
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  border-radius: 7px;
+
+  -webkit-box-shadow: rgba(250,250,250, .42) 0 1px 1px inset;
+  -moz-box-shadow: rgba(250,250,250, .42) 0 1px 1px inset;
+  -o-box-shadow: rgba(250,250,250, .42) 0 1px 1px inset;
+  box-shadow: rgba(250,250,250, .42) 0 1px 1px inset;
+
+  clear: left;
+  padding: 10px;
+}
+#download h2 {
+  margin: 0;
+  text-align: center;
+}
+#download h2 a {
+  text-decoration: none;
+}
+#download h2 a,
+.wf-active #download h2 a {
+  text-shadow: rgba(20,20,20, .42) 0 2px 0;
+}
+#download .buttons li {
+  display: inline;
+}
+.docs-link {
+  display: block;
+  margin: 1em 0 6px;
+  text-align: center;
+}
+
+
+
+/* Buttons by Simon a.k.a. Simurai: simurai.com */
+.btn {
+  display: inline-block;
+  margin-bottom: 10px;
+
+  /* layout */
+  border-radius: 6px;
+  border: none;
+  height: 37px;
+  padding: 5px 0 0;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  width: 135px;
+
+
+  /* style */
+  background-color: #d91e76;
+
+  background-image: -webkit-gradient(radial, 50% 0, 200, 50% 0, 10, from(hsla(0,0%,0%,0)), to(hsla(0,0%,100%,.2)));
+  background-image: -webkit-radial-gradient(50% 20%, ellipse farthest-corner, rgba(255,255,255,0.2), transparent);
+  background-image:    -moz-radial-gradient(50% 20%, ellipse farthest-corner, rgba(255,255,255,0.2), transparent);
+  background-image:     -ms-radial-gradient(50% 20%, ellipse farthest-corner, rgba(255,255,255,0.2), transparent);
+  background-image:      -o-radial-gradient(50% 20%, ellipse farthest-corner, rgba(255,255,255,0.2), transparent);
+  background-image:         radial-gradient(50% 20%, ellipse farthest-corner, rgba(255,255,255,0.2), transparent);
+
+
+  -webkit-box-shadow: inset rgba(255,255,255,.25) 0 3px 2px 1px, inset rgba(255,255,255,.18) 0 26px 1px -5px,
+            inset rgba(0,0,0,.4) 0 -5px 10px, inset rgba(255,255,255,.35) 0 0 0 1px, rgba(0,0,0,.5) 0 3px 3px;
+     -moz-box-shadow: inset rgba(255,255,255,.25) 0 3px 2px 1px, inset rgba(255,255,255,.18) 0 26px 1px -5px,
+            inset rgba(0,0,0,.4) 0 -5px 10px, inset rgba(255,255,255,.35) 0 0 0 1px, rgba(0,0,0,.5) 0 3px 3px;
+    -ms-box-shadow: inset rgba(255,255,255,.25) 0 3px 2px 1px, inset rgba(255,255,255,.18) 0 26px 1px -5px,
+            inset rgba(0,0,0,.4) 0 -5px 10px, inset rgba(255,255,255,.35) 0 0 0 1px, rgba(0,0,0,.5) 0 3px 3px;
+     -o-box-shadow: inset rgba(255,255,255,.25) 0 3px 2px 1px, inset rgba(255,255,255,.18) 0 26px 1px -5px,
+            inset rgba(0,0,0,.4) 0 -5px 10px, inset rgba(255,255,255,.35) 0 0 0 1px, rgba(0,0,0,.5) 0 3px 3px;
+      box-shadow: inset rgba(255,255,255,.25) 0 3px 2px 1px, inset rgba(255,255,255,.18) 0 26px 1px -5px,
+            inset rgba(0,0,0,.4) 0 -5px 10px, inset rgba(255,255,255,.35) 0 0 0 1px, rgba(0,0,0,.5) 0 3px 3px;
+
+
+  /* typo */
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 1px;
+
+  /* animation */
+  -webkit-transition: background-color .1s ease-out;
+     -moz-transition: background-color .1s ease-out;
+      -ms-transition: background-color .1s ease-out;
+       -o-transition: background-color .1s ease-out;
+          transition: background-color .1s ease-out;
+}
+.btn, .tk-loaded .btn { text-shadow: rgba(0,0,0,.5) 0 1px 0; }
+
+/* FF3.0 and older & IE7 and below don't support :after at all or positioned.
+ * What's a good Modernizr property that covers these? Modernizr.localstorage!
+ */
+.localstorage.no-touch .btn {
+  display: block;
+  padding: 5px 0 0 40px;
+  text-align: left;
+  width: 140px;
+}
+.localstorage.no-touch .btn:before {
+  background: url('/i/img/icons.png') 0 -350px no-repeat;
+  content: '';
+  display: block;
+  left: 8px;
+  height: 24px;
+  opacity: .5;
+  position: absolute;
+  top: 8px;
+  width: 24px;
+}
+.localstorage.no-touch .btn.dev:before {
+  background-position: 0 -300px;
+}
+.localstorage.no-touch .btn:hover:before {
+  opacity: .82;
+}
+
+.btn span {
+  display: block;
+  font-size: 12px;
+  font-weight: normal;
+  letter-spacing: 0;
+  line-height: 12px;
+  text-shadow: rgba(255,255,255,.35) 0 1px 0;
+  text-transform: capitalize;
+}
+.btn.dev {
+    background-color: #666;
+
+  -webkit-box-shadow: inset rgba(255,255,255,.12) 0 3px 2px 1px, inset rgba(255,255,255,.08) 0 26px 1px -5px,
+                      inset rgba(0,0,0,.4) 0 -5px 10px, inset rgba(255,255,255,.15) 0 0 0 1px, rgba(0,0,0,.5) 0 3px 3px;
+     -moz-box-shadow: inset rgba(255,255,255,.12) 0 3px 2px 1px, inset rgba(255,255,255,.08) 0 26px 1px -5px,
+                      inset rgba(0,0,0,.4) 0 -5px 10px, inset rgba(255,255,255,.15) 0 0 0 1px, rgba(0,0,0,.5) 0 3px 3px;
+      -ms-box-shadow: inset rgba(255,255,255,.12) 0 3px 2px 1px, inset rgba(255,255,255,.08) 0 26px 1px -5px,
+                      inset rgba(0,0,0,.4) 0 -5px 10px, inset rgba(255,255,255,.15) 0 0 0 1px, rgba(0,0,0,.5) 0 3px 3px;
+       -o-box-shadow: inset rgba(255,255,255,.12) 0 3px 2px 1px, inset rgba(255,255,255,.08) 0 26px 1px -5px,
+                      inset rgba(0,0,0,.4) 0 -5px 10px, inset rgba(255,255,255,.15) 0 0 0 1px, rgba(0,0,0,.5) 0 3px 3px;
+          box-shadow: inset rgba(255,255,255,.12) 0 3px 2px 1px, inset rgba(255,255,255,.08) 0 26px 1px -5px,
+                      inset rgba(0,0,0,.4) 0 -5px 10px, inset rgba(255,255,255,.15) 0 0 0 1px, rgba(0,0,0,.5) 0 3px 3px;
+}
+.btn.dev span {
+  text-shadow: rgba(255,255,255,.15) 0 1px 0;
+}
+
+.btn:focus,
+.btn:hover {
+  background-color: #ba005e;
+}
+.btn.dev:focus,
+.btn.dev:hover {
+  background-color: #454545;
+}
+.btn:focus {
+  outline: none;
+}
+.btn:active {
+/*  background-color: #960042;
+  padding-top: 7px;*/
+}
+.btn.dev:active {
+/*  background-color: #2a2a2a;*/
+}
+.csstransforms .btn:active {
+  -webkit-transform: scale(0.97);
+  -moz-transform: scale(0.97);
+  -ms-transform: scale(0.97);
+  -o-transform: scale(0.97);
+  transform: scale(0.97);
+
+  -webkit-transition: -webkit-transform .1s ease-out;
+  -moz-transition: -moz-transform .1s ease-out;
+  -ms-transition: -ms-transform .1s ease-out;
+  -o-transition: -o-transform .1s ease-out;
+  transition:   transform .1s ease-out;
+}
+
+/* Download button */
+.btn2 {
+	display: none;
+	width: 184px;
+	height: 47px;
+	background: url(../img/download2.png) 0 0 no-repeat;
+	text-indent: -999em;
+	border: 0 none;
+    margin: 0 0 0 10px;
+}
+.btn2:hover, .btn2:focus {
+	background-position: 0 -47px;
+}
+.btn2:active {
+	background-position: 0 -94px;
+}
+
+
+
+/* Download page / builder */
+.features {
+  margin: 2em 0 0 10px;
+}
+.features legend, .features summary {
+  font-size: 24px;
+  width: 50%;
+}
+.features abbr {
+  border: none;
+}
+.features .toggle-group {
+  background: rgba(20,20,20, .28);
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-variant: small-caps;
+  line-height: 24px;
+  position: absolute;
+  right: 10px;
+  text-align: center;
+  text-decoration: none;
+  text-indent: 0;
+  top: 0;
+  width: 5em;
+}
+.features ul {
+  padding: 10px;
+}
+.features .note {
+  font-size: 80%;
+  padding: 0 0 6px 24px;
+}
+.features label input[type="checkbox"] {
+  margin: -3px 4px 3px 0;
+}
+
+#group-extensibility, #community-feature-detects { margin-top: 0; }
+#group-extensibility details, #community-feature-detects details {
+  min-height: 30px;
+  margin-top: 12px;
+  margin-left: 7px;
+}
+#group-extensibility summary, #community-feature-detects summary {
+  min-height: 47px;
+  top: 0;
+  text-indent: 0px;
+  position: static;
+  margin-top: -10px;
+}
+#group-extensibility ul, #community-feature-detects ul {
+  margin: 0px -12px 0;
+}
+
+#community-feature-detects ul {
+
+  -webkit-column-count: 3;  -webkit-column-gap: 15px;
+     -moz-column-count: 3;     -moz-column-gap: 15px;
+          column-count: 3;          column-gap: 15px;
+
+}
+
+.builder .buttons-area {
+  clear: both;
+  padding: 10px 10px 0;
+}
+#source {
+  margin: 0 10px;
+}
+#source textarea {
+  background: #d9d9d9;
+  background: rgba(250,250,250, .28);
+  border: 1px solid #141414;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+  height: 6em;
+  padding: 8px;
+  width: 96%;
+  width: -moz-calc(100% - 16px);
+  width: calc(100% - 16px);
+
+  /* Get that grubby resize handle off of me! Go! Shoo! */
+  resize: none;
+
+  -webkit-transition: all .15s ease-out;
+  -moz-transition: all .15s ease-out;
+  -o-transition: all .15s ease-out;
+  transition: all .15s ease-out;
+}
+#source textarea:focus {
+  background: #fafafa;
+  background: rgba(250,250,250, .42);
+  border-color: #3589db;
+  outline: none;
+  -webkit-box-shadow: #3589db 0 0 8px;
+  -moz-box-shadow: #3589db 0 0 8px;
+  -o-box-shadow: #3589db 0 0 8px;
+  box-shadow: #3589db 0 0 8px;
+}
+
+/* Documentation */
+#docs tbody tr {
+  border-top: 1px dotted #d9d9d9;
+}
+#docs th {
+  padding-top: 1em;
+  text-align: left;
+}
+#docs th+td {
+  padding: 1em 6px 0;
+}
+#docs tbody th {
+  width: 10em;
+}
+#docs thead th,
+#docs thead td {
+  border-bottom: 2px solid #d9d9d9;
+}
+#toc {
+  background: #141414;
+  border-radius: 8px;
+  font-size: 12px;
+  padding: 10px;
+}
+#toc a {
+  text-decoration: none;
+}
+#toc a:focus {
+  background: #fafafa;
+  color: #141414;
+}
+#toc a:hover {
+  text-decoration: underline;
+}
+#toc ol {
+  margin-left: 1em;
+}
+#toc ol li {
+  list-style: decimal;
+}
+
+blockquote {
+  margin: 1em;
+}
+code {
+  background: rgba(217, 30, 118, .1);
+  border: 1px solid rgba(0,0,0, .1);
+  display: inline-block;
+  padding: 0 2px;
+}
+th code {
+  margin: -1px 0 1px;
+}
+pre {
+  background: rgba(217, 30, 118, .082);
+  border: 1px solid #999;
+  border-width: 1px 0;
+  overflow: auto;
+  padding: 1em;
+  width: auto;
+}
+.comment {
+  font-style: oblique;
+}
+
+
+
+
+/* Basic element styling */
+p.intro {
+  font-size: 1.42em;
+  line-height: 1.2;
+}
+h2 {
+  font-size: 1.8em;
+  margin: .5em 0 .25em;
+}
+h3 {
+  font-size: 1.5em;
+  margin: .5em 0 .25em;
+}
+h4 {
+  text-transform: uppercase;
+}
+
+p {
+  margin: 1em 0;
+}
+.container {
+  margin: 0 10px;
+}
+article cite {
+  white-space: nowrap;
+}
+article ol {
+  margin: 1em 0;
+}
+article li {
+  list-style: disc;
+  margin: 0.7em 0;
+}
+
+/* News etc. */
+#latest-news h3 {
+  font-size: 1em;
+  font-weight: bold;
+  margin: 0;
+}
+#latest-news p {
+  margin: 0 0 1em;
+}
+#latest-news footer {
+  font-size: .8em;
+  opacity: .82;
+}
+/* This one is used for content to be indented a little and made less obnoxiously wide. YES I DISCRIMINATE AGAINST FAT CONTENT. */
+.standalone {
+  margin: 1em 0 2.8em 60px;
+  width: 82%;
+}
+.standalone h4 {
+  margin: 1em 0;
+  font-weight: bold;
+}
+.standalone li ul li {
+  list-style: square;
+  margin: .2em 0 0.3em 2em;
+}
+.news-posts .posted {
+  font-size: .9em;
+  margin: 0 0 1.5em;
+  opacity: .82;
+}
+
+
+/* Footer */
+#page-footer {
+  background: #2a2a2a;
+}
+#page-footer a:focus,
+#page-footer a:hover {
+  text-decoration: none;
+}
+
+/* HTML5 */
+#html5 {
+  background: #d9d9d9;
+  float: right;
+  width: 15%;
+}
+#h5logo {
+  float: right;
+  margin: -42px 15px 0;
+  position: relative;
+  z-index: 10;
+}
+#html5 .h5s {
+  display: none;
+}
+/* Used by */
+#used-by {
+  background: #d9d9d9;
+  margin: 0; /* top margin was causing issues for the sticky footer */
+  padding: 5px 0;
+}
+#used-by h4 {
+  line-height: 2;
+  width: 69px;
+}
+#used-by ol,
+#used-by ol li {
+  display: inline;
+  line-height: 30px;
+  list-style: none;
+  margin: 0;
+  color:transparent;
+}
+#used-by li a {
+  background: url('/i/img/used-by.png') 0 50% no-repeat;
+  display: inline-block;
+  height: 30px;
+  opacity: .42;
+  overflow: hidden;
+  margin: 0 5px 0 0;
+  text-indent: -9992px; /* Opera doesn't show background images properly with overflow:hidden. Dumb. */
+  -webkit-transition: opacity .3s ease-in-out;
+  -moz-transition: opacity .3s ease-in-out;
+  -o-transition: opacity .3s ease-in-out;
+  transition: opacity .3s ease-in-out;
+}
+#used-by .twitter   { background-position: 0 50%; width: 82px; }
+#used-by .google    { background-position: -91px 50%; width: 67px; }
+#used-by .microsoft { background-position: -165px 50%; width: 100px; }
+#used-by .economist { background-position: -274px 50%; width: 54px; }
+#used-by .about     { background-position: -336px 50%; width: 105px; }
+#used-by .knot      { background-position: -447px 50%; width: 56px; }
+#used-by .good      { background-position: -512px 50%; width: 28px; }
+#used-by .posterous { background-position: -552px 50%; width: 92px; }
+
+#used-by a:focus,
+#used-by a:hover {
+  opacity: 1;
+}
+
+
+
+/* Team */
+#team {
+  padding: 20px 0 1.6em;
+  overflow: hidden;
+}
+#team ul {
+  clear: left;
+  float: left;
+  margin: 0 0 8px;
+  width: 100%;
+}
+#team ul li {
+  float: left;
+  font-size: 11px;
+  margin: 8px 5% 8px 0;
+  min-width: 160px;
+  width: 28%;
+}
+#team a:not(.twitter) {
+  border-bottom: 1px solid #999;
+  font-weight: bold;
+  text-decoration: none;
+  -webkit-transition: all .2s ease-out;
+  -moz-transition: all .2s ease-out;
+  -o-transition: all .2s ease-out;
+  transition: all .2s ease-out;
+}
+#team a img {
+  border: 1px solid #141414;
+  float: left;
+  margin-right: 10px;
+  -webkit-transition: border-color .3s ease-out;
+  -moz-transition: border-color .3s ease-out;
+  -o-transition: border-color .3s ease-out;
+  transition: border-color .3s ease-out;
+}
+#team a:focus,
+#team a:hover {
+  border-color: #d9d9d9;
+  margin-left: -10px;
+  padding-left: 10px;
+}
+#team a:focus img,
+#team a:hover img {
+  border-color: #d9d9d9;
+}
+#team li strong {
+  display: block;
+}
+
+
+#the-end {
+  clear: both;
+  background: #141414;
+  font-size: 12px;
+}
+/* Marketing line / design filler isn't really necessary for basic mobile: */
+#microlib {
+  display: none;
+}
+#the-end p {
+  margin: 0;
+  padding: 1em 0;
+}
+.sponsors {
+  float: right;
+  text-align: left;
+}
+
+.js .hide-if-js {
+  height: 1px;
+  position: absolute;
+  visibility: hidden;
+  width: 1px;
+}
+.clrfx:after {
+  clear: both;
+  content: '.';
+  visibility: hidden;
+}
+
+
+/* Resources */
+.resource-area dl {
+  margin: 1em 10px;
+}
+.resource-area dt {
+  font-weight: bold;
+}
+.resource-area dd {
+  margin-left: 1.2em;
+}
+.resource-area dd:before {
+  color: #d91e76;
+  content: '✭ ';
+  margin-left: -1.2em;
+  position: absolute;
+}
+
+
+/* License */
+#license-list {
+  border: 1px solid #d9d9d9;
+  counter-reset: licenseline;
+  display: block;
+  list-style: none;
+  position: relative;
+}
+#license-list li {
+  border-bottom: 1px solid #d9d9d9;
+  height: 18px;
+  line-height: 18px;
+  padding: 0 0 0 6px;
+}
+#license-list li:last-child {	border: none; }
+#license-list li:not(.empty) { counter-increment: licenseline; }
+#license-list li:not(.empty):before {
+  content: '#' counter(licenseline) ' ';
+  font-size: 11px;
+  left: -32px;
+  line-height: 18px;
+  opacity: .42;
+  position: absolute;
+  text-align: right;
+  width: 26px;
+}
+
+iframe[name^="browserscope"] { position:absolute; left: -999em; visibility:hidden; }
+
+
+
+
+/* <details> and <summary> are block level elements */
+details, summary { display: block; }
+
+/* The following styles will only get applied if JavaScript is enabled and <details> is not natively supported */
+
+/* Add focus styles (for keyboard accessibility) */
+.no-details summary:hover, .no-details summary:focus { outline: 1px solid hsla(0, 0%, 50%, 0.4); border-radius: 2px;}
+
+/* The following styles are not really needed, since the jQuery script takes care of hiding/displaying the elements. */
+/* However, we’re still gonna use CSS as well to prevent FOUC in browsers that understand these selectors. */
+/* Remember: by default (and probably most of the time), the contents of the <details> element are hidden. */
+
+/* Hide all direct descendants of every <details> element */
+/* Note that IE6 doesn’t support the child selector; we’ll work around that using jQuery later */
+.no-details details > * { display: none; }
+
+.no-details summary { display: block }
+.no-details summary:before { content: "► "; float: left; width: 1em }
+.no-details details.open > summary:before { content: "▼ " }
+
+/* Make sure summary remains visible, and apply a pointer cursor upon hover to indicate it’s a clickable element */
+ details summary, .no-details details summary { display: block; cursor: pointer; }
+
+
+
+
+
+/* Contributors */
+.contributors-area small {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.contributors-area ul {
+  -webkit-column-count: 2;  -webkit-column-gap: 15px;
+     -moz-column-count: 2;     -moz-column-gap: 15px;
+          column-count: 2;          column-gap: 15px;
+}
+
+
+
+/**
+ * CSS Sticky Footer Effect
+ * http://ryanfait.com/resources/footer-stick-to-bottom-of-page/
+
+ * I put all these styles together so you can see what all is going on; feel
+ * free to move parts out to more appropriate places (or within a specific
+ * media query) if you like.
+
+ * If you add Sass, ideally you'd set the height as a variable so you can use
+ * it throughout the various heights and negative margins below.
+ * You could also turn this into a mixin so you can pass in various heights
+ * for various media queries. :)
+
+ * Using pixels here, but you can change to relative if that's your preference.
+
+ * $footer-height: 270px; // however tall you want your footer to be.
+
+ * Feel free to rename things to your liking and remove this comment, too. :P
+ * Also, to avoid issues I just wrapped a footer around your footer, but you
+ * could use the footer you have if you don't have margin/padding/border
+ * conflict issues.
+ */
+
+html,
+body { height: 100%; }
+
+.page {
+  margin-bottom: -285px;
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+}
+
+.footer-shim,
+.footer-anchor {
+  clear: both;
+  height: 285px;
+}
+
+.footer-anchor {
+  background-color: #141414;
+  /* Adding this so you can make your height taller if needed and it'll look
+  okay */
+}
+
+/* Needed to clear the contained floats because it was causing an overscroll */
+#the-end .container { overflow: hidden; }
+
+
+/* I had to adjust the height and add color behind my anchor because there is
+  Padding on the bottom of the #the-end section being a big jerk. */
+
+
+
+/* Tablet-esque styles
+-------------------------------------------------------------------------------*/
+@media all and (min-width: 768px) {
+
+  .container {
+    margin: 0 auto;
+    position: relative;
+    width: 740px;
+  }
+  .hfd {
+    display: none;
+  }
+  h2 {
+    font-size: 2em;
+  }
+
+  /* Nav bar */
+  nav {
+    /* Tell me again why using gradients is better than an image? */
+    background: -moz-linear-gradient(top, #1f1f1f 0%, #424242 2.5%, #1f1f1f 5%, #313131 95%, #141414 97.5%, #313131 100%);
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(#1f1f1f), color-stop(2.5%,#424242), color-stop(5%,#1f1f1f), color-stop(95%,#313131), color-stop(97.5%,#141414), to(#313131));
+    background: -webkit-linear-gradient(top, #1f1f1f 0%, #424242 2.5%, #1f1f1f 5%, #313131 95%, #141414 97.5%, #313131 100%);
+    background: -o-linear-gradient(top, #1f1f1f 0%, #424242 2.5%, #1f1f1f 5%, #313131 95%, #141414 97.5%, #313131 100%);
+    background: -ms-linear-gradient(top, #1f1f1f 0%, #424242 2.5%, #1f1f1f 5%, #313131 95%, #141414 97.5%, #313131 100%);
+    background: linear-gradient(top, #1f1f1f 0%, #424242 2.5%, #1f1f1f 5%, #313131 95%, #141414 97.5%, #313131 100%);
+
+    /* Wishful thinking: */
+    background: gradient(top, #1f1f1f:0, #424242:2.5, #1f1f1f:5, #313131:95, #141414:97.5, #313131));
+
+    left: 0;
+    position: absolute;
+    right: 0;
+    text-transform: uppercase;
+    top: 10px;
+  }
+  #nav {
+    left: 50%;
+    margin-left: -120px;
+    position: relative;
+    text-align: right;
+    width: 450px;
+    z-index: 100;
+  }
+  #nav a {
+    font-size: 14px;
+    line-height: 40px;
+    margin: 0 18px 0 0;
+  }
+  .wf-inactive #nav a {
+    margin: 0 15px 0 0;
+  }
+
+  .quote {
+    left: 260px;
+    position: absolute;
+    top: 50px;
+  }
+
+  .title {
+    font-size: 34px;
+    padding: 20px 0 0 15px;
+  }
+  .subtitle {
+    display: block;
+    font-family: "proxima-nova-condensed-1","proxima-nova-condensed-2", HelveticaNeue-CondensedBold, "Helvetica Neue Condensed Bold", sans-serif;
+    font-size: 13px;
+    margin: 0;
+    padding: 10px 0 0 15px;
+    text-shadow: #000 0 -1px 1px;
+    white-space: nowrap;
+  }
+  .wf-inactive .subtitle {
+    font-size: 10px;
+  }
+  #masthead {
+    height: 100px;
+  }
+  .banner {
+    position: relative;
+    top: -2px;
+    height: 80px;
+    margin: 0;
+    width: 238px;
+
+    -webkit-box-shadow: #141414 0 0 7px, #fafafa 0 0px 2px inset;
+    -moz-box-shadow: #141414 0 0 7px, #fafafa 0 0px 2px inset;
+    -o-box-shadow: #141414 0 0 7px, #fafafa 0 0px 2px inset;
+    box-shadow: #141414 0 0 7px, #fafafa 0 0px 2px inset;
+  }
+  #primary {
+    float: left;
+    margin: 0;
+    padding-bottom: 2em;
+    width: 740px;
+  }
+  #content {
+    padding-top: 3em;
+  }
+  #docs #content {
+    position: relative;
+  }
+  #docs .banner {
+    height: 38em;
+  }
+  #docs #toc {
+    background: none;
+    left: 0;
+    margin: 0;
+    padding: 0 10px 0 20px;
+    position: absolute;
+    top: -1em;
+    width: 260px;
+    z-index: 50;
+  }
+  #docs #content h2,
+  #docs .doc-intro {
+    margin: .4em 0 .4em 270px;
+  }
+  #docs h3 {
+    margin: 1em 0 .25em;
+  }
+  #docs #toc h3 {
+    margin: .5em 0 .5em;
+  }
+  #docs #content h4 {
+    margin: 2em 0 0;
+  }
+  #news #community,
+  #docs #community {
+    float: left;
+  }
+
+  #toc ol { counter-reset: item; }
+  #toc ol li { list-style: none; }
+  #toc ol ol { margin-left: 2.35em; }
+  #toc li:before {
+    content: counters(item, ".") ". ";
+    counter-increment: item;
+    margin-left: -1em;
+    position: absolute;
+    width: .9em;
+  }
+  #toc li ol li:before {
+    margin-left: -2.2em;
+    width: 2em;
+  }
+
+
+  /* Community */
+  #community {
+    float: right;
+  }
+
+  /* What is */
+  #what-is {
+    float: left;
+    width: 300px;
+  }
+
+
+  /* Download */
+  #download.homepage {
+    clear: none;
+    height: 180px;
+  }
+  .col-mid {
+    clear: right;
+    float: right;
+    width: 400px;
+  }
+  #download aside {
+    float: left;
+    font-size: 12px;
+    margin-top: 2em;
+    width: 50%;
+  }
+  #download .buttons {
+    float: right;
+    width: 45%;
+  }
+  #group-extensibility {
+      clear: both;
+      width: 28%;
+  }
+  #community-feature-detects {
+      width: 59.5%;
+  }
+
+  /* Generic intro */
+  .intro-p {
+    width: 82%;
+  }
+  #download .intro-p {
+    padding: 0 20px;
+  }
+
+  /* Build tool */
+  .features {
+    background: rgba(0,0,0, .20);
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -o-border-radius: 8px;
+    border-radius: 8px;
+    border: 0;
+    -webkit-box-shadow: rgba(20,20,20, .24) 1px 2px 3px inset;
+    -moz-box-shadow: rgba(20,20,20, .24) 1px 2px 3px inset;
+    -o-box-shadow: rgba(20,20,20, .24) 1px 2px 3px inset;
+    box-shadow: rgba(20,20,20, .24) 1px 2px 3px inset;
+
+    float: left;
+    margin: 3em 0 10px 20px;
+    position: relative;
+    width: 28%;
+    z-index: 5;
+  }
+  #group-css3,
+  #group-html5 {
+    min-height: 28em;
+  }
+  .features legend, .features summary {
+    height: 40px;
+    font-size: 32px;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    text-indent: 12px;
+    top: -40px;
+    vertical-align: top;
+    width: 100%;
+    z-index: 1;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+  }
+  #group-extensibility summary {
+    font-size: 29px;
+  }
+  .features .toggle-group {
+    top: 10px;
+  }
+  .features .toggle-group:focus,
+  .features .toggle-group:hover {
+    background: rgba(20,20,20, 1);
+  }
+  .features .toggle-group:active {
+    background: #000;
+    margin-top: 1px;
+  }
+  .buttons-area {
+    clear: left;
+    height: 53px;
+    text-align: left;
+  }
+  #download .buttons-area {
+    float: left;
+    position: relative;
+    margin: -6px 0 10px;
+  }
+  #download .buttons-area .btn,
+  #download #modulizrize {
+    float: left;
+    margin: 0 0 0 10px;
+  }
+  #dontmin {
+    margin-bottom: 3.5px;
+  }
+  .features label {
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -o-border-radius: 4px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: block;
+    padding: 0 4px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    -webkit-transition: background-color .3s ease-out;
+    -moz-transition: background-color .3s ease-out;
+    -o-transition: background-color .3s ease-out;
+    transition: background-color .3s ease-out;
+  }
+  .features label:hover, .features #cssprefixcontainer:hover {
+    background: rgba(20,20,20, .42);
+    -webkit-transition-duration: .15s;
+    -moz-transition-duration: .15s;
+    -o-transition-duration: .15s;
+    transition-duration: .15s;
+  }
+  #source {
+    margin: 0 30px 0 20px;
+  }
+  #source textarea {
+    font-size: 85%;
+    height: 10em;
+  }
+  /* input[type=text] */
+  .features div {
+    margin: 4px;
+  }
+  .textfield {
+    background: #ababab;
+    border: 1px solid #999;
+    border-radius: 3px;
+    font-size: 90%;
+    -webkit-transition: background-color .3s ease-out;
+    -moz-transition: background-color .3s ease-out;
+    -o-transition: background-color .3s ease-out;
+    transition: background-color .3s ease-out;
+  }
+  .textfield:hover { background: #ccc; }
+  .textfield:focus { background: #fff; }
+  .features abbr.help {
+    border-bottom: 1px dotted  #3589db;
+    font-weight: normal;
+    color:inherit;
+        margin-right: 10px;
+        font-size: 90%;
+  }
+  #cssprefix {
+    width: 64px;
+
+  }
+
+  /* Places */
+  #places {
+    height: 190px;
+    width: 230px;
+  }
+  #places li {
+    cursor: pointer;
+    height: 38px;
+    position: relative;
+  }
+  #places .icon {
+    background: #d91e76 url('/i/img/icons.png') 3px 0 no-repeat;
+    background-color: rgba(217,30,118, .42);
+    border-radius: 19px;
+    display: block;
+    color: #141414;
+    float: none;
+    height: 38px;
+    line-height: 38px;
+    margin: 10px 0 0;
+    position: relative;
+    text-align: left;
+    text-indent: 50px;
+    text-shadow: #333 0 1px 0;
+    white-space: nowrap;
+    width: 208px;
+    z-index: 5;
+    /* If you're poking around here, you're probably wondering how the heck I made those social link hovers, right? Well, look further down! */
+    -webkit-transition: width .25s ease-in-out, background-color .25s ease-in-out;
+    -moz-transition: width .25s ease-in-out, background-color .25s ease-in-out;
+    -o-transition: width .25s ease-in-out, background-color .25s ease-in-out;
+    transition: width .25s ease-in-out, background-color .25s ease-in-out;
+    -webkit-box-shadow: rgba(0,0,0, .28) 0 2px 3px;
+    -moz-box-shadow: rgba(0,0,0, .28) 0 2px 3px;
+    -o-box-shadow: rgba(0,0,0, .28) 0 2px 3px;
+    box-shadow: rgba(0,0,0, .28) 0 2px 3px;
+  }
+  .js #places .icon {
+    width: 38px;
+  }
+  #places .icon {
+    color: #fafafa;
+    overflow: hidden;
+  }
+  #places .donate {
+    position: relative;
+  }
+  #places .twitter { background-color: rgba(45,118,185, .42); background-position: 3px -50px; }
+  #places .github  { background-color: rgba(80,108,123, .42); background-position: 3px -100px; }
+  #places .github  { background-color: rgba(65,131,196, .42); background-position: 3px -100px; }
+  #places .rss     { background-color: rgba(255,109, 0, .42); background-position: 3px -150px; }
+
+  #places li:hover .icon,
+  .touch #places li .icon {
+    width: 208px;
+  }
+  .touch #places li .icon    , #places li:hover .icon    { background-color: #d91e76; }
+  .touch #places li .twitter , #places li:hover .twitter { background-color: #2d76b9; }
+  .touch #places li .github  , #places li:hover .github  { background-color: #506c7b; }
+  .touch #places li .github  , #places li:hover .github  { background-color: #4183c4; }
+  .touch #places li .rss     , #places li:hover .rss     { background-color: #ff6d00; }
+
+  /* This is the sexiness behind the hovers: */
+  .wf-active #places li:after,
+  .tk-loaded #places li:after {
+    color: #141414;
+    content: attr(data-alt);
+    display: block;
+    height: 38px;
+    line-height: 38px;
+    position: absolute;
+    left: 50px;
+    top: 0;
+    z-index: 2;
+  }
+  /* “Wait… that's it? That can't be it!”
+   * Well no, but now check out the #places .icon {} rule above again.
+   */
+
+  /* Donate button */
+  #places form {
+    display: inline;
+    margin: 0;
+    padding: 0;
+    z-index: 1;
+  }
+
+
+  /* Resources */
+  .resource-area dl {
+    float: left;
+    margin: 0 20px 1em 0;
+    width: 45%;
+  }
+
+
+  #secondary {
+    float: left;
+    padding-bottom: 2em;
+    width: 100%;
+  }
+  #latest-news {
+    width: 230px;
+  }
+  #latest-news footer {
+    margin: .5em 0 0;
+  }
+
+  #page-footer {
+    clear: both;
+  }
+
+  #used-by h4 {
+    float: left;
+    height: 100%;
+    line-height: 60px;
+  }
+  #html5 {
+    width: 35%;
+  }
+  #html5 .h5s {
+    display: block;
+    float: right;
+    margin: 5px 0;
+  }
+  #h5logo {
+    float: none;
+    margin: -30px 0 -60px 40px;
+  }
+
+  #team ul li {
+    display: inline-block;
+    font-size: 12px;
+  }
+/*  #team ul li:nth-child(3) {
+    clear: left;
+  }*/
+
+
+  #the-end .sponsors {
+    padding-right: 2em;
+    width: 192px;
+  }
+
+
+  .contributors-area ul {
+    -webkit-column-count: 3;
+       -moz-column-count: 3;
+            column-count: 3;
+  }
+
+
+} /* @media all and (min-width: 480px) {}*/
+
+
+
+
+
+/* Desktop-class viewport styles
+-------------------------------------------------------------------------------*/
+  @media all and (min-width: 1200px) {  /* Holymoly 1200 pixels! */
+
+    .container {
+      width: 1180px;
+    }
+
+    #nav {
+      margin-left: -230px;
+      text-align: left;
+      width: 600px;
+    }
+    #nav a {
+      font-size: 16px;
+      line-height: 42px;
+      margin: 0 40px 0 0;
+    }
+
+    .quote {
+      font-size: 18px;
+      left: 345px;
+      top: 50px;
+    }
+
+    .title {
+      font-size: 36px;
+      padding-left: 30px;
+    }
+    .subtitle {
+      font-size: 15px;
+      padding-left: 30px;
+    }
+    .wf-inactive .subtitle {
+      font-size: 12px;
+    }
+    .banner {
+      position: relative;
+      top: -2px;
+      height: 100px;
+      margin: 0 0 0;
+      width: 298px;
+    }
+    .banner img {
+      height: 36px;
+      width: 75px;
+    }
+
+    #primary {
+      width: 880px;
+    }
+    #secondary {
+      width: 270px;
+    }
+    #what-is {
+      width: 300px;
+    }
+    .col-mid {
+      width: 500px;
+    }
+    #download aside {
+      font-size: 14px;
+      margin: 0;
+    }
+    #download .btn {
+      float: right;
+      margin-right: 20px;
+    }
+    /* Download page */
+    .features {
+      margin: 3em 10px 10px 20px;
+    }
+    #group-extensibility summary {
+      font-size: 32px;
+    }
+
+
+    /* Documentation */
+    #docs .banner {
+      height: 42em;
+    }
+    #docs #primary {
+      margin-left: 330px;
+      width: 850px;
+    }
+    #docs #secondary {
+      position: absolute;
+      top: 3em;
+      right: 0;
+      width: 230px;
+    }
+    #docs #content h2,
+    #docs .doc-intro {
+      margin: 0 250px 0 0;
+    }
+    #docs #toc {
+      top: 3.5em;
+    }
+
+    #used-by h4 {
+      line-height: 30px;
+    }
+    #h5logo {
+      margin: -37px 0 -53px 40px;
+    }
+    #team ul {
+      width: 65%;
+    }
+    #microlib {
+      display: block;
+      float: right;
+      font-size: 12px;
+      margin: 1.8em 0 0 -2em;
+      padding-right: 2em;
+      text-align: left;
+      width: 340px;
+    }
+
+    #the-end .sponsors {
+      width: 340px;
+    }
+
+    #latest-news {
+      float: right;
+    }
+
+  } /*@media all and (min-width: 1200px) {}*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Print styles. Inlined to avoid required HTTP connection: www.phpied.com/delay-loading-your-print-css/
+-------------------------------------------------------------------------------*/
+@media print {
+  * { background: transparent !important; color: black !important; text-shadow: none !important; filter:none !important;
+  -ms-filter: none !important; } /* Black prints faster: sanbeiji.com/archives/953 */
+  a, a:visited { color: #444 !important; text-decoration: underline; }
+  a[href]:after { content: " (" attr(href) ")"; }
+  abbr[title]:after { content: " (" attr(title) ")"; }
+  .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after { content: ""; }  /* Don't show links for images, or javascript/internal links */
+  pre, blockquote { border: 1px solid #999; page-break-inside: avoid; }
+  thead { display: table-header-group; } /* css-discuss.incutio.com/wiki/Printing_Tables */
+  tr, img { page-break-inside: avoid; }
+  @page { margin: 0.5cm; }
+  p, h2, h3 { orphans: 3; widows: 3; }
+  h2, h3{ page-break-after: avoid; }
+}
