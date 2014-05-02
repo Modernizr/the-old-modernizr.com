@@ -74,6 +74,7 @@
       'css_remunit' : [],
       'css_resize' : ['testallprops'],
       'css_scrollbars' : ['prefixes', 'teststyles'],
+      'css_shapes' : ['testallprops'],
       'css_userselect' : ['testallprops'],
       'custom_protocol_handler' : [],
       'dataview_api' : [],
