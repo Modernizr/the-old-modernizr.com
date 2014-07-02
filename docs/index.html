@@ -158,7 +158,7 @@ Modernizr.load([
     &lt;script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js">&lt;/script>
     &lt;script>window.jQuery || document.write('&lt;script src="js/libs/jquery-1.7.1.min.js">\x3C/script>')&lt;/script>
 </pre>
-            <p>It works by trying to load in the script, and then immediately after, testing to see if the jQuery object is available. If It’s not, then they load a local copy of jQuery as a fallback. This is generally not that easy in script-loaders, but <code>Modernizr.load</code> has got you covered. You can just use the same logic, and <code>Modernizr.load</code> will handle the execution order for you:</p>
+            <p>It works by trying to load in the script, and then immediately after, testing to see if the jQuery object is available. If it’s not, then they load a local copy of jQuery as a fallback. This is generally not that easy in script-loaders, but <code>Modernizr.load</code> has got you covered. You can just use the same logic, and <code>Modernizr.load</code> will handle the execution order for you:</p>
 
 <pre>
 Modernizr.load([
@@ -198,7 +198,7 @@ Modernizr.load([
 
 
             <h3 id="html5inie">HTML 5 elements in <abbr title="Internet Explorer">IE</abbr></h3>
-            <p>Modernizr runs through a little loop in JavaScript to enable the various elements from HTML5 (as well as <code>abbr</code>) for styling in Internet Explorer. Note that this does not mean it suddenly makes IE support the Audio or Video element, it just means that you can use <code>section</code> instead of <code>div</code> and style them in CSS. you’ll also probably want to set many of these elements to <code>display:block</code>; see <a href="https://github.com/paulirish/html5-boilerplate/blob/362d0b7/css/style.css#L35-37">the HTML5 Boilerplate CSS</a> for an example. As of Modernizr 1.5, this script is identical to what is used in the popular html5shim/html5shiv library. Both also enable printability of HTML5 elements in IE6-8, though you might want to try out the performance hit if you have over 100kb of css.</p>
+            <p>Modernizr runs through a little loop in JavaScript to enable the various elements from HTML5 (as well as <code>abbr</code>) for styling in Internet Explorer. Note that this does not mean it suddenly makes IE support the <code>audio</code> or <code>video</code> element, it just means that you can use <code>section</code> instead of <code>div</code> and style them in CSS. You’ll also probably want to set many of these elements to <code>display:block</code>; see <a href="https://github.com/paulirish/html5-boilerplate/blob/362d0b7/css/style.css#L35-37">the HTML5 Boilerplate CSS</a> for an example. As of Modernizr 1.5, this script is identical to what is used in the popular html5shim/html5shiv library. Both also enable printability of HTML5 elements in IE6-8, though you might want to try out the performance hit if you have over 100kb of CSS.</p>
 
 
 
@@ -249,7 +249,7 @@ Modernizr.load([
    border: none;
    -webkit-box-shadow: #666 1px 1px 1px;
       -moz-box-shadow: #666 1px 1px 1px;
-               box-shadow: #666 1px 1px 1px;
+           box-shadow: #666 1px 1px 1px;
 }
 </pre>
                   </td></tr>
