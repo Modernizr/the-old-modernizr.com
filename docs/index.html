@@ -156,7 +156,7 @@ Modernizr.load([
 
 <pre>
     &lt;script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js">&lt;/script>
-    &lt;script>window.jQuery || document.write('&lt;script src="js/libs/jquery-1.7.1.min.js">\x3C/script>')&lt;/script>
+    &lt;script>window.jQuery || document.write('&lt;script src="js/libs/jquery-1.7.1.min.js">&lt;/script>')&lt;/script>
 </pre>
             <p>It works by trying to load in the script, and then immediately after, testing to see if the jQuery object is available. If it’s not, then they load a local copy of jQuery as a fallback. This is generally not that easy in script-loaders, but <code>Modernizr.load</code> has got you covered. You can just use the same logic, and <code>Modernizr.load</code> will handle the execution order for you:</p>
 
