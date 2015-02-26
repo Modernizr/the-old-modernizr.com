@@ -6,7 +6,7 @@ jQuery(function($){
   // $(':checkbox').attr('checked', true);
 
   // Add dynamic toggle buttons; should inverse current selection per group, not just toggle all on OR off only
-  $("a.toggle-group").live('click', function() {
+  $("body").on("click", "a.toggle-group", function() {
     var group = $(this).closest(".features");
     var checkbox = $(group).find(':checkbox');
     checkbox.each(function(){
