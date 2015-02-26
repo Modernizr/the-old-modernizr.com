@@ -2,12 +2,15 @@
 
 echo "Compressing the JS into builderapp.min.js..."
 
+echo "" > builderapp.min.js
 
-uglifyjs \
+cat license.js > builderapp.min.js
+
+uglifyjs --source-map builderapp.map \
   modulizr.js underscore-min.js \
   uglifyjs/lib/parse-js.js uglifyjs/lib/process.js uglifyjs/lib/squeeze-more.js uglifyjs/bin/uglifyjs.js \
   builderapp.js \
-  > builderapp.min.js
+  >> builderapp.min.js
 
 # /**
 #  * Modulizr
@@ -20,7 +23,6 @@ uglifyjs \
 #  * This section does the conditional build
 #  */
 
-rm -f tmp.js
 
 gzip -c builderapp.min.js > builderapp.min.js.gz
 m=$(ls -la builderapp.min.js | awk '{ print $5}')
