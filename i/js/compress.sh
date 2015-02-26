@@ -1,46 +1,25 @@
 #/bin/sh
-#uglifyjs --unsafe modulizr.js > builderapp.min.js
-#echo ';' >> builderapp.min.js
-#uglifyjs --unsafe underscore-min.js >> builderapp.min.js
-#echo ';' >> builderapp.min.js
-
-
-#uglifyjs --unsafe uglifyjs/lib/parse-js.js >> builderapp.min.js
-#echo ';' >> builderapp.min.js
-#uglifyjs --unsafe -nc uglifyjs/lib/process.js >> builderapp.min.js
-#echo ';' >> builderapp.min.js
-#cat uglifyjs/lib/process.js >> builderapp.min.js
-#uglifyjs --unsafe uglifyjs/lib/squeeze-more.js >> builderapp.min.js
-#echo ';' >> builderapp.min.js
-#uglifyjs --unsafe uglifyjs/bin/uglifyjs.js >> builderapp.min.js
-#echo ';' >> builderapp.min.js
 
 echo "Compressing the JS into builderapp.min.js..."
 
-cat modulizr.js > tmp.js
-echo ';' >> tmp.js
-cat underscore-min.js >> tmp.js
-echo ';' >> tmp.js
 
-cat uglifyjs/lib/parse-js.js >> tmp.js
-echo ';' >> tmp.js
-cat uglifyjs/lib/process.js >> tmp.js
-echo ';' >> tmp.js
-cat uglifyjs/lib/squeeze-more.js >> tmp.js
-echo ';' >> tmp.js
-cat uglifyjs/bin/uglifyjs.js >> tmp.js
-echo ';' >> tmp.js
+uglifyjs \
+  modulizr.js underscore-min.js \
+  uglifyjs/lib/parse-js.js uglifyjs/lib/process.js uglifyjs/lib/squeeze-more.js uglifyjs/bin/uglifyjs.js \
+  builderapp.js \
+  > builderapp.min.js
 
-# Don't need them anymore
-#cat swfobject.js >> tmp.js
-#echo ';' >> tmp.js
-#cat downloadify.min.js >> tmp.js
-#echo ';' >> tmp.js
-cat builderapp.js >> tmp.js
-echo ';' >> tmp.js
+# /**
+#  * Modulizr
+#  * Modernizr Modular Build Tool
+#  * Very simple tool for including or excluding tests
+#  *
+#  * @Author  Alex Sexton - AlexSexton@gmail.com
+#  * @License Dual MIT and WTFPL
+#  *//**
+#  * This section does the conditional build
+#  */
 
-uglifyjs --unsafe --ascii tmp.js > builderapp.min.js
-#cat tmp.js > builderapp.min.js
 rm -f tmp.js
 
 m=$(ls -la builderapp.min.js | awk '{ print $5}')
