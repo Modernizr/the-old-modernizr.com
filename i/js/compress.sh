@@ -9,7 +9,7 @@ cat license.js > builderapp.min.js
 # https://github.com/mishoo/UglifyJS2
 # npm install uglify-js -g
 
-uglifyjs --source-map builderapp.map.js \
+uglifyjs --source-map builderapp.map.js --source-map-include-sources \
   modulizr.js underscore-min.js \
   uglifyjs/lib/parse-js.js uglifyjs/lib/process.js uglifyjs/lib/squeeze-more.js uglifyjs/bin/uglifyjs.js \
   builderapp.js \
