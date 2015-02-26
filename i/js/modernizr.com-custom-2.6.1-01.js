@@ -86,27 +86,22 @@ function beacon(){
 
 
 
+// beacon to browserscope on homepage.
+$('body#home').length && setTimeout(function(){
+  jQuery.getScript(jQuery('.buttons .dev').attr('href'), function() {
+    // crawl the *new* modernizr not that old one.
+    crawlMod(window.Modernizr);
+    beacon();
+  });
+}, 2000);
+
+
+
 // Modernizr.com Custom Initialization
 
 // Dynamic loading configuration
 Modernizr.load([
   {
-    load: '//ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js',
-    complete: function () {
-      if (!window.jQuery) {
-        Modernizr.load('/i/js/jquery-1.7.min.js');
-      }
-
-      // beacon to browserscope on homepage.
-      $('body#home').length && setTimeout(function(){
-        jQuery.getScript(jQuery('.buttons .dev').attr('href'), function() {
-          // crawl the *new* modernizr not that old one.
-          crawlMod(window.Modernizr);
-          beacon();
-        });
-      }, 2000);
-    }
-  }, {
     test: Modernizr.csstransitions && Modernizr.csstransforms,
     yep: '/i/css/animations.css'
   },
