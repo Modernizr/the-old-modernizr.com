@@ -22,11 +22,15 @@ uglifyjs \
 
 rm -f tmp.js
 
+gzip -c builderapp.min.js > builderapp.min.js.gz
 m=$(ls -la builderapp.min.js | awk '{ print $5}')
-gzip -nfc --best builderapp.min.js > builderapp.min.js.gz
 g=$(ls -la builderapp.min.js.gz | awk '{ print $5}')
-echo "$m bytes minified, $g bytes gzipped"
+
+echo "$m bytes minified"
+echo "$g bytes gzipped"
 rm builderapp.min.js.gz
+
+
 if [ "--test" == "$1" ]; then
   rm builderapp.min.js
 fi
