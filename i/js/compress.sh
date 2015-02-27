@@ -15,16 +15,9 @@ uglifyjs --source-map builderapp.map.js --source-map-include-sources \
   builderapp.js \
   >> builderapp.min.js
 
-# /**
-#  * Modulizr
-#  * Modernizr Modular Build Tool
-#  * Very simple tool for including or excluding tests
-#  *
-#  * @Author  Alex Sexton - AlexSexton@gmail.com
-#  * @License Dual MIT and WTFPL
-#  *//**
-#  * This section does the conditional build
-#  */
+
+uglifyjs --source-map jquery-1.11.2.min.map.js --source-map-include-sources \
+  jquery-1.11.2.js > jquery-1.11.2.min.js
 
 
 gzip -c builderapp.min.js > builderapp.min.js.gz
