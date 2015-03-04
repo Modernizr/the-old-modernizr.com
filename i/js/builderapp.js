@@ -326,17 +326,17 @@ jQuery(function($){
       hash = hash.substr(1);
       var selections = hash.split('-');
       // Unselect everything
-      $('input[type="checkbox"]').removeAttr('checked');
+      $('input[type="checkbox"]').prop('checked', false);
       for(var i in selections) {
         if ( selections[i].match( /cssclassprefix/ ) ) {
           var cssclassprefix = selections[i].substr(15).replace(/\!/g,'-');
           $('#cssprefix').val(cssclassprefix);
         }
         else if (selections[i] == 'dontmin'){
-          $('#dontmin').attr('checked', 'checked');
+          $('#dontmin').prop('checked', true);
         }
         else {
-          $(document).find('input[value="'+selections[i]+'"]').attr('checked', 'checked');
+          $(document).find('input[value="'+selections[i]+'"]').prop('checked', true);
         }
       }
       var checked = $('#cssclasses input:checkbox').is(':checked');
