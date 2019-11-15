@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
 
-gem "jekyll", "~> 0.11.0"
+gem "jekyll", "~> 3.6.3"
 gem "rdiscount"
 gem "skylight"
